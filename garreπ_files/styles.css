@@ -30,7 +30,6 @@
 	justify-content: center;
 	align-items: stretch;
 	flex-direction: row;
-	margin: 0.0% 7.5% 0.0% 15.0%;
 }
 .g_505 {
 	
@@ -39,8 +38,8 @@
 	align-items: center;
 	flex-direction: column;
 	background-color: #FFC0C0;
+    margin: 5%;
 	text-align: center;
-	margin: 5.0%;
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
 	padding:1.0% 1.0% 1.0% 1.0%;
 	border: 1px solid #000000;
