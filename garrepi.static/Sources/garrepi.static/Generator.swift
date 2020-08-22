@@ -47,14 +47,13 @@ struct Generator {
         
         do {
             try htmlOutput.write(
-                to: saveLocation.appendingPathComponent(fileName),
+                to: saveLocation.appendingPathComponent(fileName, isDirectory: false),
                 atomically: true,
                 encoding: String.Encoding.utf8
             )
-        } catch {
-            print("[CRITICAL] Unable to save htmlOutput")
+        } catch let error as NSError {
+            print("[CRITICAL] could not save htmlOutput: ", error.localizedDescription)
         }
-        
     }
     
     private static func generate() {
