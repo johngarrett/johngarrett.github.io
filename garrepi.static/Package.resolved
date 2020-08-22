@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "garrepidev",
+        "repositoryURL": "https://github.com/johngarrett/garrepidev",
+        "state": {
+          "branch": "master",
+          "revision": "44dde13832976e97e912cf073612757839dcf6ff",
+          "version": null
+        }
+      },
+      {
+        "package": "HyperSwift",
+        "repositoryURL": "https://github.com/johngarrett/HyperSwift",
+        "state": {
+          "branch": "master",
+          "revision": "e95b96115106059d469623523fd2bf4dafbc81d1",
+          "version": null
+        }
+      },
+      {
+        "package": "Ink",
+        "repositoryURL": "https://github.com/johnsundell/ink.git",
+        "state": {
+          "branch": null,
+          "revision": "bd223a2482449507bd3286cb262c962d32d81e4b",
+          "version": "0.5.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
