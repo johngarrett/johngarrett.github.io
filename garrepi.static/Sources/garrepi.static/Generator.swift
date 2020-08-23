@@ -49,6 +49,7 @@ struct Generator {
     func generateCommon() {
         savePage(FourOFour(), title: "page not found", "404.html")
         savePage(About(), title: "garreπ | about", "about.html")
+        savePage(About(), title: "garreπ | about", "index.html")
         savePage(FiveHundred(), title: "i'm sorry...", "500.html")
     }
     
