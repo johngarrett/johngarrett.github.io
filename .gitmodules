@@ -1,6 +1,6 @@
 [submodule "blog"]
-	path = blog
+	path = blog-posts
 	url = https://github.com/johngarrett/garrepi-blog-posts
 [submodule "projects"]
-	path = projects
+	path = project-posts
 	url = https://www.github.com/johngarrett/garrepi-projects
