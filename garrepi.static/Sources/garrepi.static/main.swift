@@ -6,4 +6,4 @@ let generator = Generator(saveLocation: saveLocation)
 generator.generateCommon()
 generator.generateBlogs(from: "./blogs")
 generator.generateProjects(from: "./projects")
-generator.generateCss
+generator.generateCssSheet()
