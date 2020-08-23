@@ -1,11 +1,46 @@
 import Foundation
 import garrepidev
 import HyperSwift
-import garrepidev
 
 struct Generator {
     public let saveLocation: URL
     public let sidebar = Sidebar()
+    
+    func generateCss() {
+        var stylesheet = CSSStyleSheet.generateStyleSheet()
+        stylesheet +=
+        """
+        body {
+        font-family: "SF Mono";
+        }
+        
+        .g_sidebar a:hover {
+        text-decoration: underline;
+        }
+        .g_project_card:hover {
+        position: relative;
+        top: -5px;
+        left: -5px;
+        box-shadow: 25px 35px 0px 0px rgba(0, 0, 0, 0.6);
+        }
+        pre {
+        overflow: scroll;
+        }
+        
+        @media (min-width: 990px) {
+        .g_project_cards { grid-template-columns: repeat(2, 500px); }
+        }
+        """
+        do {
+            try stylesheet.write(
+                to: saveLocation.appendingPathComponent("css/styles.css"),
+                atomically: true,
+                encoding: String.Encoding.utf8
+            )
+        } catch let error as NSError {
+            print("[CRITICAL] could not save stylesheet: ", error.localizedDescription)
+        }
+    }
     
     /**
      Generate top level, common pages.
@@ -47,7 +82,7 @@ struct Generator {
         
         do {
             try htmlOutput.write(
-                to: saveLocation.appendingPathComponent(fileName, isDirectory: false),
+                to: saveLocation.appendingPathComponent(fileName),
                 atomically: true,
                 encoding: String.Encoding.utf8
             )
