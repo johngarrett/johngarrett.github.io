@@ -6,7 +6,7 @@ struct Generator {
     public let saveLocation: URL
     public let sidebar = Sidebar()
     
-    func generateCss() {
+    func generateCssSheet() {
         var stylesheet = CSSStyleSheet.generateStyleSheet()
         stylesheet +=
         """
