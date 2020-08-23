@@ -37,7 +37,7 @@ struct Generator {
                 atomically: true,
                 encoding: String.Encoding.utf8
             )
-        } catch let error as NSError {
+        } catch let error as Error {
             print("[CRITICAL] could not save stylesheet: ", error.localizedDescription)
         }
     }
@@ -52,12 +52,29 @@ struct Generator {
         savePage(About(), title: "garreπ | about", "index.html")
         savePage(FiveHundred(), title: "i'm sorry...", "500.html")
     }
-    
-    func generateBlogs(from path: String) {
-        
+    func generateBlogs(at folder: URL) {
+        guard let blogFiles = try? FileManager.default.contentsOfDirectory(atPath: folder.path) else {
+            print("[CRITICAL] could not generate blogs from \(folder.path)")
+            return
+        }
+        let posts = blogFiles.compactMap { Post(from: folder.appendingPathComponent($0)) }
+        savePage(BlogOverview(posts), title: "garreπ | blogs", "blog.html")
+        for post in posts {
+            if let page = BlogDetail(with: post) {
+                savePage(page, title: post.title, "blogs/\(post.href).html")
+            } else {
+                print("[ERROR] Could not generate post \(post.title)")
+            }
+        }
     }
-    func generateProjects(from path: String) {
-        
+    
+    func generateProjects(at folder: URL) {
+        guard let projectFiles = try? FileManager.default.contentsOfDirectory(atPath: folder.path) else {
+            print("[CRITICAL] could not generate projects from \(folder.path)")
+            return
+        }
+        let projects = projectFiles.compactMap { Project(from: folder.appendingPathComponent($0)) }
+        savePage(ProjectsOverview(projects), title: "garreπ | projects", "projects.html")
     }
     
     private func savePage(_ body: HTMLPage, title: String, _ fileName: String) {
