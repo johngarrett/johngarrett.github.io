@@ -10,6 +10,17 @@ struct Generator {
         var stylesheet = CSSStyleSheet.generateStyleSheet()
         stylesheet +=
         """
+        @font-face {
+            font-family: "SF Mono";
+            src: url("../fonts/SFMono-Regular.otf") format('opentype');
+            font-weight: normal;
+        }
+        @font-face {
+            font-family: "SF Mono";
+            src: url("../fonts/SFMono-Bold.otf") format('opentype');
+            font-weight: bold;
+        }
+        
         body {
         font-family: "SF Mono";
         }
@@ -81,9 +92,7 @@ struct Generator {
         let head = Head(
             title: title,
             stylesheets: [
-                "<link rel=\"stylesheet\" href=\"css/styles.css\">",
-                "<link rel=\"stylesheet\" type=\"text/css\" href=\"fonts/SFMono-Regular.otf\">",
-                "<link rel=\"stylesheet\" type=\"text/css\" href=\"fonts/SFMono-Regular.otf\">"
+                "<link rel=\"stylesheet\" href=\"css/styles.css\">"
             ]
         )
         let view = HTMLComponent {
