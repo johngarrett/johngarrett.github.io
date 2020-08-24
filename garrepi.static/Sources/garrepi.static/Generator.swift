@@ -78,7 +78,14 @@ struct Generator {
     }
     
     private func savePage(_ body: HTMLPage, title: String, _ fileName: String) {
-        let head = Head(title: title)
+        let head = Head(
+            title: title,
+            stylesheets: [
+                "<link rel=\"stylesheet\" href=\"css/styles.css\">",
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"fonts/SFMono-Regular.otf\">",
+                "<link rel=\"stylesheet\" type=\"text/css\" href=\"fonts/SFMono-Regular.otf\">"
+            ]
+        )
         let view = HTMLComponent {
             sidebar.render()
             HStack("g_content", justify: .center, wrap: .wrap) {
