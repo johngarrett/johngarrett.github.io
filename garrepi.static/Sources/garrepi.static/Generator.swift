@@ -22,24 +22,24 @@ struct Generator {
         }
         
         body {
-        font-family: "SF Mono";
+            font-family: "SF Mono";
         }
         
         .g_sidebar a:hover {
-        text-decoration: underline;
+            text-decoration: underline;
         }
         .g_project_card:hover {
-        position: relative;
-        top: -5px;
-        left: -5px;
-        box-shadow: 25px 35px 0px 0px rgba(0, 0, 0, 0.6);
+            position: relative;
+            top: -5px;
+            left: -5px;
+            box-shadow: 25px 35px 0px 0px rgba(0, 0, 0, 0.6);
         }
         pre {
-        overflow: scroll;
+            overflow: scroll;
         }
         
         @media (min-width: 990px) {
-        .g_project_cards { grid-template-columns: repeat(2, 500px); }
+            .g_project_cards { grid-template-columns: repeat(2, 500px); }
         }
         """
         do {
@@ -129,12 +129,9 @@ struct Generator {
                 atomically: true,
                 encoding: String.Encoding.utf8
             )
+            print("saved page \(fileName)\t✓")
         } catch let error as NSError {
             print("[CRITICAL] could not save htmlOutput: ", error.localizedDescription)
         }
-    }
-    
-    private static func generate() {
-        
     }
 }
