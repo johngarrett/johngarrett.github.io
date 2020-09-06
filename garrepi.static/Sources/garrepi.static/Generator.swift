@@ -12,12 +12,12 @@ struct Generator {
         """
         @font-face {
             font-family: "SF Mono";
-            src: url("../fonts/SFMono-Regular.otf") format('opentype');
+            src: url("/../fonts/SFMono-Regular.otf") format('opentype');
             font-weight: normal;
         }
         @font-face {
             font-family: "SF Mono";
-            src: url("../fonts/SFMono-Bold.otf") format('opentype');
+            src: url("/../fonts/SFMono-Bold.otf") format('opentype');
             font-weight: bold;
         }
         
@@ -101,7 +101,7 @@ struct Generator {
         let head = Head(
             title: title,
             stylesheets: [
-                "<link rel=\"stylesheet\" href=\"css/styles.css\">"
+                "<link rel=\"stylesheet\" href=\"/css/styles.css\">"
             ]
         )
         let view = HTMLComponent {
