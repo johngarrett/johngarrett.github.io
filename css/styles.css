@@ -7,57 +7,19 @@
 	flex-wrap: nowrap;
 	padding:0.0% 3.0% 1.0% 3.0%;
 }
-.g_fourOfour {
+.g_hstack_space-evenly_center_nowrap {
 	
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	background-color: #FFC0C0;
-	text-align: center;
-	margin: 5.0%;
-	height:500.0px;
-	width:500.0px;
-	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
-	padding:1.0% 1.0% 1.0% 1.0%;
-	border: 1px solid #000000;
-}
-.g_post_top {
-	
-	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	align-items: center;
 	flex-direction: row;
 	flex-wrap: nowrap;
-	padding:1.0% 2.5% 0.0% 2.5%;
 }
 .g_blog_cards {
 	
 	max-width:1200.0px;
 	display: grid;
 	grid-gap: 3rem;
-}
-.g_hstack_center_center_wrap-reverse {
-	
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-	flex-wrap: wrap-reverse;
-}
-.g_sidebar_links {
-	
-	display: flex;
-	justify-content: space-around;
-	align-items: stretch;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	text-align: left;
-	height:10.0%;
-	min-height:150.0px;
-	width:80.0%;
-	padding:15.0%;
 }
 .g_sidebar {
 	
@@ -78,6 +40,33 @@
 	overflow-x: hidden;
 	border-right: 1px solid #000000;
 }
+.g_fourOfour {
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	background-color: #FFC0C0;
+	text-align: center;
+	margin: 5.0%;
+	height:500.0px;
+	width:500.0px;
+	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
+	padding:1.0% 1.0% 1.0% 1.0%;
+	border: 1px solid #000000;
+}
+.g_text_card {
+	
+	background-color: #FFFFFF;
+	margin: 3.0%;
+	display: inline-block;
+	padding:1.0% 2.0% 1.0% 2.0%;
+	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
+	border: 1px solid #000000;
+	text-align: left;
+	max-width:100.0%;
+}
 .g_505 {
 	
 	display: flex;
@@ -92,30 +81,52 @@
 	padding:1.0% 1.0% 1.0% 1.0%;
 	border: 1px solid #000000;
 }
-.g_content {
+.g_post_top {
+	
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	padding:1.0% 2.5% 0.0% 2.5%;
+}
+.g_hstack_center_center_wrap-reverse {
 	
 	display: flex;
 	justify-content: center;
-	align-items: stretch;
+	align-items: center;
 	flex-direction: row;
-	flex-wrap: wrap;
-	margin: 0.0% 7.5% 0.0% 15.0%;
+	flex-wrap: wrap-reverse;
 }
-.g_project_cards {
+.g_markdown {
 	
-	display: grid;
-	grid-gap: 2.0rem;
+	padding:0.0% 10.0% 0.0% 10.0%;
+	text-align: center;
+	font-weight:regular; font-size:13.0px; font-family:SF Mono;
+	color:#6C6C6C;
+	margin: 0.0% 10.0% 0.0% 10.0%;
 }
-.g_text_card {
+.g_about_card {
 	
 	background-color: #FFFFFF;
-	margin: 3.0%;
-	display: inline-block;
-	padding:1.0% 2.0% 1.0% 2.0%;
+	text-align: center;
+	margin: 5.0%;
+	width:70.0%;
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
 	border: 1px solid #000000;
+}
+.g_sidebar_links {
+	
+	display: flex;
+	justify-content: space-around;
+	align-items: stretch;
+	flex-direction: column;
+	flex-wrap: nowrap;
 	text-align: left;
-	max-width:100.0%;
+	height:10.0%;
+	min-height:150.0px;
+	width:80.0%;
+	padding:15.0%;
 }
 .g_hstack_center_stretch_nowrap {
 	
@@ -126,22 +137,6 @@
 	flex-wrap: nowrap;
 	text-align: center;
 }
-.g_sidebar-a {
-	
-	font-weight:bold; font-size:16.0px; font-family:SF Mono;
-	text-decoration: none;
-	color:#000000;
-	word-wrap: break-word;
-	overflow: hidden;
-}
-.g_hstack_space-evenly_center_nowrap {
-	
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: row;
-	flex-wrap: nowrap;
-}
 .g_blog_card {
 	
 	word-wrap: break-word;
@@ -151,14 +146,22 @@
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
 	border: 1px solid #000000;
 }
-.g_about_card {
+.g_content {
 	
-	background-color: #FFFFFF;
-	text-align: center;
-	margin: 5.0%;
-	width:70.0%;
-	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
-	border: 1px solid #000000;
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+	flex-direction: row;
+	flex-wrap: wrap;
+	margin: 0.0% 7.5% 0.0% 15.0%;
+}
+.g_sidebar-a {
+	
+	font-weight:bold; font-size:16.0px; font-family:SF Mono;
+	text-decoration: none;
+	color:#000000;
+	word-wrap: break-word;
+	overflow: hidden;
 }
 .g_project_card {
 	
@@ -170,12 +173,10 @@
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
 	border: 1px solid #000000;
 }
-.g_markdown {
+.g_project_cards {
 	
-	text-align: center;
-	font-weight:regular; font-size:13.0px; font-family:SF Mono;
-	color:#6C6C6C;
-	margin: 0.0% 10.0% 0.0% 10.0%;
+	display: grid;
+	grid-gap: 2.0rem;
 }
 @font-face {
     font-family: "SF Mono";
