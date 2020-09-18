@@ -1,29 +1,14 @@
-.g_project_cards {
+.g_sidebar {
 	
-	display: grid;
-	grid-gap: 2.0rem;
-	padding:20.0px;
-	margin: 0.0px 0.0px 20.0px 0.0px;
-	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));;
-}
-.g_sidebar-a {
-	
-	font-weight:bold; font-size:16.0px; font-family:SF Mono;
-	text-decoration: none;
-	color:#000000;
-	word-wrap: break-word;
-	overflow: hidden;
-}
-.g_blog_detail_text_card {
-	
+	display: flex;
+	justify-content: flex-start;
+	align-items: stretch;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	height:100.0%;
 	background-color: #FFFFFF;
-	font-weight:normal; font-size:16.0px; font-family:CrimsonText;
-	display: inline-block;
-	padding:1.0% 2.0% 1.0% 2.0%;
-	border: 1px solid #000000;
-	text-align: left;
-	margin: 40.0px 0.0px 0.0px 0.0px;
-	padding:20.0px;
+	z-index: 1;
+	border-bottom: 1.0px solid #000000;
 }
 .g_post_top {
 	
@@ -34,14 +19,44 @@
 	flex-wrap: nowrap;
 	padding:1.0% 2.5% 0.0% 2.5%;
 }
-.g_project_card_summary {
+.about_text {
 	
-	text-align: center;
-	font-weight:regular; font-size:13.0px; font-family:SF Mono;
-	color:#6C6C6C;
-	margin: 0.0% 10.0% 0.0% 10.0%;
+	font-weight:normal; font-size:16.0px; font-family:SF Mono;
+	padding:10.0px;
 }
-.g_505 {
+.g_about_card {
+	
+	background-color: #FFFFFF;
+	text-align: center;
+	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
+	min-width:50.0%;
+	max-width:75.0%;
+	border: 1.0px solid #000000;
+	place-self: center;
+	align-self: baseline;
+	padding:10.0px;
+	margin: 30.0px 0.0px 50.0px 0.0px;
+}
+.g_body {
+	
+	display: grid;
+	grid-template-rows: 40px 1fr;
+	width: 100vw;
+	height: 100vh;
+}
+.g_post_card_detailPage {
+	
+	word-wrap: break-word;
+	min-height:200.0px;
+	background-color: #FFFFFF;
+	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
+	border: 1.0px solid #000000;
+	place-self: center;
+	width:80.0%;
+	max-width:800.0px;
+	margin: 30.0px 0.0px 50.0px 0.0px;
+}
+.g_fourOfour {
 	
 	display: flex;
 	justify-content: center;
@@ -51,9 +66,11 @@
 	background-color: #FFC0C0;
 	text-align: center;
 	margin: 5.0%;
+	height:500.0px;
+	width:500.0px;
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
 	padding:1.0% 1.0% 1.0% 1.0%;
-	border: 1px solid #000000;
+	border: 1.0px solid #000000;
 }
 .g_sidebar_links {
 	
@@ -66,44 +83,52 @@
 	width:100.0%;
 	height:100.0%;
 }
-.g_about_card {
+.g_blog_detail_text {
 	
 	background-color: #FFFFFF;
-	text-align: center;
-	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
-	min-width:80.0%;
-	border: 1px solid #000000;
-	margin: 3.0%;
+	border: 1.0px solid #000000;
 }
-.g_project_detail_text_card {
+.g_project_cards {
 	
-	background-color: #FFFFFF;
-	font-weight:normal; font-size:16.0px; font-family:CrimsonText;
-	display: inline-block;
-	padding:1.0% 2.0% 1.0% 2.0%;
-	border: 1px solid #000000;
-	text-align: left;
-	max-width:700.0px;
-	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
-	margin: 3.0%;
+	display: grid;
+	grid-gap: 2.0rem;
+	padding:20.0px;
+	margin: 0.0px 0.0px 20.0px 0.0px;
+	grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));;
+	align-content: baseline;
 }
-.g_sidebar {
+.g_project_detail {
 	
 	display: flex;
-	justify-content: flex-start;
-	align-items: stretch;
-	flex-direction: column;
-	flex-wrap: nowrap;
-	height:100.0%;
-	background-color: #FFFFFF;
-	z-index: 1;
-	border-right: 1px solid #000000;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	flex-wrap: wrap-reverse;
+	min-height:100.0%;
 }
 .g_post_abstract {
 	
 	text-align: left;
-	font-weight:regular; font-size:13.0px; font-family:SF Mono;
+	font-weight:normal; font-size:13.0px; font-family:SF Mono;
 	color:#6C6C6C;
+}
+.g_project_detail_writeup {
+	
+	background-color: #FFFFFF;
+	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
+	border: 1.0px solid #000000;
+	display: inline-block;
+	margin: 3.0%;
+	padding:1.0% 2.0% 1.0% 2.0%;
+	max-width:700.0px;
+}
+.g_sidebar-a {
+	
+	font-weight:bold; font-size:16.0px; font-family:SF Mono;
+	text-decoration: none;
+	color:#000000;
+	word-wrap: break-word;
+	overflow: hidden;
 }
 .g_post_bottom {
 	
@@ -122,25 +147,18 @@
 	background-color: #FFFFFF;
 	margin: 10.0px 10.0px 10.0px 10.0px;
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
-	border: 1px solid #000000;
+	border: 1.0px solid #000000;
 }
-.g_project_detail {
-	
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: row;
-	flex-wrap: wrap-reverse;
-	min-height:100.0%;
-}
-.g_body {
+.g_contet {
 	
 	display: grid;
-	height:100.0%;
-	width:100.0%;
-	grid-template-rows: 40px 1fr;
 }
-.g_fourOfour {
+.g_markdown_content {
+	
+	font-weight:normal; font-size:16.0px; font-family:CrimsonText;
+	text-align: left;
+}
+.g_505 {
 	
 	display: flex;
 	justify-content: center;
@@ -150,24 +168,16 @@
 	background-color: #FFC0C0;
 	text-align: center;
 	margin: 5.0%;
-	height:500.0px;
-	width:500.0px;
 	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
 	padding:1.0% 1.0% 1.0% 1.0%;
-	border: 1px solid #000000;
+	border: 1.0px solid #000000;
 }
-.about_text {
+.g_project_card_summary {
 	
-	font-weight:normal; font-size:16.0px; font-family:SF Mono;
-	padding:10.0px;
-}
-.g_blog_card {
-	
-	word-wrap: break-word;
-	min-height:200.0px;
-	background-color: #FFFFFF;
-	box-shadow:20px 30px 0px 0px rgba(0, 0, 0, 0.5);
-	border: 1px solid #000000;
+	text-align: center;
+	font-weight:normal; font-size:13.0px; font-family:SF Mono;
+	color:#6C6C6C;
+	margin: 0.0% 10.0% 0.0% 10.0%;
 }
 @font-face {
     font-family: "SF Mono";
