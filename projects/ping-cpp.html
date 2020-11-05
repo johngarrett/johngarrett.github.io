@@ -15,23 +15,41 @@
 
       gtag('config', 'G-YZD103LZ87');
     </script>
-    <meta property="og:locale" content="en_US" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="garreπ" />
-    <meta property="og:description" content="My blogs, projects, and fight for semantic html" />
-    <meta property="og:url" content="https://www.garrepi.dev/" />
-    <meta property="og:site_name" content="garrepi dev" />
-    <meta property="og:image" content="https://www.garrepi.dev/images/avatar.png" />
-    <meta property="og:image:secure_url" content="https://www.garrepi.dev/images/avatar.png" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="300" />
-    <link rel="icon" type="image/jpeg" href="/images/avatar.jpg" />
+
+    <meta name="description" content="My blogs, projects, and fight for semantic html">
+
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://garrepi.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="garreπ">
+    <meta property="og:description" content="My blogs, projects, and fight for semantic html">
+    <meta property="og:image" content="https://www.garrepi.dev/images/avatar.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="garrepi.dev">
+    <meta property="twitter:url" content="https://garrepi.dev">
+    <meta name="twitter:title" content="garreπ">
+    <meta name="twitter:description" content="My blogs, projects, and fight for semantic html">
+    <meta name="twitter:image" content="https://www.garrepi.dev/images/avatar.jpg">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="garreπ">
+    <meta property="og:description" content="My blogs, projects, and fight for semantic html">
+    <meta property="og:url" content="https://www.garrepi.dev/">
+    <meta property="og:site_name" content="garrepi dev">
+    <meta property="og:image" content="https://www.garrepi.dev/images/avatar.jpg">
+    <meta property="og:image:secure_url" content="https://www.garrepi.dev/images/avatar.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="500">
+    <meta property="og:image:height" content="500">
+    <link rel="icon" type="image/jpeg" href="/images/avatar.jpg">
 </head>
     <body style="margin: 0; background-color: #b5b5b5;">
-        <div class="g_body"><div class="g_sidebar"><div class="g_sidebar_links"><a href="/projects" class="g_sidebar-a">⑊ PROJECTS</a><a class="g_sidebar-a" href="/blog">✑ BLOG</a><a class="g_sidebar-a" href="/about">π ABOUT</a></div></div><div class="g_contet"><div class="g_project_detail"><div class="g_project_detail_writeup"><div class="g_markdown_content markdown-body"><style>
+        <div class="g_body"><div class="g_sidebar"><div class="g_sidebar_links"><a href="/projects" class="g_sidebar-a">⑊ PROJECTS</a><a class="g_sidebar-a" href="/blog">✑ BLOG</a><a href="/about" class="g_sidebar-a">π ABOUT</a></div></div><div class="g_contet"><div class="g_project_detail"><div class="g_project_detail_writeup"><div class="g_markdown_content markdown-body"><style>
     img {max-width: 90%;}
 </style>
-<h2>about</h2><ul><li>written in C++, compiled and run on Arch Linux 5.6.3. See <code>writeup.md</code> for documentation and overview.<ul><li>specifically, <code>g++ *.cpp *.h -Wall -std=c++14 -O3</code> ## requirements</li><li>[X] accept a hostname or IP address as terminal arguments</li><li>[X] send ICMP echo requests in an infinite loop</li><li>report loss and rtt times ## extra credit</li><li>support for ipv4 &amp; 6</li><li>nmap makes you throw a -6 flag</li><li>allow to set TTL as an argument</li><li>any additional features --- ## scratch pad</li><li>commands from ping</li><li><s><code>-a</code> audible ping</s></li><li><code>-c</code> count, the amount of ping packets to send</li><li><code>-D</code> print timestamps</li><li><code>-h</code> help</li><li><s><code>-m</code> mark</s></li><li><code>-q</code> queit, only show output at the end</li><li><code>-p</code> packet size</li><li><code>-V</code> version --- ## status</li><li>[X] ping ipv4 hosts</li><li>[X] listen for and filter responses</li><li>[X] support ipv6</li><li>[X] command line</li><li>[X] sanitization</li><li>[X] show help logs = [X] -q quiet</li><li><s>[ ] #ifdef if <code>&lt;linux/icmp.h&gt;</code> and <code>&lt;linux/in.h&gt;</code> are avaliable, <code>&lt;netinet/ip_icmp.h&gt;</code> if not</s></li><li><s>[ ] ncurses support ??</s></li><li>[X] fix pid issue</li><li>[X] fix sendto and recvfrom</li><li>[X] reduce use of cstrings</li><li>[X] conform to c++ conventions (camel case)</li><li>[X] add data to packets</li><li>[ ] impliment ttl for ipv6 packets</li><li>[X] allow ping for hostname</li><li>[X] track time for each packet</li><li>[ ] support macOS compilation</li><li>[ ] create man page</li><li>[X] exceptions (include errno and handle)</li><li>[X] print entire exception error</li><li><s>[ ] switch from icmp header to icmp packet</s></li><li>[ ] fix iterator issue</li><li>[ ] infinite loop for unspecified iterations</li><li><s>[ ] checksum for ipv6</s></li><li>[X] entire packet should be -s size not only the data</li><li>[X] correctly parse out from recv</li></ul></li></ul></div></div><div class="g_project_card" onclick="location.href='';"><h1 style="font-weight:bold; font-size:26.0px; font-family:SF Mono;text-align: center;">Ping in C++</h1><div style="display: flex;justify-content: center;align-items: stretch;flex-direction: row;flex-wrap: nowrap;text-align: center;"><div style="background-color: #FFD6AF;white-space: nowrap;box-shadow:1px 2px 0px 0px rgba(0, 0, 0, 0.14);display: inline-block;margin: 0.0px 5.0px 0.0px 5.0px;"><p style="margin: 2.0px 10.0px 2.0px 10.0px;text-align: center;color:#FFFFFF;font-weight:bold; font-size:13.0px; font-family:SF Mono;">c++</p></div><div style="background-color: #FFD6AF;white-space: nowrap;box-shadow:1px 2px 0px 0px rgba(0, 0, 0, 0.14);display: inline-block;margin: 0.0px 5.0px 0.0px 5.0px;"><p style="margin: 2.0px 10.0px 2.0px 10.0px;text-align: center;color:#FFFFFF;font-weight:bold; font-size:13.0px; font-family:SF Mono;"> networking</p></div></div><div class="g_project_card_summary"><p>ping rewritten in c++. Orignally done for a cloudflare internship.</p></div><img style="margin: 0.0% 5.0% 0.0% 5.0%;width:90.0%;max-height:250.0px;object-fit:cover;" src="https://openmaniak.com/image/ping-stop.jpg"><a href="https://github.com/johngarrett/pingpp" style="width:100.0%;text-align: center;text-decoration: none;"><p>External Link</p></a></div></div></div></div>
+<h2>about</h2><ul><li>written in C++, compiled and run on Arch Linux 5.6.3. See <code>writeup.md</code> for documentation and overview.<ul><li>specifically, <code>g++ *.cpp *.h -Wall -std=c++14 -O3</code> ## requirements</li><li>[X] accept a hostname or IP address as terminal arguments</li><li>[X] send ICMP echo requests in an infinite loop</li><li>report loss and rtt times ## extra credit</li><li>support for ipv4 &amp; 6</li><li>nmap makes you throw a -6 flag</li><li>allow to set TTL as an argument</li><li>any additional features --- ## scratch pad</li><li>commands from ping</li><li><s><code>-a</code> audible ping</s></li><li><code>-c</code> count, the amount of ping packets to send</li><li><code>-D</code> print timestamps</li><li><code>-h</code> help</li><li><s><code>-m</code> mark</s></li><li><code>-q</code> queit, only show output at the end</li><li><code>-p</code> packet size</li><li><code>-V</code> version --- ## status</li><li>[X] ping ipv4 hosts</li><li>[X] listen for and filter responses</li><li>[X] support ipv6</li><li>[X] command line</li><li>[X] sanitization</li><li>[X] show help logs = [X] -q quiet</li><li><s>[ ] #ifdef if <code>&lt;linux/icmp.h&gt;</code> and <code>&lt;linux/in.h&gt;</code> are avaliable, <code>&lt;netinet/ip_icmp.h&gt;</code> if not</s></li><li><s>[ ] ncurses support ??</s></li><li>[X] fix pid issue</li><li>[X] fix sendto and recvfrom</li><li>[X] reduce use of cstrings</li><li>[X] conform to c++ conventions (camel case)</li><li>[X] add data to packets</li><li>[ ] impliment ttl for ipv6 packets</li><li>[X] allow ping for hostname</li><li>[X] track time for each packet</li><li>[ ] support macOS compilation</li><li>[ ] create man page</li><li>[X] exceptions (include errno and handle)</li><li>[X] print entire exception error</li><li><s>[ ] switch from icmp header to icmp packet</s></li><li>[ ] fix iterator issue</li><li>[ ] infinite loop for unspecified iterations</li><li><s>[ ] checksum for ipv6</s></li><li>[X] entire packet should be -s size not only the data</li><li>[X] correctly parse out from recv</li></ul></li></ul></div></div><div class="g_project_card" onclick="location.href='';"><h1 style="font-weight:bold; font-size:26.0px; font-family:SF Mono;text-align: center;">Ping in C++</h1><div style="display: flex;justify-content: center;align-items: stretch;flex-direction: row;flex-wrap: nowrap;text-align: center;"><div style="background-color: #FFD6AF;white-space: nowrap;box-shadow:1px 2px 0px 0px rgba(0, 0, 0, 0.14);display: inline-block;margin: 0.0px 5.0px 0.0px 5.0px;"><p style="margin: 2.0px 10.0px 2.0px 10.0px;text-align: center;color:#FFFFFF;font-weight:bold; font-size:13.0px; font-family:SF Mono;">c++</p></div><div style="background-color: #FFD6AF;white-space: nowrap;box-shadow:1px 2px 0px 0px rgba(0, 0, 0, 0.14);display: inline-block;margin: 0.0px 5.0px 0.0px 5.0px;"><p style="margin: 2.0px 10.0px 2.0px 10.0px;text-align: center;color:#FFFFFF;font-weight:bold; font-size:13.0px; font-family:SF Mono;"> networking</p></div></div><div class="g_project_card_summary"><p>ping rewritten in c++. Orignally done for a cloudflare internship.</p></div><img src="https://openmaniak.com/image/ping-stop.jpg" style="margin: 0.0% 5.0% 0.0% 5.0%;width:90.0%;max-height:250.0px;object-fit:cover;"><a href="https://github.com/johngarrett/pingpp" style="width:100.0%;text-align: center;text-decoration: none;"><p>External Link</p></a></div></div></div></div>
     </body>
 </html>
