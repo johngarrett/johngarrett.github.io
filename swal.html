@@ -1,19 +1,14 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=3.0, minimum-scale=0.86">
-        <!-- Analytical info, you can disable this if you'd like -->
-        <script type="text/javascript">
-          var _paq = window._paq = window._paq || [];
-          /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u="https://garrepidev.matomo.cloud/";
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', '1']);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.src='//cdn.matomo.cloud/garrepidev.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
-          })();
+        <!-- I know, I hate google anayltics. i'm looking for free alternatives - you can disable this if you'd like -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZD103LZ87"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-YZD103LZ87');
         </script>
         <link href="https://fonts.googleapis.com/css2?family=Trispace:wght@400;500;700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
