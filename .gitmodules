@@ -4,6 +4,6 @@
 [submodule "projects"]
 	path = project-posts
 	url = https://www.github.com/johngarrett/garrepi-projects
-[submodule "projects/how-to-structure-a-blog"]
-	path = projects/how-to-structure-a-blog
-	url = https://www.github.com/johngarrett/how-to-structure-a-blog
+[submodule "how-to-structure-a-blog"]
+	path = how-to-structure-a-blog
+	url = https://github.com/johngarrett/how-to-structure-a-blog.git
