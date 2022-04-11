@@ -6,4 +6,4 @@
 	url = https://www.github.com/johngarrett/garrepi-projects
 [submodule "projects/how-to-structure-a-blog"]
 	path = projects/how-to-structure-a-blog
-	url = git@github.com:johngarrett/how-to-structure-a-blog.git
+	url = https://www.github.com/johngarrett/how-to-structure-a-blog
