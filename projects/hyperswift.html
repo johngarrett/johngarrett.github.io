@@ -4,11 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
     <link rel="stylesheet" href="/css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/4.0.0/github-markdown.css">
-    <!-- syntax highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/gruvbox-light.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="https://github.com/johngarrett/darkdown/raw/master/markdown.css" type="text/css">
+  <title>HyperSwift</title>
     <!-- I know, I hate google anayltics. i'm looking for free alternatives - you can disable this if you'd like -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YZD103LZ87"></script>
     <script>
@@ -18,30 +15,28 @@
 
       gtag('config', 'G-YZD103LZ87');
     </script>
-    <title>HyperSwift</title>
 
-<link rel="icon" type="image/jpeg" href="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png">
+    <meta name="description" content="My blogs, projects, and fight for semantic html">
 
-<meta name="description" content="A DSL written purely in Swift aimed to generate HTML styled with CSS.">
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="garrepidev">
+    <meta property="og:url" content="https://garrepi.dev">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="garreπ">
+    <meta property="og:description" content="My blogs, projects, and fight for semantic html">
+    <meta property="og:image" content="https://www.garrepi.dev/images/avatar.jpg">
+    <meta property="og:image:secure_url" content="https://www.garrepi.dev/images/avatar.jpg">
 
-<!-- Facebook Meta Tags -->
-<meta property="og:url" content="https://garrepi.devprojects/hyperswift">
-<meta property="og:type" content="website">
-<meta property="og:title" content="HyperSwift">
-<meta property="og:description" content="A DSL written purely in Swift aimed to generate HTML styled with CSS.">
-<meta property="og:image" content="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png">
-<meta property="og:image:secure_url" content="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png">
-    
-<!-- Twitter Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta property="twitter:domain" content="garrepi.dev">
-<meta property="twitter:url" content="https://garrepi.devprojects/hyperswift">
-<meta name="twitter:title" content="HyperSwift">
-<meta name="twitter:description" content="A DSL written purely in Swift aimed to generate HTML styled with CSS.">
-<meta name="twitter:image" content="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png">
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="garrepi.dev">
+    <meta property="twitter:url" content="https://garrepi.dev">
+    <meta name="twitter:title" content="garreπ">
+    <meta name="twitter:description" content="My blogs, projects, and fight for semantic html">
+    <meta name="twitter:image" content="https://www.garrepi.dev/images/avatar.jpg">
+
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="garrepidev">
+    <link rel="icon" type="image/jpeg" href="/images/avatar.jpg">
     <style>
     :root {
         --primary-text: black;
@@ -88,6 +83,6 @@ VStack(justify: .center, align: .center) {
 .display(.flex)
 .shadow(x: 20, y: 30, color: GColors.cardShadow)
 .border(width: 1, color: .black)
-</code></pre><img src="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png" alt="output"/><h4>CSS</h4><p>To add CSS to the stylesheet, you have to call one of the functions defined in <a href="/Sources/HyperSwift/API/CSS/CSSExtensions.swift">CSSExtensions.swift</a>.</p><p>If an element has a class name, the styles will automatically be added to <a href="/Sources/HyperSwift/API/CSS/CSSStyleSheet.swift">CSSStyleSheet.swift</a>'s stylesheet.</p><p>Calling <code>.generateStyleSheet()</code> on <a href="/Sources/HyperSwift/API/CSS/CSSStyleSheet.swift">CSSStyleSheet.swift</a> will return a string containing the stylesheet.</p><h4>Examples</h4><p>HyperSwift is being used on <a href="https://www.garrepi.dev">garrepi.dev</a> as we speak!</p><p>Checkout the source code <a href="https://github.com/johngarrett/garrepi.dev/">here</a>.</p></div></div><div class="g_project_card" onclick="location.href='';"><h1 style="font-weight:bold;font-size:26.0px;font-family:SF Mono;text-align:center;color:var(--primary-text);">HyperSwift</h1><div style="display:flex;justify-content:center;align-items:stretch;flex-direction:row;flex-wrap:nowrap;text-align:center;"><div style="background-color:#FFD6AF;white-space:nowrap;box-shadow:1px 2px 0px 0px var(--tag-shadow);display:inline-block;margin:0 5.0px;"><p style="margin:2.0px 10.0px 2.0px 10.0px;text-align:center;color:var(--element-background);font-weight:bold;font-size:13.0px;font-family:SF Mono;">swift</p></div><div style="background-color:#FFD6AF;white-space:nowrap;box-shadow:1px 2px 0px 0px var(--tag-shadow);display:inline-block;margin:0 5.0px;"><p style="margin:2.0px 10.0px 2.0px 10.0px;text-align:center;color:var(--element-background);font-weight:bold;font-size:13.0px;font-family:SF Mono;"> web</p></div></div><div class="g_project_card_summary"><p>A DSL written purely in Swift aimed to generate HTML styled with CSS.</p></div><img src="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png" style="margin:0 5.0%;width:90.0%;max-height:250.0px;object-fit:cover;"><a href="https://github.com/johngarrett/HyperSwift" style="width:100.0%;text-align:center;text-decoration:none;"><p>External Link</p></a></div></div></div></div>
+</code></pre><img src="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png" alt="output"/><h4>CSS</h4><p>To add CSS to the stylesheet, you have to call one of the functions defined in <a href="/Sources/HyperSwift/API/CSS/CSSExtensions.swift">CSSExtensions.swift</a>.</p><p>If an element has a class name, the styles will automatically be added to <a href="/Sources/HyperSwift/API/CSS/CSSStyleSheet.swift">CSSStyleSheet.swift</a>'s stylesheet.</p><p>Calling <code>.generateStyleSheet()</code> on <a href="/Sources/HyperSwift/API/CSS/CSSStyleSheet.swift">CSSStyleSheet.swift</a> will return a string containing the stylesheet.</p><h4>Examples</h4><p>HyperSwift is being used on <a href="https://www.garrepi.dev">garrepi.dev</a> as we speak!</p><p>Checkout the source code <a href="https://github.com/johngarrett/garrepi.dev/">here</a>.</p></div></div><div class="g_project_card" onclick="location.href='';"><h1 style="font-weight:bold;font-size:26.0px;font-family:IBM Plex Mono;text-align:center;color:var(--primary-text);">HyperSwift</h1><div style="display:flex;justify-content:center;align-items:stretch;flex-direction:row;flex-wrap:nowrap;text-align:center;"><div style="background-color:#FFD6AF;white-space:nowrap;box-shadow:1.0px 2.0px 0.0px 0.0px var(--tag-shadow);display:inline-block;margin:0 5.0px;"><p style="margin:2.0px 10.0px 2.0px 10.0px;text-align:center;color:var(--element-background);font-weight:bold;font-size:13.0px;font-family:SiteFont.family;">swift</p></div><div style="background-color:#FFD6AF;white-space:nowrap;box-shadow:1.0px 2.0px 0.0px 0.0px var(--tag-shadow);display:inline-block;margin:0 5.0px;"><p style="margin:2.0px 10.0px 2.0px 10.0px;text-align:center;color:var(--element-background);font-weight:bold;font-size:13.0px;font-family:SiteFont.family;"> web</p></div></div><div class="g_project_card_summary"><p>A DSL written purely in Swift aimed to generate HTML styled with CSS.</p></div><img src="https://media.discordapp.net/attachments/732426870100066455/733822598504513566/unknown.png" style="margin:0 5.0%;width:90.0%;max-height:250.0px;object-fit:cover;"><a href="https://github.com/johngarrett/HyperSwift" style="width:100.0%;text-align:center;text-decoration:none;"><p>External Link</p></a></div></div></div></div>
     </body>
 </html>
