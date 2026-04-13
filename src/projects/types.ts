@@ -1,7 +1,7 @@
-import type { HTMLString } from "../utils";
+import type { MarkdownString } from "../utils";
 
 export type Project = {
   path: string;
   name: string;
-  readmeContent: HTMLString;
+  readmeContent: MarkdownString;
 };

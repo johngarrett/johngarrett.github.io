@@ -4,3 +4,4 @@ export type Renderable = {
 };
 
 export type HTMLString = string;
+export type MarkdownString = string;

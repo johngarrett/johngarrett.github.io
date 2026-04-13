@@ -7,9 +7,10 @@ import { build } from "./utils";
 const projects = await readProjects("content/projects");
 
 const renderables = [
+  RootPage,
+  // projects
   ProjectsOverview(projects),
   ...ProjectPages(projects),
-  RootPage,
 ];
 
 try {

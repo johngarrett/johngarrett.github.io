@@ -1,6 +1,5 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
-import { marked } from "marked";
 import type { Project } from "./types";
 
 export async function readProjects(
@@ -20,7 +19,7 @@ export async function readProjects(
       console.log(`reading ${projectsDir}`);
 
       try {
-        const readmeContent = marked(await readFile(readmePath, "utf-8"));
+        const readmeContent = await readFile(readmePath, "utf-8");
 
         return {
           name: entry.name,
