@@ -1,8 +1,11 @@
 {
   "name": "garrepi-personal-website",
-  "module": "index.ts",
+  "module": "main.ts",
   "type": "module",
   "private": true,
+  "scripts": {
+        "build": "bun run src/main.ts"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
