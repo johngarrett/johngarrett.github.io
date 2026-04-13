@@ -4,7 +4,7 @@ import { html, type Renderable } from "../utils";
 export const RootPage: Renderable = {
   path: "/index.html",
   render: () => html`
-    ${head}
+    ${head({ title: "root page" })}
     <body>
       <div>Root Page</div>
       <ul>
