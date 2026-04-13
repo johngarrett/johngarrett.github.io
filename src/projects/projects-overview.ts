@@ -7,7 +7,7 @@ export const ProjectsOverview: (projects: Project[]) => Renderable = (
   return {
     path: "/projects.html",
     render: () => html`
-      <div>Hello World</div>
+      <div>Projects</div>
       <ul>
         ${projects.map(
           (project) =>
