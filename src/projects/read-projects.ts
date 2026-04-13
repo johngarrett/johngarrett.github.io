@@ -9,14 +9,12 @@ export async function readProjects(
 
   const projects = await Promise.all(
     entries.map(async (entry) => {
-      console.log(entry);
-      console.log(entry.isDirectory());
       if (!entry.isDirectory()) return undefined;
 
       const projectDir = path.join(projectsDir, entry.name);
       const readmePath = path.join(projectDir, "readme.md");
 
-      console.log(`reading ${projectsDir}`);
+      console.log(`[readProjects]: reading ${projectsDir}`);
 
       try {
         const readmeContent = await readFile(readmePath, "utf-8");

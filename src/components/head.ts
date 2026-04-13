@@ -1,6 +1,6 @@
 import { html, type HTMLString } from "../utils";
 
-type HeadParams = {
+export type HeadParams = {
   title: string;
   openGraph?: { title: string; description: string; image: string };
 };

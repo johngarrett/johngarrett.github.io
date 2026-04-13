@@ -1,15 +1,16 @@
-import { head } from "../components";
+import { htmlPage } from "../components";
 import { html, type Renderable } from "../utils";
 
 export const RootPage: Renderable = {
   path: "/index.html",
-  render: () => html`
-    ${head({ title: "root page" })}
-    <body>
-      <div>Root Page</div>
-      <ul>
-        <a href="/projects">projects</a>
-      </ul>
-    </body>
-  `,
+  render: () =>
+    htmlPage({
+      headParams: { title: "root page" },
+      body: html`
+        <div>Root Page</div>
+        <ul>
+          <a href="/projects">projects</a>
+        </ul>
+      `,
+    }),
 };

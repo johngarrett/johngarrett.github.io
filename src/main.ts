@@ -1,6 +1,6 @@
 import { readProjects } from "./projects";
 import { ProjectPages } from "./projects/project-pages";
-import { ProjectsOverview } from "./projects/projects-overview";
+import { ProjectsPage } from "./projects/projects-page";
 import { RootPage } from "./root/root-page";
 import { build } from "./utils";
 
@@ -9,7 +9,7 @@ const projects = await readProjects("content/projects");
 const renderables = [
   RootPage,
   // projects
-  ProjectsOverview(projects),
+  ProjectsPage(projects),
   ...ProjectPages(projects),
 ];
 
