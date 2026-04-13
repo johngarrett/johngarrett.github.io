@@ -1,4 +1,6 @@
 export type Renderable = {
-  render: () => string; // html string
+  render: () => HTMLString;
   path: string; // path to save and access
 };
+
+export type HTMLString = string;
