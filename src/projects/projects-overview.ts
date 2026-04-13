@@ -1,6 +1,6 @@
 import { html, type Renderable } from "../utils";
 
 export const ProjectsOverview: Renderable = {
-  path: "/projects",
-  content: html`<div></div>`,
+  path: "/projects.html",
+  render: () => html`<div>Hello World</div>`,
 };
