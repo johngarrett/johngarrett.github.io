@@ -1,6 +1,7 @@
 import { html, type Renderable } from "../utils";
+import type { Project } from "./types";
 
-export const ProjectsOverview: (projects: { path: string }[]) => Renderable = (
+export const ProjectsOverview: (projects: Project[]) => Renderable = (
   projects,
 ) => {
   return {
@@ -8,8 +9,9 @@ export const ProjectsOverview: (projects: { path: string }[]) => Renderable = (
     render: () => html`
       <div>Hello World</div>
       <ul>
-        ${projects.forEach(
-          (project) => html`<a href="${project.path}">${project.path}</a>`,
+        ${projects.map(
+          (project) =>
+            html`<a href="projects/${project.name}">${project.name}</a>`,
         )}
       </ul>
     `,

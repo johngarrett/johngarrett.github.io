@@ -1,0 +1,195 @@
+<h1>About</h1>
+<p>This project is a digital light meter used for metering photos. 
+There were two goals in mind when building this:</p>
+<ol>
+<li>Let the user track the camera settings for each shot they&#39;ve taken on a film camera</li>
+<li>Correctly meter for a scene based on a desired shutter speed or aperture</li>
+</ol>
+<h1>Parts</h1>
+<ul>
+<li><a href="https://www.adafruit.com/product/2772">Adafruit Feather m0</a><ul>
+<li>built in microSD reader</li>
+<li>built in battery support </li>
+<li>built in serial over microUSB</li>
+</ul>
+</li>
+<li><a href="https://learn.adafruit.com/adafruit-bh1750-ambient-light-sensor">BH1750 Light Sensor</a></li>
+<li><a href="https://www.amazon.com/Songhe-0-96-inch-I2C-Raspberry/dp/B085WCRS7C/ref=sr_1_3?keywords=SSD1306&qid=1670950235&sr=8-3">SSD1306 OLED Display</a></li>
+<li><a href="https://www.arducam.com/product/arducam-2mp-spi-camera-b0067-arduino/">ArduCAM OV2640 2MP Plus</a></li>
+</ul>
+<p><img src="/demo%20images/diagram.png" alt="diagram"></p>
+<blockquote>
+<p>Some connections aren&#39;t shown for simplicity</p>
+</blockquote>
+<h1>Libraries Used</h1>
+<p><a href="https://github.com/claws/BH1750">BH1750</a>
+<a href="https://github.com/adafruit/Adafruit_SSD1306">Adafruit_SSD1306</a>
+<a href="https://github.com/ArduCAM/Arduino">ArduCAM/Arduino</a></p>
+<h1>Results</h1>
+<p>The final product allows the user to set information about their camera&#39;s conditions (like ISO or lens focal length) which persists on the SD card across boots.</p>
+<p>When in use, the user can set a desired shutter speed or aperture and the corresponding value will be calculated and displayed. </p>
+<p>They then can hit record and the shot metadata along with a reference photo captured by the OV2640 will be saved to the SD card under the corresponding shot number.</p>
+<h2>Screens</h2>
+<h3>Startup</h3>
+<p><img src="/demo%20images/startup.gif" alt="boot screen"></p>
+<p>On startup, the following values are read from storage and displayed</p>
+<ul>
+<li>ISO value</li>
+<li>Lens focal length</li>
+<li>Shot number</li>
+<li>Battery percentage</li>
+<li>Battery charge bar</li>
+</ul>
+<h3>Main Screen</h3>
+<p><img src="/demo%20images/ss%20prio%20marked%20up.png" alt="main screen ss prio"></p>
+<blockquote>
+<p>shutter speed priority mode</p>
+</blockquote>
+<p><img src="/demo%20images/apt%20prio%20marked%20up.png" alt="main screen apt prio"></p>
+<blockquote>
+<p>aperture priority mode</p>
+</blockquote>
+<h3>Settings</h3>
+<p><img src="/demo%20images/settings/settings.png" alt="settings screen">
+The settings screen allows the user to set the ISO value, lens focal length, illuminance constant, shot number, and list files on SD card.
+<img src="/demo%20images/settings/set%20iso.gif" alt="settings screen ISO"></p>
+<blockquote>
+<p>Adjusting the ISO from settings</p>
+</blockquote>
+<p><img src="/demo%20images/settings/ls%20all.gif" alt="settings screen ls all"></p>
+<blockquote>
+<p>Listing the contents of the microSD card from settings</p>
+</blockquote>
+<h3>History</h3>
+<p>The history screen allows the user to view the shots they&#39;ve taken and see the contents of each shot
+<img src="/demo%20images/history/history.png" alt="history overview">
+<img src="/demo%20images/history/history%20detail.gif" alt="history detail"></p>
+<h2>Build</h2>
+<p>Here are images of the light meter device. </p>
+<p><img src="/demo%20images/glamour%20shots/DSC02798.JPG" alt="front">
+<img src="/demo%20images/glamour%20shots/DSC02759.JPG" alt="back">
+<img src="/demo%20images/glamour%20shots/DSC02769.JPG" alt="side"></p>
+<p>The front and back panels were 3d printed and the remaining sides were laser cut from the following design
+<img src="/demo%20images/case%20design.png" alt="case design"></p>
+<h2>Film</h2>
+<p>To test this device, I shot a roll of Porta 400 film, pushed 1 stop to ISO 800, and metered with this device. Below are two examples from that roll.</p>
+<h3>Example Shot 1</h3>
+<p><img src="/film%20example/sd%20backup/35.JPG" alt="photo under bridge reference"></p>
+<blockquote>
+<p>reference photo from light meter</p>
+</blockquote>
+<p><img src="/film%20example/film%20export/Scan0-2.png" alt="photo under bridge"></p>
+<blockquote>
+<p>resultant photo</p>
+</blockquote>
+<pre><code>ISO 800
+CVAL 250
+F_LEN 28
+PRIO SS
+APT 3.50
+SS 1/250.00
+LUX 1050
+EV_ACTUAL 11.71
+EV_CALC 11.58
+EV_DELTA 0.13
+</code></pre>
+<blockquote>
+<p>shot settings from light meter</p>
+</blockquote>
+<h3>Example Shot 2</h3>
+<p><img src="/film%20example/sd%20backup/34.JPG" alt="bridge photo reference"></p>
+<blockquote>
+<p>reference photo from light meter</p>
+</blockquote>
+<p><img src="/film%20example/film%20export/Scan0-3.png" alt="bridge photo"></p>
+<blockquote>
+<p>resultant photo</p>
+</blockquote>
+<pre><code>ISO 800
+CVAL 250
+F_LEN 28
+PRIO SS
+APT 8.00
+SS 1/250.00
+LUX 6585
+EV_ACTUAL 14.36
+EV_CALC 13.97
+EV_DELTA 0.40
+</code></pre>
+<blockquote>
+<p>shot settings from light meter</p>
+</blockquote>
+<h1>Demo Video</h1>
+<p><a href="https://youtu.be/QNY8x09aPGU">Youtube Link</a></p>
+<h1>Emulator Work</h1>
+<p>Preservation emulator planning and progress are documented in:</p>
+<ul>
+<li><code>docs/emulator-work-checklist.md</code></li>
+<li><code>docs/hardware-firmware-compatibility.md</code></li>
+<li><code>docs/emulator-runbook.md</code></li>
+</ul>
+<p>Current one-command dev entrypoint:</p>
+<pre><code class="language-bash">./scripts/start-emulator-dev.sh
+</code></pre>
+<p>Contract guard for emulator assumptions:</p>
+<pre><code class="language-bash">./scripts/check-firmware-emulator-contract.sh
+</code></pre>
+<p>Local Renode launch attempt (after firmware build):</p>
+<pre><code class="language-bash">./scripts/run-renode-local.sh
+</code></pre>
+<p>Docker Renode launch (build + run in container):</p>
+<pre><code class="language-bash">./scripts/run-renode-docker.sh
+</code></pre>
+<p>Force x86_64 container execution:</p>
+<pre><code class="language-bash">./scripts/run-renode-docker-amd64.sh
+</code></pre>
+<p>Host-local fallback:</p>
+<pre><code class="language-bash">./scripts/start-emulator-dev.sh
+./scripts/run-renode-local.sh
+</code></pre>
+<p>Framebuffer source:</p>
+<pre><code class="language-bash">./scripts/run-renode-framebuffer-source.sh
+</code></pre>
+<p>Real Renode-backed source implementation TODOs:</p>
+<ul>
+<li><code>docs/renode-framebuffer-source-todos.md</code></li>
+</ul>
+<h1>Retrospective</h1>
+<h2>Iterative process</h2>
+<h3>Phases</h3>
+<p>There were three major phases of this project.</p>
+<ol>
+<li><p>The breadboard phase
+<img src="/demo%20images/breadboard.jpeg" alt="breadboard image">
+In this phase, every electrical connection was extremely fragile. The device stayed like this for a long time as the software was built out.</p>
+</li>
+<li><p>The cardboard case
+<img src="/demo%20images/cardboard%20case.png" alt="cardboard case image">
+This was a good way to estimate the dimensions for the final case and assess the overall feel of the device. In this phase, I was also able to calibrate the calculations as I was able to test a wider variety of conditions</p>
+</li>
+<li><p>The final case</p>
+</li>
+</ol>
+<p>This is the current state of the project and the images can be seen under <a href="#Build">build</a>.</p>
+<h3>Things that didn&#39;t work</h3>
+<ol>
+<li>Using CircuitPython
+<a href="https://circuitpython.org/">CircuitPython</a> looked to be an easy to use alternative to developing with the Arduino tools but the display library for the SSD1306 immediatly used all the available memory on the feather m0.</li>
+<li>Displaying images on screen
+I really wanted to display the reference images on screen when capturing the image or viewing image history. However, that would require converting the stored JPG to a BMP image, converting each RGB pixel of the BMP image into a single grayscale value, and finally scaling the image down to fit on the 128x32 display. Due to time constraints and minimal ROI, this was scrapped.</li>
+<li>3D printing the correct dimensions
+The resultant case for this device is partially hand carved because, no matter how many times I measured, the parts didn&#39;t fit well into the case. This mixed with the 4 hour printing prevented me from iterating as much as I wished.</li>
+</ol>
+<h2>Skills learned</h2>
+<ul>
+<li>How to 3D print</li>
+<li>How to laser cut</li>
+<li>The math behind photography exposure</li>
+<li>Designing software on a constrained device</li>
+<li>Making necessary compromises to get to the final product</li>
+</ul>
+<h1>References</h1>
+<p>There were a couple of projects online that used the BH1750 light meter to assess lighting conditions but I only found one that calculated camera settings based on the input value, <a href="https://create.arduino.cc/projecthub/alankrantas/ardumeter-arduino-incident-light-meter-606f63">linked here</a>.</p>
+<p>The following wikipedia articles gave me the formulas used for camera setting calculations
+<a href="https://en.wikipedia.org/wiki/Light_meter">Light meter</a>
+<a href="https://en.wikipedia.org/wiki/Illuminance">Illuminance</a></p>

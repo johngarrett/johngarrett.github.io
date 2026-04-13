@@ -1,1 +1,1 @@
-export * from "./load-projects";
+export * from "./read-projects";

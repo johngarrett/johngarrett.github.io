@@ -1,30 +1,29 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { marked } from "marked";
-import type { HTMLString } from "../utils";
+import type { Project } from "./types";
 
-type Project = {
-  path: string;
-  readmeContent: HTMLString;
-};
-
-export async function loadProjects(
+export async function readProjects(
   projectsDir: string,
 ): Promise<Array<Project>> {
   const entries = await readdir(projectsDir, { withFileTypes: true });
 
   const projects = await Promise.all(
     entries.map(async (entry) => {
+      console.log(entry);
+      console.log(entry.isDirectory());
       if (!entry.isDirectory()) return undefined;
 
       const projectDir = path.join(projectsDir, entry.name);
       const readmePath = path.join(projectDir, "readme.md");
 
+      console.log(`reading ${projectsDir}`);
+
       try {
         const readmeContent = marked(await readFile(readmePath, "utf-8"));
 
         return {
-          path: entry.name,
+          name: entry.name,
           readmeContent,
         };
       } catch (err) {

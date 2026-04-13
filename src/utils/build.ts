@@ -18,6 +18,8 @@ export async function build({ renderables, outputDir }: BuildParams) {
       console.log(`generating ${renderable.path}`);
       const filePath = path.join(outputDir, renderable.path);
 
+      await mkdir(path.dirname(filePath), { recursive: true });
+
       await writeFile(filePath, content, "utf-8");
     }),
   );
