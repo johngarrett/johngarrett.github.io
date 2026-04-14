@@ -5,7 +5,7 @@ import { marked } from "marked";
 
 export const ProjectPages = (projects: Project[]): Renderable[] => {
   return projects.map((project) => {
-    const renderedContent = marked(project.readmeContent);
+    const renderedContent = marked(project.markdownContent);
     return {
       path: `projects/${project.name}.html`,
       render: () =>

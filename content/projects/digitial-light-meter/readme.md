@@ -1,3 +1,9 @@
+---
+title: Digitial Light Meter
+short: Hardware project that works as a light meter for film cameras.
+image: res/cover_image.jpg
+---
+
 # About
 
 This project is a digital light meter used for metering photos. 

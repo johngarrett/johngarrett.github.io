@@ -3,5 +3,8 @@ import type { MarkdownString } from "../utils";
 export type Project = {
   path: string;
   name: string;
-  readmeContent: MarkdownString;
+  title: string;
+  short: string;
+  image: string;
+  markdownContent: MarkdownString;
 };
