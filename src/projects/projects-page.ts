@@ -13,7 +13,6 @@ export const ProjectsPage: (projects: Project[]) => Renderable = (projects) => {
           navbar: { selected: "projects" },
         },
         content: html`
-          <div>Projects</div>
           <ul>
             ${projects.map(
               (project) =>

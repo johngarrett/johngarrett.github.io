@@ -15,8 +15,10 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
+  display: grid;
   /* navbar */
-  margin-top: 80px;
+  grid-template-rows: 56px 1fr;
+  min-height: 100vh;
 }
 
 h1 {
@@ -46,7 +48,8 @@ h1 {
 
 /***** START navbar *********/
 .navbar {
-  position: fixed;
+  position: sticky;
+  z-index: 100;
   top: 0;
   left: 0;
   right: 0;

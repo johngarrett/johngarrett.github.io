@@ -14,7 +14,9 @@ export const htmlPage = ({ params, content }: HTMLPageParams): HTMLString => {
     ${head(params.head)}
     <body>
       ${navbar(params.navbar)}
-      ${content}
+      <main>
+        ${content}
+      </main>
     </body>
   </html>
   `;

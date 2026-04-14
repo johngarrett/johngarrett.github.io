@@ -9,11 +9,6 @@ export const RootPage: Renderable = {
         head: { title: "root page" },
         navbar: { selected: "home" },
       },
-      content: html`
-        <div>Root Page</div>
-        <ul>
-          <a href="/projects">projects</a>
-        </ul>
-      `,
+      content: html` <div>garrepi.dev</div> `,
     }),
 };
