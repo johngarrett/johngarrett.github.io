@@ -17,7 +17,7 @@ const renderables = [
   StyleSheet(),
 ];
 
-// TODO: copy markdown images as a build script
+// TODO: copy all of content into html-output
 
 try {
   await build({

@@ -43,11 +43,13 @@ export async function readProjects(
         throw new Error("Invalid frontmatter");
       }
 
+      console.log(projectDir);
+
       return {
         name: entry.name,
         title: data.title,
         short: data.short,
-        image: data.image,
+        image: `${projectDir}/${data.image}`,
         markdownContent: content,
       } satisfies Project;
       //} catch (err) {

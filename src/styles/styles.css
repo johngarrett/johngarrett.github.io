@@ -30,12 +30,14 @@ h1 {
   color: var(--accent-color);
 }
 
-.flex {
+.flex-row {
   display: flex;
+  flex-direction: row;
 }
 
-.flex-row {
-  flex-direction: row;
+.flex-col {
+  display: flex;
+  flex-direction: column;
 }
 
 .jc-space-around {
@@ -104,6 +106,11 @@ h1 {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 clamp(0px, 5vw, 10%);
+}
+
+
+.project-card img {
+  max-width: 200px;
 }
 
 
