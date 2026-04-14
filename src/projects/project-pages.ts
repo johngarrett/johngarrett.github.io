@@ -5,12 +5,19 @@ import { marked } from "marked";
 
 export const ProjectPages = (projects: Project[]): Renderable[] => {
   return projects.map((project) => {
+    const renderedContent = marked(project.readmeContent);
     return {
       path: `projects/${project.name}.html`,
       render: () =>
         htmlPage({
-          headParams: { title: project.name },
-          body: marked(project.readmeContent) as string, // TODO: casting
+          params: {
+            head: { title: project.name },
+            navbar: { selected: "projects" },
+          },
+          content: `
+            <div class="project-page">
+              ${renderedContent}
+            </div>`,
         }),
     };
   });

@@ -8,8 +8,11 @@ export const ProjectsPage: (projects: Project[]) => Renderable = (projects) => {
 
     render: () =>
       htmlPage({
-        headParams: { title: "Projects" },
-        body: html`
+        params: {
+          head: { title: "Projects" },
+          navbar: { selected: "projects" },
+        },
+        content: html`
           <div>Projects</div>
           <ul>
             ${projects.map(

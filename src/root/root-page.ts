@@ -5,8 +5,11 @@ export const RootPage: Renderable = {
   path: "/index.html",
   render: () =>
     htmlPage({
-      headParams: { title: "root page" },
-      body: html`
+      params: {
+        head: { title: "root page" },
+        navbar: { selected: "home" },
+      },
+      content: html`
         <div>Root Page</div>
         <ul>
           <a href="/projects">projects</a>

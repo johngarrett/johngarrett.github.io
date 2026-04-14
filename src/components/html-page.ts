@@ -1,15 +1,21 @@
 import type { HTMLString } from "../utils";
 import { head, type HeadParams } from "./head";
+import { navbar, type NavBarParams } from "./navbar";
 
-//type HTMLPageParams = (/*{ head: HTMLString } | */ { headParams: HeadParams}) & {
-type HTMLPageParams = { headParams: HeadParams; body: HTMLString };
+type HTMLPageParams = {
+  params: { head: HeadParams; navbar: NavBarParams };
+  content: HTMLString;
+};
 
-export const htmlPage = ({ headParams, body }: HTMLPageParams): HTMLString => {
+export const htmlPage = ({ params, content }: HTMLPageParams): HTMLString => {
   return `
   <!DOCTYPE html>
   <html lang="en">
-    ${head(headParams)}
-    ${body}
+    ${head(params.head)}
+    <body>
+      ${navbar(params.navbar)}
+      ${content}
+    </body>
   </html>
   `;
 };

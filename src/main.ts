@@ -8,6 +8,7 @@ import { build } from "./utils";
 const projects = await readProjects("content/projects");
 
 const renderables = [
+  // main
   RootPage,
   // projects
   ProjectsPage(projects),
@@ -15,6 +16,8 @@ const renderables = [
   // css
   StyleSheet(),
 ];
+
+// TODO: copy markdown images as a build script
 
 try {
   await build({
