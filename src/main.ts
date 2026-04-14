@@ -1,23 +1,28 @@
 import { readProjects } from "./projects";
 import { ProjectPages } from "./projects/project-pages";
-import { ProjectsPage } from "./projects/projects-page";
-import { HomePage } from "./root/root-page";
+import { HomePage } from "./home/home-page";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 
 const projects = await readProjects("content/projects");
 
+const linkBoxes = [
+  {
+    title: "Projects",
+    links: projects.map((p) => {
+      return { title: p.title, href: `/projects/${p.name}` /* TODO href */ };
+    }),
+  },
+];
+
 const renderables = [
   // main
-  HomePage,
+  HomePage({ linkBoxes }),
   // projects
-  ProjectsPage(projects),
   ...ProjectPages(projects),
   // css
   StyleSheet(),
 ];
-
-// TODO: copy all of content into html-output
 
 try {
   await build({
