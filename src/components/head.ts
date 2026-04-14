@@ -11,6 +11,8 @@ export const head = ({ title, openGraph }: HeadParams): HTMLString => {
       <title>${title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="UTF-8" />
+      <link rel="stylesheet" href="/styles.css" />
+
       <meta property="og:type" content="website" />
       ${openGraph
         ? html`
