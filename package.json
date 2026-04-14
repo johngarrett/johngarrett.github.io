@@ -5,11 +5,13 @@
   "private": true,
   "scripts": {
     "build": "bun run src/main.ts",
-    "dev": "bun --watch src/main.ts",
-    "serve": "serve html-output -l 3000"
+    "watch": "bun --watch src/main.ts",
+    "serve": "serve html-output -l 3000",
+    "dev": "concurrently \"bun run watch\" \"bun run serve\""
   },
   "devDependencies": {
     "@types/bun": "latest",
+    "concurrently": "^9.2.1",
     "gray-matter": "^4.0.3",
     "marked": "^18.0.0",
     "serve": "^14.2.6",

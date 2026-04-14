@@ -1,13 +1,14 @@
 /* TODO: script that flags unused classes */
 :root {
   --bg-color: #f9f9f9;
+  --bg-color-darker: #777;
+
   --text-main: #222;
   --text-muted: #777;
-  --accent-color: #2c3e50;
-  /* Dark Slate Blue */
   --accent-hover: #1a252f;
-  --card-bg: #fff;
   --border-color: #eaeaea;
+
+  --accent-color: #2c3e50;
 }
 
 body {
@@ -110,10 +111,8 @@ h1 {
 
 
 .project-card img {
-  max-width: 100px;
-
+  max-width: 200px;
 }
-
 
 
 @media (prefers-color-scheme: dark) {
@@ -141,4 +140,60 @@ h1 {
   .navbar a {
     color: var(--text-main);
   }
+}
+
+
+/*** home page **/
+/* Outer layout */
+.home-container {
+  display: grid;
+  grid-template-rows: auto 1fr;
+
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 12px;
+
+  gap: 20px;
+
+  font-family: sans-serif;
+}
+
+/* Title */
+.home-title {
+  font-size: 28px;
+  text-align: center;
+  font-family: monospace;
+  font-weight: bold;
+}
+
+/* Inner grid */
+.home-link-boxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+/* Boxes */
+.home-link-box {
+  padding: 10px 12px;
+}
+
+.home-link-box-title {
+  color: var(--bg-color-darker);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.home-link-box a {
+  display: block;
+  color: #00f;
+  text-decoration: none;
+  font-size: 14px;
+  margin: 2px 0;
+}
+
+.home-link-box a:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
