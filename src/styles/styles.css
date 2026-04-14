@@ -87,9 +87,21 @@ h1 {
 
 /****** START: Project page **********/
 
-/* TODO: doesn't look good on mobile */
+/*
 .project-page {
-  width: min(900px, 60vw);
-  /* ~20% margins on each side when wide */
+  max-width: 900px;
   margin: 0 auto;
+  width: 60vw;
+}
+
+@media (max-width: 600px) {
+  .project-page {
+    width: 100%;
+  }
+}
+*/
+.project-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 clamp(0px, 5vw, 10%);
 }
