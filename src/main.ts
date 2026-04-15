@@ -8,7 +8,16 @@ const projects = await readProjects("content/projects");
 
 const linkBoxes = [
   {
-    title: "Projects",
+    title: "Active Projects",
+    links: [
+      {
+        title: "YVML Interactive Map",
+        href: "https://yvml.github.io/map",
+      },
+    ],
+  },
+  {
+    title: "Project Archive",
     links: projects.map((p) => {
       return { title: p.title, href: `/projects/${p.name}` /* TODO href */ };
     }),

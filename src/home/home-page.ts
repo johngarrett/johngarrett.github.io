@@ -21,7 +21,7 @@ const linkBoxToHTML = (linkBox: LinkBox): HTMLString => html`
   <div class="home-link-box">
     <div class="home-link-box-title">${linkBox.title}</div>
     <ul>
-      ${linkBox.links.map(linkToHTML)}
+      ${linkBox.links.map(linkToHTML).join("")}
     </ul>
   </div>
 `;
@@ -38,7 +38,7 @@ export const HomePage = (params: HomePageParams) => {
           <div class="home-container">
             <div class="home-title">(still working on this)</div>
             <div class="home-link-boxes">
-              ${params.linkBoxes.map(linkBoxToHTML)}
+              ${params.linkBoxes.map(linkBoxToHTML).join("")}
             </div>
           </div>
         `,
