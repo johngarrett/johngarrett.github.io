@@ -12,7 +12,7 @@ export const ProjectPages = (projects: Project[]): Renderable[] => {
         htmlPage({
           params: {
             head: { title: project.name },
-            navbar: { selected: "projects" },
+            navbar: { title: project.title },
           },
           content: `
             <div class="project-page">

@@ -1,7 +1,7 @@
 import { html, type HTMLString } from "../utils";
 
 export type NavBarParams = {
-  selected: "home" | "projects";
+  title: string;
 };
 
 export const navbar = (params: NavBarParams): HTMLString => {
@@ -9,15 +9,8 @@ export const navbar = (params: NavBarParams): HTMLString => {
     <div class="navbar">
       <div class="navbar-container">
         <nav class="navbar-links">
-          <a href="/" ${params.selected === "home" ? 'class="bold"' : ""}>
-            Home
-          </a>
-          <a
-            href="/projects"
-            ${params.selected === "projects" ? 'class="bold"' : ""}
-          >
-            Projects
-          </a>
+          <a href="/"> Home </a>
+          <a class="bold"> ${params.title} </a>
         </nav>
       </div>
     </div>
