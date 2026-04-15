@@ -1,10 +1,12 @@
 import type { Project } from "../projects/types";
+import type { Trip } from "../trips";
 
 export type LinkBoxesParams = {
   projects: Project[];
+  trips: Trip[];
 };
 
-export const linkBoxes = ({ projects }: LinkBoxesParams) => [
+export const linkBoxes = ({ projects, trips }: LinkBoxesParams) => [
   {
     title: "Active Projects",
     links: [
@@ -14,9 +16,12 @@ export const linkBoxes = ({ projects }: LinkBoxesParams) => [
       },
     ],
   },
+  // TODO: markdown-albe type
   {
     title: "Trips",
-    links: [],
+    links: trips.map((p) => {
+      return { title: p.title, href: `/trips/${p.path}` };
+    }),
   },
   {
     title: "Project Archive",
