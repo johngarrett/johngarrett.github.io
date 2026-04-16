@@ -24,7 +24,9 @@ export const HomePage = (params: HomePageParams) => {
         },
         content: html`
           <div class="home-container">
-            <div class="home-title">(wip)</div>
+            <div class="home-title">
+              <img src=/content/misc/the_general_problem.png />
+            </div>
             <div class="home-link-boxes">
               ${params.linkBoxes.map(linkBoxToHTML).join("")}
             </div>
