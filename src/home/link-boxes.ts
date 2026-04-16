@@ -1,18 +1,22 @@
-import type { Project } from "../projects/types";
-import type { Trip } from "../trips";
+import type { Content } from "../content";
+import type { LinkBox } from "./home-page";
 
 export type LinkBoxesParams = {
-  projects: Project[];
-  trips: Trip[];
+  projects: Content[];
+  trips: Content[];
 };
 
-export const linkBoxes = ({ projects, trips }: LinkBoxesParams) => [
+export const linkBoxes = ({
+  projects,
+  trips,
+}: LinkBoxesParams): Array<LinkBox> => [
   {
     title: "Active Projects",
     links: [
       {
         title: "YVML Interactive Map",
         href: "https://yvml.github.io/map",
+        short: "interactive map for YVML",
       },
     ],
   },
@@ -20,13 +24,21 @@ export const linkBoxes = ({ projects, trips }: LinkBoxesParams) => [
   {
     title: "Trips",
     links: trips.map((p) => {
-      return { title: p.title, href: `/trips/${p.path}` };
+      return {
+        title: p.title,
+        href: `/trips/${p.filename}`,
+        short: p.info.short,
+      };
     }),
   },
   {
     title: "Project Archive",
     links: projects.map((p) => {
-      return { title: p.title, href: `/projects/${p.name}` /* TODO href */ };
+      return {
+        title: p.title,
+        href: `/projects/${p.filename}`,
+        short: p.info.short,
+      };
     }),
   },
 ];

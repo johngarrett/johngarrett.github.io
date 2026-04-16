@@ -1,18 +1,18 @@
 import type { MarkdownString } from "../utils";
 
 export type ContentInfo = {
-  galleryResources: string;
+  galleryResources?: string;
   mapResources?: string;
   title: string;
+  short: string;
 };
 
 export type Content = {
-  name: string;
+  filename: string;
   title: string;
   /**
    * short description of the content
    */
-  short?: string;
   markdownContent: MarkdownString;
 
   info: ContentInfo;

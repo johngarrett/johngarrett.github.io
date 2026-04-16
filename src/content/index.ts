@@ -1,2 +1,2 @@
-export * from "./read-content";
+export * from "./fetch-content";
 export * from "./types";

@@ -2,12 +2,15 @@ import { htmlPage } from "../components";
 import { html } from "../utils";
 import { linkBoxToHTML } from "./components/link-box";
 
+export type LinkBoxLink = {
+  title: string;
+  href: string;
+  short: string;
+};
+
 export type LinkBox = {
   title: string;
-  links: Array<{
-    title: string;
-    href: string;
-  }>;
+  links: Array<LinkBoxLink>;
 };
 
 export type HomePageParams = {

@@ -1,10 +1,10 @@
 import { marked } from "marked";
 import { htmlPage } from "../components";
 import type { Renderable } from "../utils";
-import type { Trip } from "./types";
+import type { Content } from "../content";
 
 // TODO: combine with ProjectPages and share
-export const TripPages = (trips: Trip[]): Renderable[] => {
+export const TripPages = (trips: Content[]): Renderable[] => {
   //const renderer = new marked.Renderer();
 
   //// Support <GPX src="..." />
@@ -47,7 +47,7 @@ export const TripPages = (trips: Trip[]): Renderable[] => {
   return trips.map((trip) => {
     const renderedContent = marked(trip.markdownContent);
     return {
-      path: `trips/${trip.path}.html`,
+      path: `trips/${trip.filename}.html`,
       render: () =>
         htmlPage({
           params: {

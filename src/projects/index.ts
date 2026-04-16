@@ -1,1 +1,1 @@
-export * from "./utils/read-projects";
+export * from "./project-pages";
