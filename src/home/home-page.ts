@@ -1,23 +1,15 @@
 import { htmlPage } from "../components";
+import type { Content } from "../content";
 import { html } from "../utils";
-import { linkBoxToHTML } from "./components/link-box";
-
-export type LinkBoxLink = {
-  title: string;
-  href: string;
-  short: string;
-};
-
-export type LinkBox = {
-  title: string;
-  links: Array<LinkBoxLink>;
-};
+import { linkBoxes as getLinkBoxes, linkBoxToHTML } from "./link-box";
 
 export type HomePageParams = {
-  linkBoxes: Array<LinkBox>;
+  projects: Content[];
+  trips: Content[];
 };
+export const HomePage = ({ projects, trips }: HomePageParams) => {
+  const linkBoxes = getLinkBoxes({ projects, trips });
 
-export const HomePage = (params: HomePageParams) => {
   return {
     path: "/index.html",
     render: () =>
@@ -31,7 +23,7 @@ export const HomePage = (params: HomePageParams) => {
               <img src=/content/misc/the_general_problem.png />
             </div>
             <div class="home-link-boxes">
-              ${params.linkBoxes.map(linkBoxToHTML).join("")}
+              ${linkBoxes.map(linkBoxToHTML).join("")}
             </div>
           </div>
         `,

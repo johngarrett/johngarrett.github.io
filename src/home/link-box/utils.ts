@@ -1,7 +1,7 @@
 import { html, type HTMLString } from "../../utils";
-import type { LinkBox, LinkBoxLink } from "../home-page";
+import type { Link, LinkBox } from "./types";
 
-const linkToHTML = (link: LinkBoxLink): HTMLString => html`
+const linkToHTML = (link: Link): HTMLString => html`
   <li><a href=${link.href} title="${link.short}">${link.title}</a></li>
 `;
 

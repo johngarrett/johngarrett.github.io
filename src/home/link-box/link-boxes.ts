@@ -1,10 +1,5 @@
-import type { Content } from "../content";
-import type { LinkBox } from "./home-page";
-
-export type LinkBoxesParams = {
-  projects: Content[];
-  trips: Content[];
-};
+import { html } from "../../utils";
+import type { LinkBoxesParams, LinkBox, Link } from "./types";
 
 export const linkBoxes = ({
   projects,
@@ -16,11 +11,15 @@ export const linkBoxes = ({
       {
         title: "YVML Interactive Map",
         href: "https://yvml.github.io/map",
-        short: "interactive map for YVML",
+        filename: "foo",
+        markdownContent: "",
+        info: {
+          title: "YVML Interactive Map",
+          short: "interactive map for YVML",
+        },
       },
     ],
   },
-  // TODO: markdown-albe type
   {
     title: "Trips",
     links: trips.map((p) => {
@@ -30,6 +29,20 @@ export const linkBoxes = ({
         short: p.info.short,
       };
     }),
+    linksRenderer: (links: Link[]) => {
+      const renderLink = (link: Link) => html`
+        <td>${link.info.short}</td>
+        <td>
+          <a href=${link.href} title="${link.info.short}">${link.title}</a>
+        </td>
+      `;
+
+      return html`
+        <tr>
+          ${links.map(renderLink).join("")}
+        </tr>
+      `;
+    },
   },
   {
     title: "Project Archive",
