@@ -1,4 +1,4 @@
-import { html } from "../../utils";
+import { html, type HTMLString } from "../../utils";
 import type { LinkBoxesParams, LinkBox, Link } from "./types";
 
 export const linkBoxes = ({
@@ -24,23 +24,26 @@ export const linkBoxes = ({
     title: "Trips",
     links: trips.map((p) => {
       return {
-        title: p.title,
+        ...p,
         href: `/trips/${p.filename}`,
-        short: p.info.short,
       };
     }),
-    linksRenderer: (links: Link[]) => {
+    renderer: (links: Link[]): HTMLString => {
       const renderLink = (link: Link) => html`
-        <td>${link.info.short}</td>
-        <td>
-          <a href=${link.href} title="${link.info.short}">${link.title}</a>
-        </td>
+        <tr>
+          <td>${link.info.short}</td>
+          <td>
+            <a href=${link.href} title="${link.info.short}">${link.title}</a>
+          </td>
+        </tr>
       `;
 
       return html`
-        <tr>
-          ${links.map(renderLink).join("")}
-        </tr>
+        <table>
+          <tbody>
+            ${links.map(renderLink).join("")}
+          </tbody>
+        </table>
       `;
     },
   },
@@ -48,9 +51,8 @@ export const linkBoxes = ({
     title: "Project Archive",
     links: projects.map((p) => {
       return {
-        title: p.title,
+        ...p,
         href: `/projects/${p.filename}`,
-        short: p.info.short,
       };
     }),
   },

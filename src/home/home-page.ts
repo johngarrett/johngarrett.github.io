@@ -7,6 +7,7 @@ export type HomePageParams = {
   projects: Content[];
   trips: Content[];
 };
+
 export const HomePage = ({ projects, trips }: HomePageParams) => {
   const linkBoxes = getLinkBoxes({ projects, trips });
 

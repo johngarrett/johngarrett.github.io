@@ -4,14 +4,13 @@ import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 import { TripPages } from "./trips";
 import { fetchContent } from "./content";
-import { linkBoxes } from "./home/link-box";
 
 const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
 
 const renderables = [
   // main
-  HomePage({ linkBoxes: 
+  HomePage({ projects, trips }),
   // project pages
   ...ProjectPages(projects),
 
