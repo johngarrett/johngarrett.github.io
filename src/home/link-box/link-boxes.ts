@@ -31,7 +31,7 @@ export const linkBoxes = ({
     renderer: (links: Link[]): HTMLString => {
       const renderLink = (link: Link) => html`
         <tr>
-          <td>${link.info.short}</td>
+          <td>jan '26</td>
           <td>
             <a href=${link.href} title="${link.info.short}">${link.title}</a>
           </td>
