@@ -2,7 +2,6 @@ import { ProjectPages } from "./projects/project-pages";
 import { HomePage } from "./home/home-page";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
-import { linkBoxes } from "./home/link-boxes";
 import { TripPages } from "./trips";
 import { fetchContent } from "./content";
 
@@ -11,7 +10,7 @@ const trips = await fetchContent("content/trips");
 
 const renderables = [
   // main
-  HomePage({ linkBoxes: linkBoxes({ projects, trips }) }),
+  HomePage({ projects, trips }),
   // project pages
   ...ProjectPages(projects),
 
