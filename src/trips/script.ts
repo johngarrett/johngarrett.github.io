@@ -1,4 +1,6 @@
 /// <reference lib="dom" />
+// Browser entry point — compiled by Bun.build() in main.ts into html-output/trips/script.js.
+// Injected into every trip page. Initializes Leaflet maps for any .gpx-map divs on the page.
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-gpx";
@@ -16,6 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     new L.GPX(src, {
       async: true,
+      // Disable default start/end pin icons — they use relative image paths
+      // that break when served from the trips/ directory.
       marker_options: {
         startIconUrl: "",
         endIconUrl: "",
