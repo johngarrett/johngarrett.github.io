@@ -6,7 +6,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "bun run typecheck && bun run src/main.ts",
-    "watch": "bun --watch src/main.ts & bun run typecheck --watch",
+    "watch": "bun scripts/watch.ts & bun run typecheck --watch",
     "serve": "serve html-output -l 3000",
     "dev": "concurrently \"bun run watch\" \"bun run serve\""
   },
