@@ -8,20 +8,18 @@ type TripPageOptions = {
   styleLinks?: string[];
 };
 
-// Creates one HTML page per trip. A fresh Marked instance is created per trip
-// so the GPX renderer can resolve relative paths against that trip's content directory.
-export const TripPages = (trips: Content[], options?: TripPageOptions): Renderable[] => {
+export const TripPages = (
+  trips: Content[],
+  options?: TripPageOptions,
+): Renderable[] => {
   return trips.map((trip) => {
-    // Per-trip Marked instance so the html renderer closes over `trip.filename`.
     const marked = new Marked({
       renderer: {
-        // Intercepts <GPX src="..." /> tags in markdown and converts them to
-        // .gpx-map divs. script.ts picks these up at runtime and renders maps.
-        // Relative src paths are resolved to /content/trips/<filename>/<src>.
         html({ text }) {
           const match = text.match(/<GPX\s+src="([^"]+)"\s*\/?>/);
           if (match) {
             const src = match[1]!;
+            // convert paths to relative
             const resolvedSrc = src.startsWith("/")
               ? src
               : `/content/trips/${trip.filename}/${src}`;
