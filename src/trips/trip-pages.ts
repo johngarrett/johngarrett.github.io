@@ -16,16 +16,13 @@ export const TripPages = (
     const marked = new Marked({
       renderer: {
         html({ text }) {
-          const match = text.match(/<GPX\s+src="([^"]+)"\s*\/?>/);
-          if (match) {
-            const src = match[1]!;
-            // convert paths to relative
+          if (!/<GPX\s+src="[^"]+"\s*\/?>/.test(text)) return false;
+          return text.replace(/<GPX\s+src="([^"]+)"\s*\/?>/g, (_, src) => {
             const resolvedSrc = src.startsWith("/")
               ? src
               : `/content/trips/${trip.filename}/${src}`;
             return `<div class="gpx-map" data-src="${resolvedSrc}"></div>`;
-          }
-          return false;
+          });
         },
       },
     });
