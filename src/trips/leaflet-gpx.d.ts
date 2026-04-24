@@ -6,6 +6,8 @@ declare module "leaflet" {
   interface GPXOptions {
     async?: boolean;
     marker_options?: {
+      startIcon?: unknown;
+      endIcon?: unknown;
       startIconUrl?: string;
       endIconUrl?: string;
       shadowUrl?: string;

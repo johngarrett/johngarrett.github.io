@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // Disable default start/end pin icons — they use relative image paths
       // that break when served from the trips/ directory.
       marker_options: {
-        startIconUrl: "",
-        endIconUrl: "",
+        startIcon: L.divIcon({ className: "", iconSize: [0, 0] }),
+        endIcon: L.divIcon({ className: "", iconSize: [0, 0] }),
         shadowUrl: "",
       },
     })
