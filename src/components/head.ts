@@ -3,15 +3,17 @@ import { html, type HTMLString } from "../utils";
 export type HeadParams = {
   title: string;
   openGraph?: { title: string; description: string; image: string };
+  extraLinks?: string[];
 };
 
-export const head = ({ title, openGraph }: HeadParams): HTMLString => {
+export const head = ({ title, openGraph, extraLinks }: HeadParams): HTMLString => {
   return html`
     <head>
       <title>${title}</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta charset="UTF-8" />
       <link rel="stylesheet" href="/styles.css" />
+      ${extraLinks?.map((href) => `<link rel="stylesheet" href="${href}" />`).join("\n") ?? ""}
 
       <meta property="og:type" content="website" />
       ${openGraph

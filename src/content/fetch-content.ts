@@ -31,15 +31,15 @@ const getInfo = async (path: string): Promise<ContentInfo> => {
 
 const getReadme = async (path: string) => {
   const file = await readFile(path, "utf-8");
-  const { data, content } = matter(file);
+  const { content } = matter(file);
 
-  const schema = z.object({ title: z.string() });
+  //const schema = z.object({ title: z.string() });
 
-  const result = schema.safeParse(data);
-  if (!result.success) {
-    console.error(z.treeifyError(result.error));
-    throw new Error("Invalid frontmatter");
-  }
+  //const result = schema.safeParse(data);
+  //if (!result.success) {
+  //  console.error(z.treeifyError(result.error));
+  //  throw new Error("Invalid frontmatter");
+  //}
 
   return {
     content,

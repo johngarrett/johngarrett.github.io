@@ -24,11 +24,10 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
-  color: var(--link-color);
 }
 
 .flex-row {
@@ -107,6 +106,12 @@ h1 {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 clamp(0px, 5vw, 10%);
+}
+
+.gpx-map {
+  height: 400px;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 
