@@ -24,11 +24,10 @@ body {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
-  color: var(--link-color);
 }
 
 .flex-row {
