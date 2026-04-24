@@ -33,14 +33,6 @@ const getReadme = async (path: string) => {
   const file = await readFile(path, "utf-8");
   const { content } = matter(file);
 
-  //const schema = z.object({ title: z.string() });
-
-  //const result = schema.safeParse(data);
-  //if (!result.success) {
-  //  console.error(z.treeifyError(result.error));
-  //  throw new Error("Invalid frontmatter");
-  //}
-
   return {
     content,
   };

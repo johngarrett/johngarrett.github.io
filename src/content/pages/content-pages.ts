@@ -4,25 +4,7 @@ import { htmlPage } from "../../components";
 import type { Renderable } from "../../utils";
 import type { Content } from "../../content";
 
-const getParser = (directory: string, content: Content) => {
-  return new Marked({
-    renderer: {
-      html({ text }) {
-        if (!/<GPX\s+src="[^"]+"\s*\/?>/.test(text)) return false;
-        return text.replace(/<GPX\s+src="([^"]+)"\s*\/?>/g, (_, src) => {
-          const resolvedSrc = src.startsWith("/")
-            ? src
-            : join("/content", directory, content.filename, src);
-          return `<div class="gpx-map" data-src="${resolvedSrc}"></div>`;
-        });
-      },
-    },
-  });
-};
-
 type ContentPageOptions = {
-  scripts?: string[];
-  styleLinks?: string[];
   directory: string;
 };
 export const ContentPages = (
@@ -33,9 +15,24 @@ export const ContentPages = (
 };
 
 const ContentPage = (content: Content, options: ContentPageOptions) => {
-  const renderedContent = getParser(options.directory, content).parse(
-    content.markdownContent,
-  );
+  let hasGPX = false;
+  const renderedContent = new Marked({
+    renderer: {
+      html({ text }) {
+        if (!/<GPX\s+src="[^"]+"\s*\/?>/.test(text)) return false;
+        hasGPX = true;
+        return text.replace(/<GPX\s+src="([^"]+)"\s*\/?>/g, (_, src) => {
+          const resolvedSrc = src.startsWith("/")
+            ? src
+            : join("/content", options.directory, content.filename, src);
+          return `<div class="gpx-map" data-src="${resolvedSrc}"></div>`;
+        });
+      },
+    },
+  }).parse(content.markdownContent);
+
+  const customNodes = { gpx: hasGPX };
+
   return {
     path: join(options.directory, `${content.filename}.html`),
     render: () =>
@@ -44,8 +41,8 @@ const ContentPage = (content: Content, options: ContentPageOptions) => {
           head: { title: content.title },
           navbar: { title: content.title },
         },
-        scripts: options?.scripts,
-        styleLinks: options?.styleLinks,
+        scripts: customNodes.gpx ? ["/compiled-js/gpx-map.js"] : undefined,
+        styleLinks: customNodes.gpx ? ["/compiled-js/gpx-map.css"] : undefined,
         content: `
             <div class="project-page">
               ${renderedContent}

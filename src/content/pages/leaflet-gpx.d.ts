@@ -1,3 +1,4 @@
+// TODO: move this
 // leaflet-gpx ships no TypeScript types. This file extends the leaflet
 // namespace with the GPX class and the options surface we use.
 import "leaflet";

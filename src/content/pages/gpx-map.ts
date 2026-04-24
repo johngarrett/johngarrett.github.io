@@ -1,6 +1,6 @@
 /// <reference lib="dom" />
-// Browser entry point — compiled by Bun.build() in main.ts into html-output/trips/script.js.
-// Injected into every trip page. Initializes Leaflet maps for any .gpx-map divs on the page.
+// Browser entry point — compiled by Bun.build() in main.ts into html-output/compiled-js/gpx-map.js.
+// Injected into pages that contain <GPX> tags. Initializes Leaflet maps for any .gpx-map divs on the page.
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-gpx";
