@@ -1,51 +1,32 @@
-import { marked } from "marked";
+import { Marked } from "marked";
 import { htmlPage } from "../components";
 import type { Renderable } from "../utils";
 import type { Content } from "../content";
 
-// TODO: combine with ProjectPages and share
-export const TripPages = (trips: Content[]): Renderable[] => {
-  //const renderer = new marked.Renderer();
+type TripPageOptions = {
+  scripts?: string[];
+  styleLinks?: string[];
+};
 
-  //// Support <GPX src="..." />
-  //renderer.html = (html) => {
-  //  const match = html.match(/<GPX\s+src="([^"]+)"\s*\/?>/);
-
-  //  if (match) {
-  //    const src = match[1];
-
-  //    return `<div class="gpx-map" data-src="${src}"></div>`;
-  //  }
-
-  //  return html;
-  //};
-  //marked.setOptions({ renderer });
-
-  //// TODO: make this a TS file
-  //const gpxScript = `
-  //  <script>
-  //  document.addEventListener("DOMContentLoaded", function () {
-  //    document.querySelectorAll(".gpx-map").forEach((el) => {
-  //      const src = el.getAttribute("data-src");
-
-  //      const map = L.map(el).setView([0, 0], 13);
-
-  //      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  //        attribution: "&copy; OpenStreetMap contributors"
-  //      }).addTo(map);
-
-  //      new L.GPX(src, { async: true })
-  //        .on("loaded", function (e) {
-  //          map.fitBounds(e.target.getBounds());
-  //        })
-  //        .addTo(map);
-  //    });
-  //  });
-  //  </script>
-  //`;`
-
+export const TripPages = (trips: Content[], options?: TripPageOptions): Renderable[] => {
   return trips.map((trip) => {
-    const renderedContent = marked(trip.markdownContent);
+    const marked = new Marked({
+      renderer: {
+        html({ text }) {
+          const match = text.match(/<GPX\s+src="([^"]+)"\s*\/?>/);
+          if (match) {
+            const src = match[1]!;
+            const resolvedSrc = src.startsWith("/")
+              ? src
+              : `/content/trips/${trip.filename}/${src}`;
+            return `<div class="gpx-map" data-src="${resolvedSrc}"></div>`;
+          }
+          return false;
+        },
+      },
+    });
+
+    const renderedContent = marked.parse(trip.markdownContent);
     return {
       path: `trips/${trip.filename}.html`,
       render: () =>
@@ -54,6 +35,8 @@ export const TripPages = (trips: Content[]): Renderable[] => {
             head: { title: trip.title },
             navbar: { title: trip.title },
           },
+          scripts: options?.scripts,
+          styleLinks: options?.styleLinks,
           content: `
             <div class="project-page">
               ${renderedContent}

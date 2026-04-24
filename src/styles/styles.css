@@ -109,6 +109,12 @@ h1 {
   padding: 0 clamp(0px, 5vw, 10%);
 }
 
+.gpx-map {
+  height: 400px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
 
 .project-card img {
   max-width: 200px;
