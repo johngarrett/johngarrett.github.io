@@ -1,4 +1,4 @@
-import { mkdir, writeFile, cp } from "node:fs/promises";
+import { mkdir, writeFile, cp, rm } from "node:fs/promises";
 import path from "node:path";
 import type { Renderable } from "./types";
 
@@ -8,12 +8,12 @@ type BuildParams = {
 };
 
 export async function build({ renderables, outputDir }: BuildParams) {
-  // ensure output directory exists
   await mkdir(outputDir, { recursive: true });
 
-  console.log(`copying content dirctory`);
-  // copy static content
-  await cp("./content", path.join(outputDir, "content"), { recursive: true });
+  const contentDest = path.join(outputDir, "content");
+  console.log(`copying content directory`);
+  await rm(contentDest, { recursive: true, force: true });
+  await cp("./content", contentDest, { recursive: true });
 
   await Promise.all(
     renderables.map(async (renderable) => {
