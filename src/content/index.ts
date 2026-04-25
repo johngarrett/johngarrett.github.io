@@ -1,3 +1,3 @@
-export * from "./fetch-content";
+export * from "./utils";
 export * from "./types";
-export * from "./pages";
+export * from "./content-pages";

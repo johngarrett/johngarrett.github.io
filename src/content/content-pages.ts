@@ -1,8 +1,8 @@
 import { join } from "node:path";
 import { Marked } from "marked";
-import { htmlPage } from "../../components";
-import type { Renderable } from "../../utils";
-import type { Content } from "../../content";
+import { htmlPage } from "../components";
+import type { Renderable } from "../utils";
+import type { Content } from "../content";
 
 type ContentPageOptions = {
   directory: string;

@@ -1,8 +1,8 @@
 import z from "zod";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
-import type { Content, ContentInfo } from "./types";
 import matter from "gray-matter";
+import type { ContentInfo, Content } from "../types";
 
 /**
  * parse a content's info.json file and return it

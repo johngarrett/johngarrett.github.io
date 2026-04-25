@@ -4,8 +4,7 @@ import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 
 const scriptBuild = await Bun.build({
-  // TODO: move all js that will be compiled into a folder: to-compile/
-  entrypoints: ["./src/content/pages/gpx-map.ts"],
+  entrypoints: ["./src/content/client-js/gpx-map.ts"],
   outdir: "./html-output/compiled-js",
   format: "esm",
   target: "browser",
