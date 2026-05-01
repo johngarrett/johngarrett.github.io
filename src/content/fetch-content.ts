@@ -17,6 +17,11 @@ const getInfo = async (path: string): Promise<ContentInfo> => {
     short: z.string(),
     galleryResources: z.optional(z.string()),
     mapResources: z.optional(z.string()),
+    /**
+     * TODO: have getInfo take in an optional, additional, object for pattern matching
+     */
+    startDate: z.coerce.date().optional(),
+    endDate: z.coerce.date().optional(),
   });
 
   const result = infoSchema.safeParse(data);
@@ -33,14 +38,6 @@ const getReadme = async (path: string) => {
   const file = await readFile(path, "utf-8");
   const { content } = matter(file);
 
-  //const schema = z.object({ title: z.string() });
-
-  //const result = schema.safeParse(data);
-  //if (!result.success) {
-  //  console.error(z.treeifyError(result.error));
-  //  throw new Error("Invalid frontmatter");
-  //}
-
   return {
     content,
   };
@@ -48,6 +45,10 @@ const getReadme = async (path: string) => {
 
 export const fetchContent = async (
   contentDirectory: string,
+  /**
+   * TODO:
+   * take in an optional, additional, object for pattern matching that adds to the return type
+   */
 ): Promise<Array<Content>> => {
   const entries = await readdir(contentDirectory, { withFileTypes: true });
 
