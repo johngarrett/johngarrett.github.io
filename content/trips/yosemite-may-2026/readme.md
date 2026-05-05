@@ -61,3 +61,9 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 <NotebookEntry src="res/notebook-entries/entry5.md" />
 <GPX src="res/gpx/friday/waterfall-hike.gpx" />
 </div>
+
+## Saturday May 1st
+
+<NotebookEntry src="res/notebook-entries/entry6.md" />
+
+<NotebookEntry src="res/notebook-entries/entry7.md" />
