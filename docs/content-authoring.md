@@ -42,15 +42,16 @@ All content lives in the `content/` directory. The build system automatically di
 
 5. The next build generates `/trips/my-trip-name.html` and adds the trip to the home page.
 
-### Compressing GPX files
+### Before committing content
 
-Raw GPX recordings from devices can be large. Use the compression script before committing:
+Run these scripts on the `content/` tree before committing to keep the repo small. Each script is idempotent — already-processed files are skipped.
 
 ```bash
-./scripts/compress-gpx.sh path/to/track.gpx
+./scripts/compress-gpx.sh      # reduce GPX track-point density (requires gpsbabel)
+./scripts/compress-photos.sh   # re-encode JPG/PNG/HEIC at lower quality (requires ImageMagick)
+./scripts/compress-videos.sh   # re-encode MP4/MOV with H.264 (requires ffmpeg)
+./scripts/spell-check.sh       # spell-check all markdown files
 ```
-
-This uses `gpsbabel` to reduce track point density without visually affecting the rendered map.
 
 ## Adding a project
 

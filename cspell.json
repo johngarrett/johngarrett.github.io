@@ -1,0 +1,24 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "files": ["content/**/*.md", "readme.md"],
+  "ignorePaths": ["node_modules", "html-output"],
+  "ignoreRegExpList": [
+    "https?://[^\\s)\"'>]+",
+    "<GPX\\s[^>]*/>"
+  ],
+  "words": [
+    "Adafruit", "Feather",
+    "BH1750", "SSD1306", "ArduCAM", "OV2640", "Songhe",
+    "CircuitPython", "Arduino", "Renode", "Framebuffer",
+    "microSD", "microUSB",
+    "CVAL", "FLEN", "PRIO", "LUX",
+    "Porta",
+    "GPX", "HEIC", "heic",
+    "garrepi",
+    "grayscale",
+    "metered", "metering",
+    "OLED",
+    "Renderable"
+  ]
+}
