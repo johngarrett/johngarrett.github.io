@@ -69,10 +69,23 @@ export const TripPages = (
                 ${metadata.time}
                 <br />
                 ${metadata.location}
-                <br />
+                <hr />
                 ${rendered}
               </div>`;
             },
+          );
+
+          /**
+           * Resolve relative src/href in raw HTML blocks (e.g. <video>, <source>,
+           * <img>, <a>) so they point at the trip's content directory rather
+           * than resolving against the rendered page URL (/trips/<slug>.html).
+           * Skips absolute URLs, anchors, data:, and mailto:. The leading-space
+           * lookbehind prevents matching attributes like data-src.
+           */
+          output = output.replace(
+            /(?<=\s)(src|href)="(?!\/|https?:|#|data:|mailto:)([^"]+)"/g,
+            (_, attr, value) =>
+              `${attr}="/content/trips/${trip.filename}/${value}"`,
           );
 
           // If nothing changed, let marked handle it normally

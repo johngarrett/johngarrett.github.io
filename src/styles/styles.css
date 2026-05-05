@@ -114,6 +114,14 @@ h1 {
   margin: 1rem 0;
 }
 
+.notebook-entry {
+  max-width: 400px;
+  border-color: var(--border-color);
+  border-width: 2px;
+  border-style: solid;
+  padding: 1em;
+}
+
 
 .project-card img {
   max-width: 200px;
