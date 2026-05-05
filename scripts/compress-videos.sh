@@ -7,7 +7,7 @@ NC='\033[0m'
 CHECK="${GREEN}✓${NC}"
 CROSS="${RED}✗${NC}"
 
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 
 if ! command -v ffmpeg &>/dev/null || ! command -v ffprobe &>/dev/null; then
   echo "Error: ffmpeg and ffprobe are required but not found in PATH." >&2
@@ -61,8 +61,10 @@ compress_video() {
   local duration_ms
   duration_ms=$(get_duration_ms "$input")
 
-  local tmp
-  tmp=$(mktemp "/tmp/compress-video-XXXXXX.${ext}")
+  local tmpbase
+  tmpbase=$(mktemp "/tmp/compress-video-XXXXXX")
+  local tmp="${tmpbase}.${ext}"
+  mv "$tmpbase" "$tmp"
   local progress_file
   progress_file=$(mktemp "/tmp/compress-progress-XXXXXX")
 
@@ -71,13 +73,13 @@ compress_video() {
   local start_time
   start_time=$(date +%s)
 
-  ffmpeg -y -i "$input" \
+  ffmpeg -nostdin -y -i "$input" \
     -c:v libx264 -crf 28 -preset slow \
     -c:a aac -b:a 128k \
     -movflags +faststart \
     -progress "$progress_file" \
     -nostats -loglevel error \
-    "$tmp" &
+    "$tmp" < /dev/null &
   local ffmpeg_pid=$!
 
   while kill -0 "$ffmpeg_pid" 2>/dev/null; do
