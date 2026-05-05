@@ -5,7 +5,7 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 find "$REPO_ROOT/content" -name "*.gpx" | while IFS= read -r gpx; do
   before=$(wc -c < "$gpx")
-  tmp=$(mktemp --suffix=.gpx)
+  tmp=$(mktemp "${TMPDIR:-/tmp}/gpx.XXXXXX.gpx")
   gpsbabel -i gpx -f "$gpx" -x simplify,count=1000 -o gpx -F "$tmp"
   mv "$tmp" "$gpx"
   after=$(wc -c < "$gpx")
