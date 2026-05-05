@@ -3,7 +3,9 @@
 ## Prerequisites
 
 - [Bun](https://bun.sh) (any recent version)
-- `gpsbabel` (optional; only needed for GPX compression)
+- `gpsbabel` — optional; only needed for `compress-gpx.sh`
+- `convert` / `identify` (ImageMagick) — optional; only needed for `compress-photos.sh`
+- `ffmpeg` / `ffprobe` — optional; only needed for `compress-videos.sh`
 
 ## Local setup
 
@@ -115,6 +117,19 @@ The deployed URL is configured in the repository's GitHub Pages settings. The bu
 | `module` | `"preserve"` | Delegates module format decisions to Bun |
 | `moduleResolution` | `"bundler"` | Matches Bun's resolution behavior |
 | `noEmit` | `true` | Bun handles compilation; tsc is type-check only |
+
+## Maintenance scripts
+
+These scripts live in `scripts/` and operate on the `content/` directory. All of them are idempotent: each processed file gets a hidden marker (e.g. `.photo.jpg.compressed`) so re-running the script skips already-processed files.
+
+| Script | What it does | Requires |
+|--------|-------------|----------|
+| `./scripts/compress-photos.sh` | Re-encodes JPG/PNG/HEIC files at lower quality in-place | ImageMagick |
+| `./scripts/compress-videos.sh` | Re-encodes MP4/MOV files with H.264 + AAC in-place | ffmpeg |
+| `./scripts/compress-gpx.sh` | Reduces GPX track-point density with gpsbabel in-place | gpsbabel |
+| `./scripts/spell-check.sh` | Spell-checks all `content/**/*.md` and `readme.md` | bun |
+
+Run all three compression scripts before committing large media assets. Spell-check is fast and worth running before any content commit.
 
 ## Adding a new page type
 
