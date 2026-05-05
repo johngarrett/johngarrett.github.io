@@ -1,7 +1,12 @@
 import { Marked } from "marked";
 import { htmlPage } from "../components";
-import type { Renderable } from "../utils";
+import { html, type Renderable } from "../utils";
 import type { Content } from "../content";
+import fs from "fs";
+import matter from "gray-matter";
+import path from "node:path";
+import z from "zod";
+import { meta } from "zod/v4/core";
 
 type TripPageOptions = {
   scripts?: string[];
@@ -16,13 +21,64 @@ export const TripPages = (
     const marked = new Marked({
       renderer: {
         html({ text }) {
-          if (!/<GPX\s+src="[^"]+"\s*\/?>/.test(text)) return false;
-          return text.replace(/<GPX\s+src="([^"]+)"\s*\/?>/g, (_, src) => {
+          let output = text;
+
+          /**
+           * GPX rendering
+           */
+          output = output.replace(/<GPX\s+src="([^"]+)"\s*\/?>/g, (_, src) => {
             const resolvedSrc = src.startsWith("/")
               ? src
               : `/content/trips/${trip.filename}/${src}`;
+
             return `<div class="gpx-map" data-src="${resolvedSrc}"></div>`;
           });
+
+          /**
+           * Notebook entry rendering
+           */
+          output = output.replace(
+            /<NotebookEntry\s+src="([^"]+)"\s*\/?>/g,
+            (_, src) => {
+              const resolvedSrc = src.startsWith("/")
+                ? src
+                : `/content/trips/${trip.filename}/${src}`;
+
+              // Convert to actual filesystem path
+              const filePath = path.join(process.cwd(), resolvedSrc);
+
+              let file;
+              try {
+                file = fs.readFileSync(filePath, "utf-8");
+              } catch (err) {
+                console.error("Failed to read notebook entry:", filePath);
+                return `<div class="notebook-entry error">Failed to load ${src}</div>`;
+              }
+              const { data, content } = matter(file);
+              const rendered = marked.parse(content);
+              const NotebookEntrySchema = z.object({
+                time: z.string(),
+                date: z.string(),
+                location: z.string(),
+              });
+              const metadata = NotebookEntrySchema.parse(data);
+
+              return html` <div class="notebook-entry">
+                ${metadata.date}
+                <br />
+                ${metadata.time}
+                <br />
+                ${metadata.location}
+                <br />
+                ${rendered}
+              </div>`;
+            },
+          );
+
+          // If nothing changed, let marked handle it normally
+          if (output === text) return false;
+
+          return output;
         },
       },
     });
