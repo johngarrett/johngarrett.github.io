@@ -3,6 +3,10 @@ import { watch } from "fs";
 let proc: ReturnType<typeof Bun.spawn> | null = null;
 let debounceTimer: ReturnType<typeof setTimeout> | null = null;
 
+function printControls() {
+  process.stdout.write("\n  [x] exit   [l] clear\n");
+}
+
 async function rebuild() {
   if (proc) {
     proc.kill();
@@ -12,6 +16,8 @@ async function rebuild() {
     stdout: "inherit",
     stderr: "inherit",
   });
+  await proc.exited;
+  printControls();
 }
 
 function scheduleRebuild(changedPath: string) {
@@ -29,3 +35,18 @@ for (const dir of ["src", "content"]) {
     scheduleRebuild(`${dir}/${filename}`);
   });
 }
+
+process.stdin.setRawMode(true);
+process.stdin.resume();
+process.stdin.setEncoding("utf8");
+
+process.stdin.on("data", (key: string) => {
+  if (key === "x" || key === "") {
+    if (proc) proc.kill();
+    process.exit(0);
+  }
+  if (key === "l") {
+    console.clear();
+    printControls();
+  }
+});
