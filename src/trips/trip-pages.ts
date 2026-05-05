@@ -55,7 +55,8 @@ export const TripPages = (
                 return `<div class="notebook-entry error">Failed to load ${src}</div>`;
               }
               const { data, content } = matter(file);
-              const rendered = marked.parse(content);
+              const innerMarked = new Marked(); // plain, no custom html renderer
+              const rendered = innerMarked.parse(content);
               const NotebookEntrySchema = z.object({
                 time: z.string(),
                 date: z.string(),
@@ -76,6 +77,8 @@ export const TripPages = (
           );
 
           /**
+           * TODO: this is janky and wont work with projects.
+           *
            * Resolve relative src/href in raw HTML blocks (e.g. <video>, <source>,
            * <img>, <a>) so they point at the trip's content directory rather
            * than resolving against the rendered page URL (/trips/<slug>.html).
@@ -87,9 +90,6 @@ export const TripPages = (
             (_, attr, value) =>
               `${attr}="/content/trips/${trip.filename}/${value}"`,
           );
-
-          // If nothing changed, let marked handle it normally
-          if (output === text) return false;
 
           return output;
         },
