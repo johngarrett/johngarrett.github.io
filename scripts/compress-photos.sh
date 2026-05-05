@@ -1,46 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-GREEN='\033[0;32m'
-RED='\033[0;31m'
-NC='\033[0m'
-CHECK="${GREEN}✓${NC}"
-CROSS="${RED}✗${NC}"
-
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+# shellcheck source=lib.sh
+source "$(dirname "${BASH_SOURCE[0]}")/lib.sh"
 
 if ! command -v convert &>/dev/null || ! command -v identify &>/dev/null; then
   echo "Error: ImageMagick (convert, identify) is required but not found in PATH." >&2
   exit 1
 fi
-
-format_size() {
-  local bytes=$1
-  awk -v b="$bytes" 'BEGIN {
-    if (b >= 1073741824) printf "%.1f GB", b/1073741824
-    else if (b >= 1048576) printf "%.1f MB", b/1048576
-    else printf "%.1f KB", b/1024
-  }'
-}
-
-marker_file() {
-  local dir
-  dir=$(dirname "$1")
-  echo "$dir/.$(basename "$1").compressed"
-}
-
-is_compressed() {
-  [ -f "$(marker_file "$1")" ]
-}
-
-# Group: content/type/ for shallow files, content/type/name/ for deeper ones
-file_group() {
-  local rel="${1#"$REPO_ROOT/"}"
-  echo "$rel" | awk -F/ '{
-    if (NF <= 3) { for (i=1; i<NF; i++) printf "%s/", $i; print "" }
-    else printf "%s/%s/%s/\n", $1, $2, $3
-  }'
-}
 
 compress_photo() {
   local input="$1"
@@ -113,27 +81,10 @@ compress_photo() {
 }
 
 found=0
-last_group=""
-first=1
+init_loop
 while IFS= read -r photo; do
   found=1
-  group=$(file_group "$photo")
-  rel="${photo#"$REPO_ROOT/"}"
-  display="${rel#"$group"}"
-
-  if [ "$group" != "$last_group" ]; then
-    [ "$first" -eq 0 ] && echo ""
-    printf "%s\n" "$group"
-    last_group="$group"
-    first=0
-  fi
-
-  if is_compressed "$photo"; then
-    size_fmt=$(format_size "$(wc -c < "$photo")")
-    printf "    ${CHECK} %-44s %s\n" "$display" "$size_fmt"
-  else
-    compress_photo "$photo" "$display"
-  fi
+  process_file "$photo" compress_photo
 done < <(find "$REPO_ROOT/content" \
   \( -name "*.jpg"  -o -name "*.JPG" \
      -o -name "*.jpeg" -o -name "*.JPEG" \
