@@ -13,7 +13,10 @@ export async function build({ renderables, outputDir }: BuildParams) {
 
   console.log(`copying content dirctory`);
   // copy static content
-  await cp("./content", path.join(outputDir, "content"), { recursive: true });
+  await cp("./content", path.join(outputDir, "content"), {
+    recursive: true,
+    filter: (src) => !path.basename(src).match(/^\..+\.compressed$/),
+  });
 
   await Promise.all(
     renderables.map(async (renderable) => {

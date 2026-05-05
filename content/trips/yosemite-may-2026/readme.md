@@ -6,6 +6,7 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 ## Thursday April 30th
 ### Drive from SD -> Yosemite
 
+<<<<<<< HEAD
 <div class="flex-row flex-wrap jc-space-around">
 
 <NotebookEntry src="res/notebook-entries/entry1.md" />
@@ -67,3 +68,6 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 <NotebookEntry src="res/notebook-entries/entry6.md" />
 
 <NotebookEntry src="res/notebook-entries/entry7.md" />
+=======
+
+>>>>>>> main
