@@ -30,18 +30,28 @@ get_duration_ms() {
     | awk '{printf "%d", $1 * 1000}' || echo "0"
 }
 
+marker_file() {
+  local dir
+  dir=$(dirname "$1")
+  echo "$dir/.$(basename "$1").compressed"
+}
+
 is_compressed() {
-  local tag
-  tag=$(ffprobe -v error \
-    -show_entries format_tags=compressed \
-    -of default=noprint_wrappers=1:nokey=1 "$1" 2>/dev/null || true)
-  [ "$tag" = "1" ]
+  [ -f "$(marker_file "$1")" ]
+}
+
+# Group: content/type/ for shallow files, content/type/name/ for deeper ones
+file_group() {
+  local rel="${1#"$REPO_ROOT/"}"
+  echo "$rel" | awk -F/ '{
+    if (NF <= 3) { for (i=1; i<NF; i++) printf "%s/", $i; print "" }
+    else printf "%s/%s/%s/\n", $1, $2, $3
+  }'
 }
 
 compress_video() {
   local input="$1"
-  local name
-  name=$(basename "$input")
+  local name="$2"
   local ext="${input##*.}"
   local before
   before=$(wc -c < "$input")
@@ -56,7 +66,6 @@ compress_video() {
   local progress_file
   progress_file=$(mktemp "/tmp/compress-progress-XXXXXX")
 
-  # Ensure cleanup on exit
   trap 'rm -f "$tmp" "$progress_file"' EXIT
 
   local start_time
@@ -66,7 +75,6 @@ compress_video() {
     -c:v libx264 -crf 28 -preset slow \
     -c:a aac -b:a 128k \
     -movflags +faststart \
-    -metadata compressed=1 \
     -progress "$progress_file" \
     -nostats -loglevel error \
     "$tmp" &
@@ -87,7 +95,7 @@ compress_video() {
         'BEGIN { v = int(c * 100 / d); if (v > 100) v = 100; print v }')
     fi
 
-    printf "\r  %-40s %3d%% | %ds elapsed | %s -> ..." \
+    printf "\r    %-44s %3d%% | %ds elapsed | %s -> ..." \
       "$name" "$pct" "$elapsed" "$before_fmt"
     sleep 0.5
   done
@@ -100,11 +108,12 @@ compress_video() {
 
   if [ "$exit_code" -ne 0 ]; then
     rm -f "$tmp"
-    printf "\r${CROSS} %-40s compression failed\n" "$name"
+    printf "\r    ${CROSS} %-44s compression failed\n" "$name"
     return 1
   fi
 
   mv "$tmp" "$input"
+  touch "$(marker_file "$input")"
 
   local after
   after=$(wc -c < "$input")
@@ -115,18 +124,31 @@ compress_video() {
   pct_saved=$(awk -v b="$before" -v a="$after" \
     'BEGIN { printf "%d", (b - a) * 100 / b }')
 
-  printf "\r${CHECK} %-40s 100%% | %ds | %s -> %s (%d%% smaller)\n" \
+  printf "\r    ${CHECK} %-44s 100%% | %ds | %s -> %s (%d%% smaller)\n" \
     "$name" "$elapsed" "$before_fmt" "$after_fmt" "$pct_saved"
 }
 
 found=0
+last_group=""
+first=1
 while IFS= read -r video; do
   found=1
-  name=$(basename "$video")
+  group=$(file_group "$video")
+  rel="${video#"$REPO_ROOT/"}"
+  display="${rel#"$group"}"
+
+  if [ "$group" != "$last_group" ]; then
+    [ "$first" -eq 0 ] && echo ""
+    printf "%s\n" "$group"
+    last_group="$group"
+    first=0
+  fi
+
   if is_compressed "$video"; then
-    printf "${CHECK} %s\n" "$name"
+    size_fmt=$(format_size "$(wc -c < "$video")")
+    printf "    ${CHECK} %-44s %s\n" "$display" "$size_fmt"
   else
-    compress_video "$video"
+    compress_video "$video" "$display"
   fi
 done < <(find "$REPO_ROOT/content" \
   \( -name "*.mp4" -o -name "*.MP4" -o -name "*.mov" -o -name "*.MOV" \) \
