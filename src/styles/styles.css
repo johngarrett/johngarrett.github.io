@@ -30,16 +30,14 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
 .flex-row {
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row;
 }
 
 .flex-col {
+  flex-wrap: wrap;
   display: flex;
   flex-direction: column;
 }
@@ -118,6 +116,10 @@ h1 {
   max-width: 900px;
   margin: 0 auto;
   padding: 0 clamp(0px, 5vw, 10%);
+}
+
+.project-page img {
+  width: 400px;
 }
 
 .gpx-map {
