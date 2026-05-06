@@ -6,7 +6,6 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from "node:path";
 import z from "zod";
-import { meta } from "zod/v4/core";
 
 type TripPageOptions = {
   scripts?: string[];
@@ -20,6 +19,9 @@ export const TripPages = (
   return trips.map((trip) => {
     const marked = new Marked({
       renderer: {
+        em({ text }) {
+          return `<b id="ff">${text}</b>`;
+        },
         html({ text }) {
           let output = text;
 

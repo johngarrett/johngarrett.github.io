@@ -10,6 +10,8 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 
 <NotebookEntry src="res/notebook-entries/entry1.md" />
 
+<VideoEntry src="res/videos/drive-in.mp4" attributes="portrait full-width minimal-ui" />
+
 <video width="320" height="240" controls>
   <source src="res/videos/drive-in.mp4" type="video/mp4">
 </video>

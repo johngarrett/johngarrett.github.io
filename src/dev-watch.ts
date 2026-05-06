@@ -36,7 +36,7 @@ for (const dir of ["src", "content"]) {
   });
 }
 
-process.stdin.setRawMode(true);
+//process.stdin.setRawMode(true);
 process.stdin.resume();
 process.stdin.setEncoding("utf8");
 
