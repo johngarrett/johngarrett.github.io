@@ -7,7 +7,7 @@ import { fetchContent } from "./content";
 
 const scriptBuild = await Bun.build({
   entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
-  outdir: "./html-output/trips",
+  outdir: "./html-output/js",
   format: "esm",
   target: "browser",
   naming: "[name].[ext]",
@@ -25,8 +25,8 @@ const renderables = [
   ...ProjectPages(projects),
 
   ...TripPages(trips, {
-    scripts: ["/trips/script.js"],
-    styleLinks: ["/trips/script.css"],
+    scripts: ["/js/gpx-views.js"],
+    styleLinks: ["/js/gpx-views.css"],
   }),
   // css
   StyleSheet(),
