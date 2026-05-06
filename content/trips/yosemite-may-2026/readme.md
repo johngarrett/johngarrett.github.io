@@ -137,13 +137,61 @@ My skin was smooth and the sun was nice as we dried off.
 
 ## Saturday May 1st
 
+<img src="/content/trips/yosemite-may-2026/res/videos/saturday/meadow.jpg" />
+
 <GPX src="res/gpx/saturday/bike-ride.gpx" /> <!-- TODO: width half -->
 
 > 	May 2, 2026, 10:46 AM – May 2, 2026, 6:19 PM	cycling
 
+
+### Mirror Lake
+
+<img class="w-100" src="/content/trips/yosemite-may-2026/res/videos/saturday/mirror-lake/water-footage.jpg" />
+
+
+
+<video autoplay loop loading="lazy" width="320" height="240" >
+  <source src="res/videos/saturday/mirror-lake/mountains.MOV" type="video/mp4">
+</video>
+
+<img src="/content/trips/yosemite-may-2026/res/videos/saturday/mirror-lake/me-on-rock.JPG" />
+Lots of hanging out and laughing. Some bouldering and exploring too.
+
+<img class="w-100" src="/content/trips/yosemite-may-2026/res/videos/saturday/mirror-lake/me-over-rocks.JPG" />
+
+<!--<img src="/content/trips/yosemite-may-2026/res/videos/saturday/mirror-lake/tandem.JPG" />-->
+<img src="/content/trips/yosemite-may-2026/res/videos/saturday/mirror-lake/me-on-tandem.JPG" />
+
+### Camp
+
+
 <NotebookEntry src="res/notebook-entries/entry6.md" />
 
+### Hike to El Capitian
+
+HIKE goes here 
+
+<video autoplay loop loading="lazy" width="100%">
+  <source src="res/videos/saturday/el-cap-hike/dark-walking.MOV" type="video/mp4">
+</video>
+
+<div class="flex-row">
+<video autoplay loop loading="lazy" width="400">
+  <source src="res/videos/saturday/el-cap-hike/water-walk.mov" type="video/mp4">
+</video>
+
+<video autoplay loop loading="lazy" width="400">
+  <source src="res/videos/saturday/el-cap-hike/forrest-walk.mov" type="video/mp4">
+</video>
+
+<img src="/content/trips/yosemite-may-2026/res/videos/saturday/el-cap-hike/mushroom.jpg" />
+
+<img src="/content/trips/yosemite-may-2026/res/videos/saturday/el-cap-hike/headlamps.jpg" />
+
+<img src="/content/trips/yosemite-may-2026/res/videos/saturday/el-cap-hike/me-dark.JPG" />
+
 <NotebookEntry src="res/notebook-entries/entry7.md" />
+</div>
 
 ## Sunday May 2nd
 
