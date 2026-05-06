@@ -30,6 +30,10 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.w-100 {
+  width: 100% !important;
+}
+
 .flex-row {
   flex-wrap: wrap;
   display: flex;
