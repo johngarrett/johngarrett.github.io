@@ -5,10 +5,11 @@ import {
   gpxTransformer,
   notebookTransformer,
   relativeLinkTransformer,
-  type Content,
-} from "../content";
+} from "./transformers";
+import type { Content } from "./types";
 
-type TripPageOptions = {
+type ContentPageOptions = {
+  path: string;
   scripts?: string[];
   styleLinks?: string[];
 };
@@ -19,22 +20,18 @@ const transformers = [
   relativeLinkTransformer,
 ];
 
-// TODO: rename ContentPages
-export const TripPages = (
-  trips: Content[],
-  options?: TripPageOptions,
+export const ContentPages = (
+  contentArray: Content[],
+  options: ContentPageOptions,
 ): Renderable[] => {
-  return trips.map((trip) => {
+  return contentArray.map((content) => {
     const marked = new Marked({
       renderer: {
-        em({ text }) {
-          return `<b id="ff">${text}</b>`;
-        },
         html({ text }) {
           let output = text;
 
           for (const transformer of transformers) {
-            output = transformer(output, { content: trip });
+            output = transformer(output, { content: content });
           }
 
           return output === text ? false : output;
@@ -42,14 +39,14 @@ export const TripPages = (
       },
     });
 
-    const renderedContent = marked.parse(trip.markdownContent);
+    const renderedContent = marked.parse(content.markdownContent);
     return {
-      path: `trips/${trip.filename}.html`,
+      path: `${options.path}/${content.filename}.html`,
       render: () =>
         htmlPage({
           params: {
-            head: { title: trip.title },
-            navbar: { title: trip.title },
+            head: { title: content.title },
+            navbar: { title: content.title },
           },
           scripts: options?.scripts,
           styleLinks: options?.styleLinks,
