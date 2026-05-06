@@ -6,13 +6,14 @@ import { TripPages } from "./trips";
 import { fetchContent } from "./content";
 
 const scriptBuild = await Bun.build({
-  entrypoints: ["./src/trips/script.ts"],
+  entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
   outdir: "./html-output/trips",
   format: "esm",
   target: "browser",
   naming: "[name].[ext]",
 });
-if (!scriptBuild.success) throw new AggregateError(scriptBuild.logs, "script build failed");
+if (!scriptBuild.success)
+  throw new AggregateError(scriptBuild.logs, "script build failed");
 
 const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
