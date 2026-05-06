@@ -69,3 +69,16 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 <NotebookEntry src="res/notebook-entries/entry6.md" />
 
 <NotebookEntry src="res/notebook-entries/entry7.md" />
+
+## Sunday May 2nd
+
+
+<NotebookEntry src="res/notebook-entries/entry8.md" />
+
+<NotebookEntry src="res/notebook-entries/entry9.md" />
+<NotebookEntry src="res/notebook-entries/entry10.md" />
+<NotebookEntry src="res/notebook-entries/entry11.md" />
+
+## Monday May 2nd
+<NotebookEntry src="res/notebook-entries/entry12.md" />
+<NotebookEntry src="res/notebook-entries/entry13.md" />

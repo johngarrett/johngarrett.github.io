@@ -6,6 +6,6 @@ location: almost el cap
 
 Sobering up and seeing the range when i woke up.
 
-A fear I made the wrong choice.
+Fearful I made the wrong choice.
 
 Having done this with a group, I feel accomplished and bonded.
