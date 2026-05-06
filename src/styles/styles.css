@@ -50,6 +50,10 @@ h1 {
   justify-content: space-around;
 }
 
+.ai-start {
+  align-items: start;
+}
+
 .ai-center {
   align-items: center;
 }

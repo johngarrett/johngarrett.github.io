@@ -5,12 +5,8 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 
 ## Thursday April 30th
 ### Drive from SD -> Yosemite
-<div class="flex-row">
 
 <img src="/content/trips/yosemite-may-2026/res/videos/thursday/drive-in/dinah.JPG" />
-<!--<img src="/content/trips/yosemite-may-2026/res/videos/thursday/drive-in/strawberry.JPG" />-->
-
-</div>
 
 <div class="flex-row jc-space-around">
 
@@ -26,9 +22,6 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 </video>
 
 </div>
-
-
-
 </div>
 
 ### Night ride
@@ -72,28 +65,26 @@ a trip to Yosemite with friends from the Bike Nite group; my first time in Yosem
 
 > Waterfall hike, May 1, 2026, 11:23 AM – May 1, 2026, 2:38 PM	walking
 
-<div class="flex-row jc-space-around">
+<div class="flex-row">
 
-![vernal falls drawing](/content/trips/yosemite-may-2026/res/videos/friday/vernal-falls-hike/vernal-falls-drawing.jpg)
+<!--![vernal falls drawing](/content/trips/yosemite-may-2026/res/videos/friday/vernal-falls-hike/vernal-falls-drawing.jpg)-->
+<!--![vernal falls looking](/content/trips/yosemite-may-2026/res/videos/friday/vernal-falls-hike/nevada-falls-looking.jpg)-->
 
-<NotebookEntry src="res/notebook-entries/entry4.md" />
-
-![vernal falls looking](/content/trips/yosemite-may-2026/res/videos/friday/vernal-falls-hike/nevada-falls-looking.jpg)
-
+<video autoplay loop loading="lazy" width="320" height="240" >
+  <source src="res/videos/friday/vernal-falls-hike/nevada-falls-mist.MOV" type="video/mp4">
+</video>
 <video autoplay loop loading="lazy" width="240" height="320" >
   <source src="res/videos/friday/vernal-falls-hike/nevada-falls-under.MOV" type="video/mp4">
 </video>
 
-<video autoplay loop loading="lazy" width="320" height="240" >
+<video autoplay loop loading="lazy" width="100%">
   <source src="res/videos/friday/vernal-falls-hike/nevada-falls-texture.MOV" type="video/mp4">
 </video>
 
+
+<NotebookEntry src="res/notebook-entries/entry4.md" />
 <video autoplay loop loading="lazy" width="320" height="240" >
   <source src="res/videos/friday/vernal-falls-hike/nevada-falls-veritical.MOV" type="video/mp4">
-</video>
-
-<video autoplay loop loading="lazy" width="320" height="240" >
-  <source src="res/videos/friday/vernal-falls-hike/nevada-falls-mist.MOV" type="video/mp4">
 </video>
 
 <video autoplay loop loading="lazy" width="320" height="240" >
