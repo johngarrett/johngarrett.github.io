@@ -7,6 +7,7 @@ export type ContentInfo = {
   endDate?: Date;
   title: string;
   short: string;
+  bodyKind: "html" | "markdown";
 };
 
 export type Content = {

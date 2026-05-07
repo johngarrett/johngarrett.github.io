@@ -25,6 +25,11 @@ export const ContentPages = (
   options: ContentPageOptions,
 ): Renderable[] => {
   return contentArray.map((content) => {
+    if (content.info.bodyKind === "html") {
+      // TODO: parse HTML
+    }
+
+    // else: TODO parse markdown
     const marked = new Marked({
       renderer: {
         html({ text }) {
