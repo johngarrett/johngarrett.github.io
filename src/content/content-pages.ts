@@ -39,7 +39,7 @@ export const ContentPages = (
       },
     });
 
-    const renderedContent = marked.parse(content.markdownContent);
+    const renderedContent = marked.parse(content.pageBody);
     return {
       path: `${options.path}/${content.filename}.html`,
       render: () =>

@@ -12,7 +12,7 @@ export const getLinkBoxes = ({
         title: "YVML Interactive Map",
         href: "https://yvml.github.io/map",
         filename: "foo",
-        markdownContent: "",
+        pageBody: "",
         info: {
           title: "YVML Interactive Map",
           short: "interactive map for YVML",

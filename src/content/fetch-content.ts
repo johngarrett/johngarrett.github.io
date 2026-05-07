@@ -34,9 +34,15 @@ const getInfo = async (path: string): Promise<ContentInfo> => {
   return result.data satisfies ContentInfo;
 };
 
-const getReadme = async (path: string) => {
-  const file = await readFile(path, "utf-8");
-  const { content } = matter(file);
+const getAndParseBody = async (path: string) => {
+  const fileContents = await readFile(path, "utf-8");
+  const content = (() => {
+    if (path.includes(".md")) {
+      return matter(fileContents).content;
+    } else {
+      return fileContents;
+    }
+  })();
 
   return {
     content,
@@ -64,13 +70,21 @@ export const fetchContent = async (
       const infoPath = path.join(itemDirectory, "info.json");
       const info = await getInfo(infoPath);
 
+      // IF body.html else
+      const bodyPath = path.join(itemDirectory, "body.html");
       const readmePath = path.join(itemDirectory, "readme.md");
-      const readme = await getReadme(readmePath);
+
+      let bodyContent: string | undefined = undefined;
+      try {
+        bodyContent = (await getAndParseBody(bodyPath)).content;
+      } catch (e) {
+        bodyContent = (await getAndParseBody(readmePath)).content;
+      }
 
       const result = {
         filename: entry.name,
         title: info.title,
-        markdownContent: readme.content,
+        pageBody: bodyContent,
         info: info,
       } satisfies Content;
 
