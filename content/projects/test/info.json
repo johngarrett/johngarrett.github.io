@@ -1,4 +1,5 @@
 {
   "title": "Test",
-  "short": "a test about html"
+  "short": "a test about html",
+  "bodyKind": "html"
 }

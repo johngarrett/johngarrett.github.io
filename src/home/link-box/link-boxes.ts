@@ -16,6 +16,7 @@ export const getLinkBoxes = ({
         info: {
           title: "YVML Interactive Map",
           short: "interactive map for YVML",
+          bodyKind: "markdown",
         },
       },
     ],

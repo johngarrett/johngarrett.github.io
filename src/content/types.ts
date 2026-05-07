@@ -13,6 +13,7 @@ export type ContentInfo = {
 export type Content = {
   filename: string;
   title: string;
+  // { kind: "html", text: HTMLString } | { ... } ?
   pageBody: MarkdownString | HTMLString;
 
   info: ContentInfo;

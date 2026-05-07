@@ -20,31 +20,38 @@ const transformers = [
   relativeLinkTransformer,
 ];
 
+const transformText = (text: string, content: Content) => {
+  let output = text;
+
+  for (const transformer of transformers) {
+    output = transformer(output, { content: content });
+  }
+
+  return output === text ? false : output;
+};
+
 export const ContentPages = (
   contentArray: Content[],
   options: ContentPageOptions,
 ): Renderable[] => {
   return contentArray.map((content) => {
-    if (content.info.bodyKind === "html") {
-      // TODO: parse HTML
-    }
+    const { bodyKind } = content.info;
 
-    // else: TODO parse markdown
-    const marked = new Marked({
-      renderer: {
-        html({ text }) {
-          let output = text;
+    const renderedContent = (() => {
+      if (bodyKind === "html") {
+        return transformText(content.pageBody, content);
+      } else {
+        const marked = new Marked({
+          renderer: {
+            html({ text }) {
+              return transformText(text, content);
+            },
+          },
+        });
+        return marked.parse(content.pageBody);
+      }
+    })();
 
-          for (const transformer of transformers) {
-            output = transformer(output, { content: content });
-          }
-
-          return output === text ? false : output;
-        },
-      },
-    });
-
-    const renderedContent = marked.parse(content.pageBody);
     return {
       path: `${options.path}/${content.filename}.html`,
       render: () =>

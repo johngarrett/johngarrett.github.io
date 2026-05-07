@@ -15,7 +15,7 @@ const getInfo = async (path: string): Promise<ContentInfo> => {
   const infoSchema = z.object({
     title: z.string(),
     short: z.string(),
-    bodyKind: z.string(), // TODO: html or markdown
+    bodyKind: z.enum(["html", "markdown"]),
     galleryResources: z.optional(z.string()),
     mapResources: z.optional(z.string()),
     /**
