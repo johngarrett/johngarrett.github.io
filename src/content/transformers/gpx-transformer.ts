@@ -22,7 +22,11 @@ export const gpxTransformer: MarkdownTransformer = (input, context) => {
       ? src
       : `/content/trips/${context.content.filename}/${src}`;
 
-    const styleAttr = width ? ` style="width: ${width};"` : "";
+    // When a width is set, also pin flex-basis so the map keeps that size
+    // inside a flex container (otherwise .gpx-map's `flex: 1 1 300px` wins).
+    const styleAttr = width
+      ? ` style="width: ${width}; flex: 0 1 ${width};"`
+      : "";
 
     return `<div class="gpx-map" data-src="${resolvedSrc}"${styleAttr}></div>`;
   });

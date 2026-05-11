@@ -76,6 +76,24 @@ h1 {
   place-items: center;
 }
 
+/* Allows a flex item to shrink below its intrinsic min-content width
+   (useful for media that would otherwise refuse to compress) */
+.min-w-0 {
+  min-width: 0;
+}
+
+/* Paired column utilities for the notebook + media collage layout.
+   Children of a .flex-row; below ~800px container width they wrap into one column. */
+.col-narrow {
+  flex: 1 1 280px;
+  min-width: 0;
+}
+
+.col-wide {
+  flex: 2 1 520px;
+  min-width: 0;
+}
+
 .bold {
   font-weight: bold;
 }

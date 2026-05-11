@@ -36,21 +36,21 @@
 
 
 
-<div class="flex-row dashed-border">
-  <!--- notebook entries -->
-  <div class="flex-col">
+<div class="dashed-border p-4 my-10 flex-row ai-start">
+  <!-- notebook entries: stack vertically on the left -->
+  <div class="flex-col col-narrow">
     <NotebookEntry src="res/notebook-entries/entry3.md" />
     <NotebookEntry src="res/notebook-entries/entry4.md" />
   </div>
 
-  <!-- Media along side notebook entries -->
-  <div class="flex">
+  <!-- media collage: wraps and fills the remaining space on the right -->
+  <div class="flex-row jc-space-around ai-start col-wide">
     <!-- Curry Village bike ride -->
-    <video controls autoplay loop loading="lazy" width="240" height="320" autoplay loop loading="lazy">
+    <video controls autoplay loop loading="lazy" width="240" height="320">
       <source src="res/videos/friday/bike-ride.mov" type="video/mp4">
     </video>
     <!-- hike GPX -->
-    <GPX src="res/videos/friday/vernal-falls-hike/hike.gpx" />
+    <GPX src="res/videos/friday/vernal-falls-hike/hike.gpx" width="240px" />
     <!-- waterfall video -->
     <video controls autoplay loop loading="lazy" width="240" height="320">
       <source src="res/videos/friday/morning-waterfall-2.MOV" type="video/mp4">
