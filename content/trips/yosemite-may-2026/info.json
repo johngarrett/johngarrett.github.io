@@ -3,5 +3,5 @@
   "short": "trip to yosemite",
   "startDate": "2026-04-30",
   "endDate": "2026-05-04",
-  "bodyKind": "markdown"
+  "bodyKind": "html"
 }

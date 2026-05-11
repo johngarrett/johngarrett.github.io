@@ -30,6 +30,20 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.p-4 {
+  padding: 4px;
+}
+
+.my-10 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.dashed-border {
+  border: dashed;
+  border-width: 1px;
+}
+
 .w-100 {
   width: 100% !important;
 }
@@ -143,6 +157,8 @@ h1 {
   border-style: solid;
   padding: 1em;
   margin: 1em;
+  /* grow and shrink, preferred width 200px */
+  flex: 1 1 200px;
 }
 
 

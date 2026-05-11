@@ -30,7 +30,7 @@ const transformText = (text: string, content: Content) => {
     output = transformer(output, { content: content });
   }
 
-  return output === text ? false : output;
+  return output;
 };
 
 export const ContentPages = (
@@ -48,7 +48,10 @@ export const ContentPages = (
           return new Marked({
             renderer: {
               html({ text }) {
-                return transformText(text, content);
+                const transformed = transformText(text, content);
+                // Return false so marked falls back to its default html
+                // renderer when no transformer modified the block.
+                return transformed === text ? false : transformed;
               },
             },
           }).parse(content.pageBody);

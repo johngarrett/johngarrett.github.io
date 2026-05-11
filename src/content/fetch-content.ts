@@ -71,16 +71,16 @@ export const fetchContent = async (
       const infoPath = path.join(itemDirectory, "info.json");
       const info = await getInfo(infoPath);
 
-      // IF body.html else
-      const bodyPath = path.join(itemDirectory, "body.html");
-      const readmePath = path.join(itemDirectory, "readme.md");
-
-      let bodyContent: string | undefined = undefined;
-      try {
-        bodyContent = (await getAndParseBody(bodyPath)).content;
-      } catch (e) {
-        bodyContent = (await getAndParseBody(readmePath)).content;
-      }
+      const bodyContent = await (async () => {
+        switch (info.bodyKind) {
+          case "html":
+            const bodyPath = path.join(itemDirectory, "body.html");
+            return (await getAndParseBody(bodyPath)).content;
+          case "markdown":
+            const readmePath = path.join(itemDirectory, "readme.md");
+            return (await getAndParseBody(readmePath)).content;
+        }
+      })();
 
       const result = {
         filename: entry.name,
