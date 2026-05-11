@@ -20,6 +20,9 @@ const transformers = [
   relativeLinkTransformer,
 ];
 
+/**
+ * Replace custom XML elements based on transformer array
+ */
 const transformText = (text: string, content: Content) => {
   let output = text;
 
@@ -38,17 +41,17 @@ export const ContentPages = (
     const { bodyKind } = content.info;
 
     const renderedContent = (() => {
-      if (bodyKind === "html") {
-        return transformText(content.pageBody, content);
-      } else {
-        const marked = new Marked({
-          renderer: {
-            html({ text }) {
-              return transformText(text, content);
+      switch (bodyKind) {
+        case "html":
+          return transformText(content.pageBody, content);
+        case "markdown":
+          return new Marked({
+            renderer: {
+              html({ text }) {
+                return transformText(text, content);
+              },
             },
-          },
-        });
-        return marked.parse(content.pageBody);
+          }).parse(content.pageBody);
       }
     })();
 
