@@ -146,8 +146,10 @@ h1 {
 
 .gpx-map {
   height: 400px;
-  width: 100%;
   margin: 1rem 0;
+  /* grow and shrink as a flex item; still fills width as a block */
+  flex: 1 1 300px;
+  min-width: 0;
 }
 
 .notebook-entry {
