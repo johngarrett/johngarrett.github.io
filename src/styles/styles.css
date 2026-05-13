@@ -44,6 +44,11 @@ h1 {
   border-width: 1px;
 }
 
+.dashed-border-thick {
+  border: dashed;
+  border-width: 2px;
+}
+
 .w-100 {
   width: 100% !important;
 }
@@ -54,6 +59,10 @@ h1 {
   flex-direction: row;
 }
 
+.flex-wrap-rev {
+  flex-wrap: wrap-reverse;
+}
+
 .flex-col {
   flex-wrap: wrap;
   display: flex;
@@ -62,6 +71,18 @@ h1 {
 
 .jc-space-around {
   justify-content: space-around;
+}
+
+.jc-start {
+  justify-content: flex-start;
+}
+
+.gap-1 {
+  gap: 0.5rem;
+}
+
+.gap-2 {
+  gap: 1rem;
 }
 
 .ai-start {
@@ -181,9 +202,16 @@ h1 {
   flex: 1 1 200px;
 }
 
+.p15 {
+  padding: 15px;
+}
 
 .project-card img {
   max-width: 200px;
+}
+
+.tc {
+  text-align: center;
 }
 
 
