@@ -4,7 +4,10 @@ import { build } from "./utils";
 import { ContentPages, fetchContent } from "./content";
 
 const scriptBuild = await Bun.build({
-  entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
+  entrypoints: [
+    "./src/content/injected-scripts/gpx-views.ts",
+    "./src/content/injected-scripts/video-autoplay.ts",
+  ],
   outdir: "./html-output/js",
   format: "esm",
   target: "browser",
@@ -29,7 +32,7 @@ const renderables = [
   // trip pages
   ...ContentPages(trips, {
     path: "trips",
-    scripts: ["/js/gpx-views.js"],
+    scripts: ["/js/gpx-views.js", "/js/video-autoplay.js"],
     styleLinks: ["/js/gpx-views.css"],
   }),
   // css

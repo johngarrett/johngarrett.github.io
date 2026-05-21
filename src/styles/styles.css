@@ -106,7 +106,7 @@ h1 {
 /* Paired column utilities for the notebook + media collage layout.
    Children of a .flex-row; below ~800px container width they wrap into one column. */
 .col-narrow {
-  flex: 1 1 280px;
+  flex: 0 1 280px;
   min-width: 0;
 }
 
@@ -179,8 +179,45 @@ h1 {
   padding: 0 clamp(0px, 5vw, 10%);
 }
 
+.project-page img,
+.project-page video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.project-page video {
+  width: 100%;
+  object-fit: contain;
+}
+
 .project-page img {
-  width: 400px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.media-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.media-flex > * {
+  flex: 1 1 250px;
+  min-width: 0;
+}
+
+.media-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex: 0 1 320px;
+  width: min(100%, 320px);
+  min-width: 0;
+}
+
+.hero-video {
+  width: 100%;
 }
 
 .gpx-map {
@@ -212,6 +249,17 @@ h1 {
 
 .tc {
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  .col-narrow,
+  .col-wide {
+    flex-basis: 100%;
+  }
+
+  .media-flex > * {
+    flex-basis: 100%;
+  }
 }
 
 
