@@ -216,6 +216,18 @@ h1 {
   min-width: 0;
 }
 
+.split-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.split-row > * {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .hero-video {
   width: 100%;
 }
@@ -258,6 +270,18 @@ h1 {
   }
 
   .media-flex > * {
+    flex-basis: 100%;
+  }
+
+  .split-row {
+    flex-wrap: wrap;
+  }
+
+  .split-row.flex-wrap-rev {
+    flex-wrap: wrap-reverse;
+  }
+
+  .split-row > * {
     flex-basis: 100%;
   }
 }
