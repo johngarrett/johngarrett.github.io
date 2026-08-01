@@ -262,12 +262,18 @@ nav ul {
 
 nav a,
 nav a:visited {
-  color: var(--link-color);
+  color: black;
+  text-decoration: none;
 }
 
 nav a:hover,
 nav a:active {
   color: inherit;
+  text-decoration: underline;
+}
+
+.nav-li {
+  padding: 0;
 }
 
 
@@ -316,7 +322,6 @@ nav a:active {
   padding: 4px;
   cursor: pointer;
 }
-
 
 .job-years {
   text-align: right;

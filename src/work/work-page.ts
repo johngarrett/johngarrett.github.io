@@ -1,4 +1,4 @@
-import { contentGrid, htmlPage, navBar } from "../components";
+import { contentGrid, htmlPage, navBox } from "../components";
 import { html, type HTMLString, type Renderable } from "../utils";
 
 type WorkEntry = {
@@ -45,7 +45,7 @@ export const WorkPage = (): Renderable => {
           head: { title: "garrepi work" },
         },
         // TODO: rename, or encapsulate with navBar
-        content: contentGrid(navBar(), workList(workData())),
+        content: contentGrid(navBox({ active: "work" }), workList(workData())),
       }),
   };
 };

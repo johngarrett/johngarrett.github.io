@@ -59,7 +59,7 @@ export const jobs: Job[] = [
   },
   {
     company: "HyperSwift",
-    title: "DSL in swift",
+    title: "HTML DSL built in swift",
     oneline: "",
     years: "2019",
   },
