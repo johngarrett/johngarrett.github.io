@@ -286,3 +286,14 @@ nav a:active {
     flex: 1;
   }
 }
+
+
+/** resume page: TODO: breakout **/
+
+.job-summary {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}

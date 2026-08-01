@@ -1,55 +1,53 @@
 import { contentGrid, htmlPage, navBar } from "../components";
 import { html, type HTMLString, type Renderable } from "../utils";
 
-//<table>
-//  <thead>
-//    <tr>
-//      <th>Organization</th>
-//      <th>Role</th>
-//      <th>Years</th>
-//    </tr>
-//  </thead>
-//  <tbody>
-//    <tr>
-//      <td>Chick-fil-A</td>
-//      <td>Team Leader</td>
-//      <td>2014–2016</td>
-//    </tr>
-//    <tr>
-//      <td>Computers 2 Kids</td>
-//      <td>Volunteer</td>
-//      <td>2022–2023</td>
-//    </tr>
-//  </tbody>
-//</table>
-
 type TableParams = {
   //head?: HTMLElement;
   rows: HTMLString[]; // ["<td>foo</td>", "<td>bar</td>"]
 };
 
 const table = (params: TableParams): HTMLString => {
-  return html` <table>
-    <tbody>
-      ${params.rows.map((r) => `<tr>${r}</tr>`).join("")}
-    </tbody>
-  </table>`;
+  return html` <div>${params.rows.join("")}</div>`;
 };
 
-type Job = { company: string; title: string; years: string };
+type Job = { company: string; title: string; years: string; oneline: string };
 const jobs: Job[] = [
+  {
+    company: "Yucca Valley Material Lab",
+    title: "Freelance Software Engineer",
+    oneline: "built and interactive map with custom map tiles",
+    years: "feb 2026",
+  },
   {
     company: "Apple",
     title: "Senior Software Engineer",
+    oneline: "built and interactive map with custom map tiles",
     years: "2023-2026",
+  },
+  {
+    company: "Barrel Proof Apps",
+    title: "Software Engineer",
+    oneline: "built and interactive map with custom map tiles",
+    years: "2021-2023",
+  },
+  {
+    company: "Apple",
+    title: "Intern",
+    oneline: "built and interactive map with custom map tiles",
+    years: "summer 2021, summer 2022",
   },
 ];
 
 const renderJob = (job: Job) => {
-  return `
-  <td>${job.company}</td>
-  <td>${job.title}</td>
-  <td>${job.years}</td>
+  return html`
+    <details class="job">
+      <summary class="job-summary">
+        <span>${job.company}</span>
+        <span>${job.title}</span>
+        <span>${job.years}</span>
+      </summary>
+      <p>${job.oneline}</p>
+    </details>
   `;
 };
 
