@@ -4,6 +4,7 @@ import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 import { TripPages } from "./trips";
 import { fetchContent } from "./content";
+import { WorkPage } from "./work";
 
 const scriptBuild = await Bun.build({
   entrypoints: ["./src/trips/script.ts"],
@@ -12,7 +13,8 @@ const scriptBuild = await Bun.build({
   target: "browser",
   naming: "[name].[ext]",
 });
-if (!scriptBuild.success) throw new AggregateError(scriptBuild.logs, "script build failed");
+if (!scriptBuild.success)
+  throw new AggregateError(scriptBuild.logs, "script build failed");
 
 const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
@@ -27,6 +29,8 @@ const renderables = [
     scripts: ["/trips/script.js"],
     styleLinks: ["/trips/script.css"],
   }),
+
+  WorkPage(),
   // css
   StyleSheet(),
 ];
