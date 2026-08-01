@@ -58,7 +58,7 @@ Each content directory (trip or project) is loaded into a `Content` object:
 ```typescript
 type Content = {
   info: ContentInfo;      // validated fields from info.json
-  body: MarkdownString;   // raw markdown from readme.md
+  markdownContent: string;   // raw markdown from readme.md
   filename: string;       // directory name, becomes the URL slug
 }
 
