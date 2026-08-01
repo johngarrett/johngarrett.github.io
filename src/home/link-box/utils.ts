@@ -1,11 +1,11 @@
 import { html, type HTMLString } from "../../utils";
-import type { Link, LinkBox } from "./types";
+import type { ContentLink, LinkBox } from "./types";
 
-const linkToHTML = (link: Link): HTMLString => html`
+const linkToHTML = (link: ContentLink): HTMLString => html`
   <li><a href=${link.href} title="${link.info.short}">${link.title}</a></li>
 `;
 
-const defaultRenderer = (links: Link[]) => {
+const defaultRenderer = (links: ContentLink[]) => {
   return html`<ul>
     ${links.map(linkToHTML).join("")}
   </ul>`;

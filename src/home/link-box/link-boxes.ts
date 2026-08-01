@@ -1,7 +1,7 @@
 import { html, type HTMLString } from "../../utils";
-import type { LinkBoxesParams, LinkBox, Link } from "./types";
+import type { LinkBoxesParams, LinkBox, ContentLink } from "./types";
 
-export const linkBoxes = ({
+export const getLinkBoxes = ({
   projects,
   trips,
 }: LinkBoxesParams): Array<LinkBox> => [
@@ -22,18 +22,34 @@ export const linkBoxes = ({
   },
   {
     title: "Trips",
-    links: trips.map((p) => {
-      return {
-        ...p,
-        href: `/trips/${p.filename}`,
-      };
-    }),
-    renderer: (links: Link[]): HTMLString => {
-      const renderLink = (link: Link) => html`
+    links: trips
+      .sort((a, b) => {
+        return (
+          (b.info.startDate?.getTime() ?? 0) -
+          (a.info.startDate?.getTime() ?? 0)
+        );
+      })
+      .map((trip) => {
+        return {
+          ...trip,
+          href: `/trips/${trip.filename}`,
+        };
+      }),
+    renderer: (conentLinks: ContentLink[]): HTMLString => {
+      const renderLink = (contentLink: ContentLink) => html`
         <tr>
-          <td>jan '26</td>
           <td>
-            <a href=${link.href} title="${link.info.short}">${link.title}</a>
+            ${contentLink.info.startDate
+              ?.toLocaleDateString("en-US", {
+                month: "short",
+                year: "2-digit",
+              })
+              .toLowerCase()}
+          </td>
+          <td>
+            <a href=${contentLink.href} title="${contentLink.info.short}"
+              >${contentLink.title}</a
+            >
           </td>
         </tr>
       `;
@@ -41,7 +57,7 @@ export const linkBoxes = ({
       return html`
         <table>
           <tbody>
-            ${links.map(renderLink).join("")}
+            ${conentLinks.map(renderLink).join("")}
           </tbody>
         </table>
       `;
