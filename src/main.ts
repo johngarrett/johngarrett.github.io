@@ -22,10 +22,12 @@ const renderables = [
   ...ContentPages(projects, {
     path: "projects",
     scripts: ["/js/gpx-views.js"],
+    styleLinks: ["/js/gpx-views.css"],
   }),
   ...ContentPages(trips, {
     path: "trips",
     scripts: ["/js/gpx-views.js"],
+    styleLinks: ["/js/gpx-views.css"],
   }),
 
   WorkPage(),
