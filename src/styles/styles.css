@@ -259,6 +259,16 @@ nav ul {
   padding: 0;
 }
 
+nav a,
+nav a:visited {
+  color: var(--link-color);
+}
+
+nav a:hover,
+nav a:active {
+  color: inherit;
+}
+
 
 @media (max-width: 500px) {
   .main-grid {

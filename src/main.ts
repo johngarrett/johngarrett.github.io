@@ -1,5 +1,6 @@
 import { ContentPages, fetchContent } from "./content";
 import { HomePage } from "./home/home-page";
+import { ResumePage } from "./resume";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 import { WorkPage } from "./work";
@@ -31,6 +32,7 @@ const renderables = [
   }),
 
   WorkPage(),
+  ResumePage(),
   // css
   StyleSheet(),
 ];
