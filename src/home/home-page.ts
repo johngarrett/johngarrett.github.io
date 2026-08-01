@@ -1,7 +1,7 @@
 import { htmlPage } from "../components";
 import type { Content } from "../content";
 import { html } from "../utils";
-import { linkBoxes as getLinkBoxes, linkBoxToHTML } from "./link-box";
+import { getLinkBoxes, linkBoxToHTML } from "./link-box";
 
 export type HomePageParams = {
   projects: Content[];

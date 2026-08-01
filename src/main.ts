@@ -1,14 +1,12 @@
-import { ProjectPages } from "./projects/project-pages";
+import { ContentPages, fetchContent } from "./content";
 import { HomePage } from "./home/home-page";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
-import { TripPages } from "./trips";
-import { fetchContent } from "./content";
 import { WorkPage } from "./work";
 
 const scriptBuild = await Bun.build({
-  entrypoints: ["./src/trips/script.ts"],
-  outdir: "./html-output/trips",
+  entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
+  outdir: "./html-output/js",
   format: "esm",
   target: "browser",
   naming: "[name].[ext]",
@@ -20,14 +18,16 @@ const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
 
 const renderables = [
-  // main
   HomePage({ projects, trips }),
-  // project pages
-  ...ProjectPages(projects),
-
-  ...TripPages(trips, {
-    scripts: ["/trips/script.js"],
-    styleLinks: ["/trips/script.css"],
+  ...ContentPages(projects, {
+    path: "projects",
+    scripts: ["/js/gpx-views.js"],
+    styleLinks: ["/js/gpx-views.css"],
+  }),
+  ...ContentPages(trips, {
+    path: "trips",
+    scripts: ["/js/gpx-views.js"],
+    styleLinks: ["/js/gpx-views.css"],
   }),
 
   WorkPage(),
@@ -38,7 +38,7 @@ const renderables = [
 try {
   await build({
     outputDir: "html-output",
-    renderables: renderables,
+    renderables,
   });
 } catch (e) {
   console.error(e);

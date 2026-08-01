@@ -30,6 +30,10 @@ h1 {
   margin-bottom: 0.5rem;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
@@ -42,6 +46,14 @@ h1 {
 
 .jc-space-around {
   justify-content: space-around;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.pc-center {
+  place-items: center;
 }
 
 .bold {
@@ -112,6 +124,15 @@ h1 {
   height: 400px;
   width: 100%;
   margin: 1rem 0;
+}
+
+.notebook-entry {
+  max-width: 400px;
+  border-color: var(--border-color);
+  border-width: 2px;
+  border-style: solid;
+  padding: 1em;
+  margin: 1em;
 }
 
 
