@@ -16,6 +16,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
+  font-size: 12px;
   display: grid;
   /* navbar */
   grid-template-rows: 56px 1fr;
@@ -245,11 +246,11 @@ h1 {
 /** grid **/
 .main-grid {
   display: grid;
-  grid-template-columns: 120px minmax(0, 1fr);
+  grid-template-columns: 80px minmax(0, 1fr);
   gap: 2rem;
 
   margin: 0 auto;
-  padding: 2rem;
+  padding: 1rem;
   align-items: start;
 }
 
@@ -288,12 +289,35 @@ nav a:active {
 }
 
 
-/** resume page: TODO: breakout **/
+/** resume page: TODO: breakout into its own stylesheet **/
 
 .job-summary {
   display: grid;
   grid-template-columns: 2fr 2fr 2fr auto;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem 0;
+}
+
+.job-details[open]>.job-summary {
+  font-weight: bold;
+}
+
+.job-summary:hover {
+  font-weight: bold;
+}
+
+.jobs-container {
+  max-width: 650px;
+}
+
+.job-details {
+  border-bottom: solid;
+  border-width: 0.5px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+
+.job-years {
+  text-align: right;
 }

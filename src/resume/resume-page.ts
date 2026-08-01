@@ -8,16 +8,16 @@ type TableParams = {
 };
 
 const table = (params: TableParams): HTMLString => {
-  return html` <div>${params.rows.join("")}</div>`;
+  return html` <div class="jobs-container">${params.rows.join("")}</div>`;
 };
 
 const renderJob = (job: Job) => {
   return html`
-    <details class="job">
+    <details class="job-details">
       <summary class="job-summary">
         <span>${job.company}</span>
         <span>${job.title}</span>
-        <span>${job.years}</span>
+        <span class="job-years">${job.years}</span>
       </summary>
       <p>${job.oneline}</p>
     </details>

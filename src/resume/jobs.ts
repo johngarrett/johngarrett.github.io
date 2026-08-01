@@ -7,7 +7,7 @@ export type Job = {
 export const jobs: Job[] = [
   {
     company: "Yucca Valley Material Lab",
-    title: "Freelance Software Engineer",
+    title: "Work Trade",
     oneline: "built and interactive map with custom map tiles",
     years: "feb 2026",
   },
@@ -25,6 +25,13 @@ export const jobs: Job[] = [
     years: "2023",
   },
   {
+    company: "Apple",
+    title: "Intern",
+    oneline:
+      "worked in webassembly. migrating existing frameworks to new platforms",
+    years: "2022",
+  },
+  {
     company: "Barrel Proof Apps",
     title: "Contract Software Engineer",
     oneline:
@@ -36,7 +43,7 @@ export const jobs: Job[] = [
     title: "Intern",
     oneline:
       "worked in webassembly. migrating existing frameworks to new platforms",
-    years: "summer 2021, summer 2022",
+    years: "2021",
   },
   {
     company: "SameTunes",
