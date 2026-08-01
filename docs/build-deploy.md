@@ -30,7 +30,7 @@ bun run dev
 # open http://localhost:3000
 ```
 
-The watcher (`bun --watch src/main.ts`) rebuilds the entire site whenever any source file changes. The `serve` process hosts `html-output/` statically. Hot module reloading is not configured — refresh the browser after each rebuild.
+The watcher (`src/dev-watch.ts`) rebuilds the entire site whenever any source file changes. The `serve` process hosts `html-output/` statically. Hot module reloading is not configured — refresh the browser after each rebuild.
 
 ## Build pipeline
 

@@ -36,7 +36,7 @@ content/
         images/      # photos
 ```
 
-`info.json` is validated with Zod against the `TripInfo` / `ContentInfo` schema in `src/content/`.
+`info.json` is validated with Zod against the `ContentInfo` schema in `src/content/fetch-content.ts`.
 
 ## Trip pages and GPX maps
 
