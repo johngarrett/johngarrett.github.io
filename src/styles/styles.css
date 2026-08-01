@@ -34,6 +34,10 @@ h1 {
   width: 100% !important;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .flex-row {
   flex-wrap: wrap;
   display: flex;
@@ -249,4 +253,40 @@ h1 {
   color: var(--link-color-hover);
   text-decoration: underline;
   cursor: pointer;
+}
+
+
+/** grid **/
+.main-grid {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 2rem;
+
+  margin: 0 auto;
+  padding: 2rem;
+  align-items: start;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+
+@media (max-width: 500px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  nav ul {
+    display: flex;
+    gap: 0;
+  }
+
+  nav li {
+    flex: 1;
+  }
 }

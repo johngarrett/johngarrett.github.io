@@ -12,7 +12,7 @@ export const notebookTransformer: MarkdownTransformer = (
   return input.replace(/<NotebookEntry\s+src="([^"]+)"\s*\/?>/g, (_, src) => {
     const resolvedSrc = src.startsWith("/")
       ? src
-      : `/content/trips/${context.content.filename}/${src}`;
+      : `/content/${context.contentRoot}/${context.content.filename}/${src}`;
 
     const filePath = path.join(process.cwd(), resolvedSrc);
 

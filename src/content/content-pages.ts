@@ -31,7 +31,10 @@ export const ContentPages = (
           let output = text;
 
           for (const transformer of transformers) {
-            output = transformer(output, { content: content });
+            output = transformer(output, {
+              content,
+              contentRoot: options.path,
+            });
           }
 
           return output === text ? false : output;

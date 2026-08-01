@@ -1,7 +1,8 @@
+import { ContentPages, fetchContent } from "./content";
 import { HomePage } from "./home/home-page";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
-import { ContentPages, fetchContent } from "./content";
+import { WorkPage } from "./work";
 
 const scriptBuild = await Bun.build({
   entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
@@ -17,21 +18,19 @@ const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
 
 const renderables = [
-  // main
   HomePage({ projects, trips }),
-  // project pages
   ...ContentPages(projects, {
     path: "projects",
     scripts: ["/js/gpx-views.js"],
     styleLinks: ["/js/gpx-views.css"],
   }),
-
-  // trip pages
   ...ContentPages(trips, {
     path: "trips",
     scripts: ["/js/gpx-views.js"],
     styleLinks: ["/js/gpx-views.css"],
   }),
+
+  WorkPage(),
   // css
   StyleSheet(),
 ];
@@ -39,7 +38,7 @@ const renderables = [
 try {
   await build({
     outputDir: "html-output",
-    renderables: renderables,
+    renderables,
   });
 } catch (e) {
   console.error(e);
