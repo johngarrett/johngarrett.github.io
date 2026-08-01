@@ -2,8 +2,6 @@ import { ContentPages, fetchContent } from "./content";
 import { HomePage } from "./home/home-page";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
-import { TripPages } from "./trips";
-import { fetchContent } from "./content";
 import { WorkPage } from "./work";
 
 const scriptBuild = await Bun.build({
