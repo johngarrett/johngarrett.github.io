@@ -48,6 +48,14 @@ h1 {
   justify-content: space-around;
 }
 
+.ai-center {
+  align-items: center;
+}
+
+.pc-center {
+  place-items: center;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -124,6 +132,7 @@ h1 {
   border-width: 2px;
   border-style: solid;
   padding: 1em;
+  margin: 1em;
 }
 
 
