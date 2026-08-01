@@ -16,7 +16,7 @@ export const relativeLinkTransformer: MarkdownTransformer = (
   return input.replace(
     /(?<=\s)(src|href)="(?!\/|https?:|#|data:|mailto:)([^"]+)"/g,
     (_, attr, value) => {
-      return `${attr}="/content/trips/${context.content.filename}/${value}"`;
+      return `${attr}="/content/${context.contentRoot}/${context.content.filename}/${value}"`;
     },
   );
 };

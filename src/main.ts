@@ -1,9 +1,7 @@
-import { ProjectPages } from "./projects/project-pages";
+import { ContentPages, fetchContent } from "./content";
 import { HomePage } from "./home/home-page";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
-import { TripPages } from "./trips";
-import { fetchContent } from "./content";
 
 const scriptBuild = await Bun.build({
   entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
@@ -12,30 +10,30 @@ const scriptBuild = await Bun.build({
   target: "browser",
   naming: "[name].[ext]",
 });
-if (!scriptBuild.success)
+if (!scriptBuild.success) {
   throw new AggregateError(scriptBuild.logs, "script build failed");
+}
 
 const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
 
 const renderables = [
-  // main
   HomePage({ projects, trips }),
-  // project pages
-  ...ProjectPages(projects),
-
-  ...TripPages(trips, {
+  ...ContentPages(projects, {
+    path: "projects",
     scripts: ["/js/gpx-views.js"],
-    styleLinks: ["/js/gpx-views.css"],
   }),
-  // css
+  ...ContentPages(trips, {
+    path: "trips",
+    scripts: ["/js/gpx-views.js"],
+  }),
   StyleSheet(),
 ];
 
 try {
   await build({
     outputDir: "html-output",
-    renderables: renderables,
+    renderables,
   });
 } catch (e) {
   console.error(e);
