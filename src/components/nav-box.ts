@@ -10,21 +10,23 @@ const boldActive = (link: string, params: NavBoxParams) => {
 
 export const navBox = (params: NavBoxParams): HTMLString => {
   return html`
-    <nav class="flex-col">
-      <ul class="nav-list">
-        <li class="nav-li ${boldActive("home", params)}">
-          <a href="/">home</a>
-        </li>
-        <li class="nav-li ${boldActive("work", params)}">
-          <a href="/work">work</a>
-        </li>
-        <li class="nav-li ${boldActive("resume", params)}">
-          <a href="/resume">resume</a>
-        </li>
-        <li class="nav-li ${boldActive("about", params)}">
-          <a href="/about">about</a>
-        </li>
-      </ul>
-    </nav>
+    <div class="navbox-container">
+      <nav class="flex-col">
+        <ul class="nav-list">
+          <li class="nav-li ${boldActive("home", params)}">
+            <a href="/">home</a>
+          </li>
+          <li class="nav-li ${boldActive("work", params)}">
+            <a href="/work">work</a>
+          </li>
+          <li class="nav-li ${boldActive("resume", params)}">
+            <a href="/resume">resume</a>
+          </li>
+          <li class="nav-li ${boldActive("about", params)}">
+            <a href="/about">about</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   `;
 };
