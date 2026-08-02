@@ -6,10 +6,15 @@ type HTMLPageParams = {
   params: { head: HeadParams; navbar?: NavBarParams };
   content: HTMLString;
   scripts?: string[];
-  styleLinks?: string[];
+  styleLinks?: string[]; // or type Renderable, inject a CSS style sheet and render it with the html page
 };
 
-export const htmlPage = ({ params, content, scripts, styleLinks }: HTMLPageParams): HTMLString => {
+export const htmlPage = ({
+  params,
+  content,
+  scripts,
+  styleLinks,
+}: HTMLPageParams): HTMLString => {
   return `
   <!DOCTYPE html>
   <html lang="en">

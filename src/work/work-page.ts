@@ -1,21 +1,5 @@
-import { htmlPage } from "../components";
+import { contentGrid, htmlPage, navBox } from "../components";
 import { html, type HTMLString, type Renderable } from "../utils";
-
-const navBar = (): HTMLString => {
-  return html`
-    <nav class="flex-col">
-      <ul class="nav-list">
-        <li><a href="/">home</a></li>
-        <li><a href="/work">work</a></li>
-        <li><a href="/about">about</a></li>
-      </ul>
-    </nav>
-  `;
-};
-
-const grid = (...content: HTMLString[]): HTMLString => {
-  return html` <div class="main-grid">${content.join("")}</div> `;
-};
 
 type WorkEntry = {
   image_path: string;
@@ -60,7 +44,8 @@ export const WorkPage = (): Renderable => {
         params: {
           head: { title: "garrepi work" },
         },
-        content: grid(navBar(), workList(workData())),
+        // TODO: rename, or encapsulate with navBar
+        content: contentGrid(navBox({ active: "work" }), workList(workData())),
       }),
   };
 };
