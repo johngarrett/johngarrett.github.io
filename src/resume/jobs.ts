@@ -8,7 +8,8 @@ export const jobs: Job[] = [
   {
     company: "Yucca Valley Material Lab",
     title: "Work Trade",
-    oneline: "built and interactive map with custom map tiles",
+    oneline:
+      "interactive map with drone imagery map tiles used for on-site tours of the residency program",
     years: "feb 2026",
   },
   {
@@ -21,7 +22,8 @@ export const jobs: Job[] = [
   {
     company: "Digital Light Meter",
     title: "Hardware Project",
-    oneline: "this did things",
+    oneline:
+      "light meter for film camera. saved shots to an SD card. took reference photos. used a light sensor to calculate aperture or shutter speed based on user desires",
     years: "2023",
   },
   {
@@ -35,7 +37,7 @@ export const jobs: Job[] = [
     company: "Barrel Proof Apps",
     title: "Contract Software Engineer",
     oneline:
-      "worked with a lot of different clients. react native apps, iOS apps, backend work, etc.",
+      "worked with a lot of different clients. react native apps, iOS apps, backend work, database management.",
     years: "2020-2021",
   },
   {
