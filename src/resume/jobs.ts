@@ -4,6 +4,7 @@ export type Job = {
   years: string;
   oneline: string;
 };
+
 export const jobs: Job[] = [
   {
     company: "Yucca Valley Material Lab",

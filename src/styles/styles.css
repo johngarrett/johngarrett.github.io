@@ -268,8 +268,7 @@ nav a:visited {
 
 nav a:hover,
 nav a:active {
-  color: inherit;
-  text-decoration: underline;
+  color: var(--text-muted);
 }
 
 .nav-li {
@@ -294,11 +293,22 @@ nav a:active {
   }
 }
 
+/**
 .navbox-container {
   height: 100%;
   border-right: 0.5px solid;
 }
+*/
 
+.job-popup {
+  position: fixed;
+  width: 250px;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid black;
+  pointer-events: none;
+  z-index: 1000;
+}
 
 /** resume page: TODO: breakout into its own stylesheet **/
 

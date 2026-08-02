@@ -4,16 +4,28 @@ import { ResumePage } from "./resume";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 import { WorkPage } from "./work";
+import { readdir } from "node:fs/promises";
+import { join } from "node:path";
+
+/** -------- build injected scripts ****/
+const injectedScriptsDir = "./src/content/injected-scripts";
+
+const entrypoints = (await readdir(injectedScriptsDir))
+  .filter((file) => file.endsWith(".ts"))
+  .map((file) => join(injectedScriptsDir, file));
 
 const scriptBuild = await Bun.build({
-  entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
+  entrypoints,
   outdir: "./html-output/js",
   format: "esm",
   target: "browser",
   naming: "[name].[ext]",
 });
-if (!scriptBuild.success)
+
+if (!scriptBuild.success) {
   throw new AggregateError(scriptBuild.logs, "script build failed");
+}
+/***- -------- end build injected-scripts ****/
 
 const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");

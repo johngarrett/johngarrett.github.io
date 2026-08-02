@@ -8,7 +8,7 @@ const jobContainer = (params: { children: HTMLString[] }): HTMLString => {
 
 const renderJob = (job: Job) => {
   return html`
-    <details class="job-details">
+    <details class="job-details" data-description="${job.oneline}">
       <summary class="job-summary">
         <span>${job.company}</span>
         <span class="job-title">${job.title}</span>
@@ -31,6 +31,7 @@ export const ResumePage = (): Renderable => {
         params: {
           head: { title: "resume" },
         },
+        scripts: ["/js/sidebar-resizing.js", "/js/resume-popup.js"],
         content: contentGrid(navBox({ active: "resume" }), resumeTable()),
       }),
   };
