@@ -1,6 +1,8 @@
 {
   "galleryResources": "res/images",
   "mapResources": "res/images",
-  "title": "Death Valley 2026",
-  "short": "6 day trip to Death Valley in feb 2026"
+  "title": "Unemployment Death Valley",
+  "short": "6 day trip to Death Valley in feb 2026",
+  "startDate": "2026-01-24",
+  "endDate": "2026-01-29"
 }
