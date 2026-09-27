@@ -17,7 +17,7 @@ bun install
 
 | Command | What it does |
 |---------|-------------|
-| `bun run dev` | Starts file watcher + local HTTP server concurrently |
+| `bun run dev` | Watches `src/` and `content/`, rebuilds, and refreshes the browser |
 | `bun run build` | Typecheck → compile → render → write `html-output/` |
 | `bun run watch` | File watcher only (rebuilds on changes; no server) |
 | `bun run serve` | Serves `html-output/` on port 3000 |
@@ -30,7 +30,7 @@ bun run dev
 # open http://localhost:3000
 ```
 
-The watcher (`src/dev-watch.ts`) rebuilds the entire site whenever any source file changes. The `serve` process hosts `html-output/` statically. Hot module reloading is not configured — refresh the browser after each rebuild.
+The development watcher rebuilds after any file is added, changed, renamed, or removed under `src/` or `content/`. It serves the last successful build at port 3000 and reloads connected browsers after a successful replacement. Build and watcher errors stay visible in the terminal; failed builds do not replace the served site.
 
 ## Build pipeline
 

@@ -6,14 +6,16 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "bun run typecheck && bun run src/main.ts",
-    "watch": "bun src/dev-watch.ts & bun run typecheck --watch",
+    "watch": "bun src/dev-watch.ts",
     "serve": "serve html-output -l 3000",
-    "dev": "concurrently \"bun run watch\" \"bun run serve\""
+    "dev": "bun src/dev-watch.ts --serve"
   },
   "devDependencies": {
+    "@types/browser-sync": "^2.29.1",
     "@types/bun": "latest",
     "@types/leaflet": "^1.9.21",
-    "concurrently": "^9.2.1",
+    "browser-sync": "^3.0.4",
+    "chokidar": "^5.0.0",
     "gray-matter": "^4.0.3",
     "leaflet": "^1.9.4",
     "leaflet-gpx": "^2.2.0",

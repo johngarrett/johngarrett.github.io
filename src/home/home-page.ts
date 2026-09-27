@@ -1,30 +1,27 @@
 import { htmlPage } from "../components";
 import type { Content } from "../content";
 import { html } from "../utils";
-import { getLinkBoxes, linkBoxToHTML } from "./link-box";
 
 export type HomePageParams = {
   projects: Content[];
   trips: Content[];
 };
 
-export const HomePage = ({ projects, trips }: HomePageParams) => {
-  const linkBoxes = getLinkBoxes({ projects, trips });
-
+export const HomePage = () => {
   return {
     path: "/index.html",
     render: () =>
       htmlPage({
         params: {
-          head: { title: "garrepi" },
+          head: { title: "garrepi home" },
         },
+        bodyClass: "home-body",
         content: html`
           <div class="home-container">
-            <div class="home-title">
-              <img src=/content/misc/the_general_problem.png />
-            </div>
-            <div class="home-link-boxes">
-              ${linkBoxes.map(linkBoxToHTML).join("")}
+            <div class="home-links">
+              <a href="/index.html">Home</a>
+              <a href="/work.html">Work</a>
+              <a href="/about.html">About</a>
             </div>
           </div>
         `,

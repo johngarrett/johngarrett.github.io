@@ -174,74 +174,32 @@ h1 {
 
 /*** home page **/
 /* Outer layout */
-.home-container {
-  display: grid;
-  grid-template-rows: auto 1fr;
+.home-body {
+  background: url("content/backgrounds/powerlines.webp") center / cover no-repeat fixed;
+}
 
-  max-width: 900px;
-  margin: 40px auto;
+.home-container {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+
   padding: 0 12px;
 
   gap: 20px;
 }
 
-/* Title */
-.home-title {
-  font-size: 28px;
-  text-align: center;
-  font-family: monospace;
-  font-weight: bold;
-
+.home-links {
+  grid-column: 2;
+  text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  color: var(--text-main);
-}
-
-.home-title img {
-  width: 300px;
-}
-
-/* Inner grid */
-.home-link-boxes {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-  gap: 16px;
-}
-
-/* Boxes */
-.home-link-box {
-  padding: 10px 12px;
-
-  border-style: dashed;
-  border-width: 1px;
-}
-
-.home-link-box-title {
-  color: var(--text-main);
-  background-color: var(--bg-color-darker);
+  color: white;
   font-weight: bold;
-  font-family: monospace;
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 8px;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
-.home-link-box a {
-  display: block;
-  color: var(--link-color);
-  text-decoration: none;
-  font-size: 14px;
-  margin: 2px 0;
-}
-
-.home-link-box a:hover {
-  color: var(--link-color-hover);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
 
 /** grid **/
 .main-grid {
