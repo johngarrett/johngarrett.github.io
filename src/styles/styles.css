@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family: monospace;
+  font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
@@ -171,12 +171,36 @@ h1 {
   }
 }
 
+.powerlines-body {
+  background: url("content/backgrounds/powerlines.webp") center / cover no-repeat fixed;
+}
+
+.ocean-body {
+  background: url("content/backgrounds/ocean.webp") center / cover no-repeat fixed;
+}
+
+.nav-links {
+  grid-column: 2;
+  gap: 1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  font-weight: bold;
+}
+
 
 /*** home page **/
 /* Outer layout */
-.home-body {
-  background: url("content/backgrounds/powerlines.webp") center / cover no-repeat fixed;
-}
 
 .home-container {
   display: grid;
@@ -188,25 +212,6 @@ h1 {
   gap: 2rem;
 }
 
-.home-links {
-  grid-column: 2;
-  gap: 1rem;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.home-links a {
-  text-decoration: none;
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1rem;
-}
-
-.home-links a:hover {
-  font-weight: bold;
-}
 
 /** grid **/
 .main-grid {
@@ -295,4 +300,18 @@ nav a:active {
 
 .job-years {
   text-align: right;
+}
+
+
+/** work */
+.work-entry-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 2rem;
+}
+
+.work-blurb {
+  background-color: white;
+  border: solid 1px black;
+  color: black;
 }

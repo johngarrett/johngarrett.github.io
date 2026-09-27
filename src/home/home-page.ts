@@ -15,11 +15,12 @@ export const HomePage = () => {
         params: {
           head: { title: "garrepi home" },
         },
-        bodyClass: "home-body",
+        bodyClass: "powerlines-body",
         content: html`
           <div class="home-container">
-            <div class="home-links">
-              <a href="/index.html">Projects</a>
+            <!-- TODO: component -->
+            <div class="nav-links">
+              <a href="/index.html">Home</a>
               <a href="/work.html">Work</a>
               <a href="/about.html">About</a>
             </div>
