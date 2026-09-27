@@ -25,7 +25,7 @@ const resumeTable = (): HTMLString => {
 
 export const ResumePage = (): Renderable => {
   return {
-    path: "/resume",
+    path: "resume.html",
     render: () =>
       htmlPage({
         params: {

@@ -32,7 +32,7 @@ export const getLinkBoxes = ({
       .map((trip) => {
         return {
           ...trip,
-          href: `/trips/${trip.filename}`,
+          href: `/trips/${trip.filename}.html`,
         };
       }),
     renderer: (conentLinks: ContentLink[]): HTMLString => {
@@ -68,7 +68,7 @@ export const getLinkBoxes = ({
     links: projects.map((p) => {
       return {
         ...p,
-        href: `/projects/${p.filename}`,
+        href: `/projects/${p.filename}.html`,
       };
     }),
   },

@@ -38,7 +38,7 @@ const workData = (): WorkEntry[] => {
 
 export const WorkPage = (): Renderable => {
   return {
-    path: "/work",
+    path: "work.html",
     render: () =>
       htmlPage({
         params: {

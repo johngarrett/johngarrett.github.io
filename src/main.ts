@@ -1,9 +1,14 @@
 import { ContentPages, fetchContent } from "./content";
+import { rm } from "node:fs/promises";
 import { HomePage } from "./home/home-page";
 import { ResumePage } from "./resume";
 import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 import { WorkPage } from "./work";
+
+// Start from an empty deployment directory so removed or renamed pages cannot
+// remain in a later build.
+await rm("./html-output", { recursive: true, force: true });
 
 const scriptBuild = await Bun.build({
   entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],

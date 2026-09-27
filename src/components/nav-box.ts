@@ -17,10 +17,10 @@ export const navBox = (params: NavBoxParams): HTMLString => {
             <a href="/">home</a>
           </li>
           <li class="nav-li ${boldActive("work", params)}">
-            <a href="/work">work</a>
+            <a href="/work.html">work</a>
           </li>
           <li class="nav-li ${boldActive("resume", params)}">
-            <a href="/resume">resume</a>
+            <a href="/resume.html">resume</a>
           </li>
           <li class="nav-li ${boldActive("about", params)}">
             <a href="/about">about</a>
