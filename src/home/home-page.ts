@@ -19,7 +19,7 @@ export const HomePage = () => {
         content: html`
           <div class="home-container">
             <div class="home-links">
-              <a href="/index.html">Home</a>
+              <a href="/index.html">Projects</a>
               <a href="/work.html">Work</a>
               <a href="/about.html">About</a>
             </div>
