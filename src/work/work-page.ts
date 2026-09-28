@@ -8,14 +8,17 @@ type WorkEntry = {
 };
 
 const renderWorkEntry = (entry: WorkEntry): HTMLString => {
-  return html`
-  <div class="work-entry-grid">
+  return html` <div class="work-entry-grid">
     <!-- TOOD .map -->
     <div class="work-blurb">
       <h2>${entry.title}</h2>
       <p>${entry.paragraph}</p>
     </div>
-    <img class="work-image" src=${entry.images}></img>
+    <div class="work-image-flex">
+      ${entry.images
+        .map((image) => `<img class="work-image" src=${image}></img>`)
+        .join("")}
+    </div>
   </div>`;
 };
 
@@ -28,14 +31,14 @@ const workList = (entries: WorkEntry[]): HTMLString => {
 const workData = (): WorkEntry[] => {
   return [
     {
-      images: ["content/work/yvml.jpg"],
+      images: ["content/work/yvml-tall.webp", "content/work/yvml-working.webp"],
       title: "Yucca Valley Material Lab",
       paragraph: html`An interactive map built for virtual tours at Yucca Valley
       Material Lab. Running as a static site on Github pages. Custom map tiles
       from drone imagery. Audio assets, bounding boxes, path finding. `,
     },
     {
-      images: ["content/work/odr.jpg"],
+      images: ["content/work/odr.webp"],
       title: "Other Desert Radio",
       paragraph: html`Other Desert Radio Archive is an interaction layer on top
       of an archive hosted in Mixcloud. This project included a management

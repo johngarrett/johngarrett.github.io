@@ -307,13 +307,14 @@ nav a:active {
 .work-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  padding: 6rem 0;
+  gap: 6rem;
 }
 
 .work-entry-grid {
   display: grid;
   grid-template-columns: minmax(200px, 0.25fr) auto;
-  gap: 2rem;
+  gap: 6rem;
   justify-content: center;
   place-items: center;
 }
@@ -336,12 +337,17 @@ nav a:active {
   transform: translate(-10px, -10px);
 }
 
+.work-image-flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .work-image {
   max-width: 300px;
-  transition: transform 0.15s ease;
 }
 
 .work-image:hover {
-  transform: scale(1.2);
   border: 1px solid black;
 }
