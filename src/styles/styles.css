@@ -304,14 +304,29 @@ nav a:active {
 
 
 /** work */
-.work-entry-grid {
-  display: grid;
-  grid-template-columns: auto auto;
+.work-list {
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
+.work-entry-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.25fr) auto;
+  gap: 2rem;
+  justify-content: center;
+  place-items: center;
+}
+
 .work-blurb {
+  width: fit-content;
   background-color: white;
   border: solid 1px black;
   color: black;
+  padding: 1rem;
+}
+
+.work-blurb:hover {
+  box-shadow: 0.75rem 0.75rem black;
+  transform: translate(-10px, -10px);
 }

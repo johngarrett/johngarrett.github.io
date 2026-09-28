@@ -11,33 +11,43 @@ const renderWorkEntry = (entry: WorkEntry): HTMLString => {
   return html`
   <div class="work-entry-grid">
     <!-- TOOD .map -->
-    <img src=${entry.images} style="max-width: 300px"></img>
     <div class="work-blurb">
       <h2>${entry.title}</h2>
       <p>${entry.paragraph}</p>
     </div>
+    <img src=${entry.images} style="max-width: 300px"></img>
   </div>`;
 };
 
 const workList = (entries: WorkEntry[]): HTMLString => {
-  return html`<div>${entries.map(renderWorkEntry).join("")}</div>`;
+  return html`<div class="work-list">
+    ${entries.map(renderWorkEntry).join("")}
+  </div>`;
 };
 
 const workData = (): WorkEntry[] => {
   return [
     {
       images: ["content/work/yvml.jpg"],
-      title: "Interactive Map | Yucca Valley Material Lab",
+      title: "Yucca Valley Material Lab",
       paragraph: html`An interactive map built for virtual tours at Yucca Valley
       Material Lab. Running as a static site on Github pages. Custom map tiles
       from drone imagery. Audio assets, bounding boxes, path finding. `,
     },
     {
       images: ["content/work/odr.jpg"],
-      title: "Archvie Platform | Other Desert Radio",
+      title: "Other Desert Radio",
       paragraph: html`Other Desert Radio Archive is an interaction layer on top
       of an archive hosted in Mixcloud. This project included a management
       website, web design, etc.`,
+    },
+    {
+      images: [""],
+      title: "Apple",
+      paragraph: html`Senior Software Engineer at Apple working on the Apple TV
+      and Apple Music app for Smart TVs. My work focused on networking,
+      payments, and TV ratings. Key contributer on a major feature that let
+      users make TV purchases with their iPhone.`,
     },
   ];
 };
