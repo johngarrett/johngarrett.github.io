@@ -1,4 +1,4 @@
-import { contentGrid, htmlPage, navBox } from "../components";
+import { htmlPage } from "../components";
 import { html, type HTMLString, type Renderable } from "../utils";
 
 type WorkEntry = {
