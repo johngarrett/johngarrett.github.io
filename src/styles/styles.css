@@ -324,9 +324,24 @@ nav a:active {
   border: solid 1px black;
   color: black;
   padding: 1rem;
+  text-align: center;
+
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .work-blurb:hover {
   box-shadow: 0.75rem 0.75rem black;
+
   transform: translate(-10px, -10px);
+}
+
+.work-image {
+  max-width: 300px;
+  transition: transform 0.15s ease;
+}
+
+.work-image:hover {
+  transform: scale(1.2);
+  border: 1px solid black;
 }

@@ -15,7 +15,7 @@ const renderWorkEntry = (entry: WorkEntry): HTMLString => {
       <h2>${entry.title}</h2>
       <p>${entry.paragraph}</p>
     </div>
-    <img src=${entry.images} style="max-width: 300px"></img>
+    <img class="work-image" src=${entry.images}></img>
   </div>`;
 };
 
