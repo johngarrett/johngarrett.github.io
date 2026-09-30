@@ -6,13 +6,15 @@ import { StyleSheet } from "./styles/styles";
 import { build } from "./utils";
 import { WorkPage } from "./work";
 
+const outputDir = process.env.BUILD_OUTPUT_DIR ?? "html-output";
+
 // Start from an empty deployment directory so removed or renamed pages cannot
 // remain in a later build.
-await rm("./html-output", { recursive: true, force: true });
+await rm(outputDir, { recursive: true, force: true });
 
 const scriptBuild = await Bun.build({
   entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
-  outdir: "./html-output/js",
+  outdir: `${outputDir}/js`,
   format: "esm",
   target: "browser",
   naming: "[name].[ext]",
@@ -24,7 +26,7 @@ const projects = await fetchContent("content/projects");
 const trips = await fetchContent("content/trips");
 
 const renderables = [
-  HomePage({ projects, trips }),
+  HomePage(),
   ...ContentPages(projects, {
     path: "projects",
     scripts: ["/js/gpx-views.js"],
@@ -42,13 +44,9 @@ const renderables = [
   StyleSheet(),
 ];
 
-try {
-  await build({
-    outputDir: "html-output",
-    renderables,
-  });
-} catch (e) {
-  console.error(e);
-}
+await build({
+  outputDir,
+  renderables,
+});
 
 console.log("----- render complete --------");
