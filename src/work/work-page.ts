@@ -15,9 +15,9 @@ type Content = {
 const renderContent = (content: Content): string => {
   if (content.kind === "image") {
     return `<img class="work-image" src=${content.path}></img>`;
+  } else {
+    return `<video class="work-image" src=${content.path} autoplay loop muted playsinline></video>`;
   }
-
-  return `<video class="work-image" src=${content.path} autoplay loop muted playsinline></video>`;
 };
 
 const renderWorkEntry = (entry: WorkEntry): HTMLString => {
@@ -49,20 +49,19 @@ const workData = (): WorkEntry[] => {
       website, web design, etc.`,
     },
     {
-      content: [],
+      content: [{ kind: "image", path: "content/work/drc-page.webp" }],
       title: "Dream Rock Collective",
       paragraph: `A subscription based mail drop`,
     },
     {
       content: [
         { kind: "video", path: "content/work/yvml-demo.web.mp4" },
-        { kind: "image", path: "content/work/yvml-tall.webp" },
-        { kind: "image", path: "content/work/yvml-working.webp" },
+        //{ kind: "image", path: "content/work/yvml-working.webp" },
       ],
       title: "Yucca Valley Material Lab",
-      paragraph: html`An interactive map built for virtual tours at Yucca Valley
-      Material Lab. Running as a static site on Github pages. Custom map tiles
-      from drone imagery. Audio assets, bounding boxes, path finding. `,
+      paragraph: html`An interactive map built for in person tours at Yucca
+      Valley Material Lab. Running as a static site on Github pages. Custom map
+      tiles from drone imagery. Audio assets, bounding boxes, path finding. `,
     },
     {
       content: [],
