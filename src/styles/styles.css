@@ -179,6 +179,17 @@ h1 {
   background: url("content/backgrounds/ocean.webp") center / cover no-repeat fixed;
 }
 
+@media (max-width: 600px) {
+  .powerlines-body {
+    background-image: url("content/backgrounds/vertical-overpass.webp");
+  }
+
+  .ocean-body {
+    background-image: url("content/backgrounds/vertical-cliffs.webp");
+  }
+}
+
+
 .nav-links {
   grid-column: 2;
   gap: 1rem;
@@ -210,6 +221,20 @@ h1 {
   padding: 2rem;
 
   gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .home-container {
+    grid-template-columns: 1fr;
+  }
+
+  .home-container>.nav-links {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    flex-direction: row;
+    place-content: center;
+    gap: 4rem;
+  }
 }
 
 
