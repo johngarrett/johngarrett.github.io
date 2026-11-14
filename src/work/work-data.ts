@@ -19,7 +19,7 @@ export const workData = (): WorkEntry[] => {
         //{ kind: "image", path: "content/work/yvml-working.webp" },
       ],
       organization: "Yucca Valley Material Lab",
-      name: "Interactive Guide",
+      name: "Guide",
       paragraph: html`An interactive map built for in person tours at Yucca
       Valley Material Lab. Running as a static site on Github pages. Custom map
       tiles from drone imagery. Audio assets, bounding boxes, path finding. `,

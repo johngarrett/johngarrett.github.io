@@ -13,7 +13,7 @@ const renderContent = (content: WorkContent): string => {
 
 const renderWorkEntry = (entry: WorkEntry): HTMLString => {
   const leadingText =
-    `${entry.organization.toUpperCase()} <br><b><em>${entry.name.toUpperCase()}</em></b>`
+    `${entry.organization.toUpperCase()} <b><em>${entry.name.toUpperCase()}</em></b>`
       .split(" ")
       .join("<br>");
   return html`

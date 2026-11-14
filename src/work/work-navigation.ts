@@ -9,15 +9,22 @@ const initial = Math.max(0, links.findIndex(link => link.hash === location.hash)
 let current = -1;
 
 const fitTitles = () => {
+  const indicator = document.querySelector<HTMLElement>(".work-pagination")!.getBoundingClientRect();
   for (const article of articles) {
     const title = article.querySelector<HTMLElement>(".work-title")!;
     const text = title.querySelector<HTMLElement>(".work-title-text")!;
     title.style.fontSize = "100px";
     const available = title.getBoundingClientRect();
     const measured = text.getBoundingClientRect();
+    const maxHeight = parseFloat(getComputedStyle(title).maxHeight) || available.height;
     // Cap titles at 118px so short titles don't grow too large on wide screens.
-    const size = Math.min(118, 100 * Math.min(available.width / measured.width, available.height / measured.height));
+    const size = Math.min(118, 100 * Math.min(available.width / measured.width, maxHeight / measured.height));
     title.style.fontSize = `${Math.floor(size * 100) / 100}px`;
+    const details = article.querySelector<HTMLElement>(".work-details")!;
+    const offset = parseFloat(article.style.getPropertyValue("--work-offset")) || 0;
+    const overlap = Math.max(0, indicator.bottom - (details.getBoundingClientRect().top - offset));
+    article.style.setProperty("--work-indicator-overlap", `${overlap}px`);
+    article.style.setProperty("--work-indicator-gutter", overlap > 0 ? "2rem" : "0px");
   }
 };
 
