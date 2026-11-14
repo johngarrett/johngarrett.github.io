@@ -333,25 +333,31 @@ nav a:active {
 
 html:has(.work-body) {
   scroll-snap-type: y proximity;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 .work-body {
+  --work-header-height: 3.5rem;
   display: block;
   background: white;
   color: black;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .work-header {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: white;
+  box-sizing: border-box;
+  height: var(--work-header-height);
+  padding: 1rem;
 }
 
 .work-header h1 {
   margin: 0;
   font-size: 1rem;
+  line-height: 1.5;
   font-weight: normal;
   letter-spacing: normal;
   text-transform: uppercase;
@@ -371,10 +377,10 @@ html:has(.work-body) {
 
 .work-entry-grid {
   container-type: inline-size;
-  position: relative;
   scroll-snap-align: start;
+  scroll-margin-top: var(--work-header-height);
   box-sizing: border-box;
-  min-height: 100svh;
+  min-height: calc(100svh - var(--work-header-height));
   padding: 6rem 6.5% 5rem 4.5%;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -431,7 +437,8 @@ html:has(.work-body) {
   display: grid;
   place-items: center;
   width: 44px;
-  height: 44px;
+  height: 24px;
+  transition: height 180ms ease;
 }
 
 .work-pagination a::before {
@@ -440,11 +447,19 @@ html:has(.work-body) {
   height: 16px;
   border-radius: 999px;
   background: black;
-  transition: height 250ms ease;
+  transition: height 180ms ease;
+}
+
+.work-pagination a[aria-current="location"] {
+  height: 100px;
 }
 
 .work-pagination a[aria-current="location"]::before {
-  height: 36px;
+  height: 92px;
+}
+
+.work-pagination li:has(~ li a[aria-current="location"]) a::before {
+  background: #ccc;
 }
 
 .work-pagination a:focus-visible {
@@ -454,7 +469,7 @@ html:has(.work-body) {
 
 .work-motion .work-title,
 .work-motion .work-details {
-  transition: opacity 250ms ease, transform 250ms ease;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .work-motion .work-entry-grid:not(.is-active):not(:focus-within) .work-title,
@@ -464,10 +479,6 @@ html:has(.work-body) {
 }
 
 @media (max-width: 800px) {
-  .work-header {
-    display: none;
-  }
-
   .work-entry-grid {
     grid-template-columns: minmax(0, 1fr);
     padding: 2rem max(13%, 3.5rem) 4rem 6%;
@@ -495,7 +506,7 @@ html:has(.work-body) {
   }
 
   .work-pagination {
-    top: 1.75rem;
+    top: calc(var(--work-header-height) + 1rem);
     transform: none;
   }
 
@@ -504,12 +515,16 @@ html:has(.work-body) {
     height: 12px;
   }
 
+  .work-pagination a[aria-current="location"] {
+    height: 74px;
+  }
+
+  .work-pagination a[aria-current="location"]::before {
+    height: 66px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html:has(.work-body) {
-    scroll-behavior: auto;
-  }
 
   .work-motion .work-title,
   .work-motion .work-details,

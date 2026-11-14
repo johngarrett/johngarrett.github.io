@@ -41,9 +41,9 @@ export const WorkPage = (): Renderable => {
         bodyClass: "work-body",
         scripts: ["/js/work-navigation.js"],
         content: html`
-          <header class="work-header">
-            <h1>Work</h1>
-          </header>
+          <nav class="work-header" aria-label="Main navigation">
+            <h1><a href="/work.html" aria-current="page">Work</a></h1>
+          </nav>
           <div class="work-list">
             ${entries.map(renderWorkEntry).join("")}
           </div>
