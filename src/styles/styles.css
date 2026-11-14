@@ -522,8 +522,16 @@ html:has(.work-deck),
 }
 
 .work-deck .work-title {
-  font-size: min(5.5cqw, 12dvh);
+  height: 100%;
+  min-height: 0;
+  align-self: stretch;
   touch-action: pan-y;
+}
+
+.work-deck .work-title-text {
+  display: block;
+  width: max-content;
+  white-space: nowrap;
 }
 
 .work-deck .work-details {
@@ -564,12 +572,8 @@ html:has(.work-deck),
   }
 
   .work-deck .work-entry-grid {
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: minmax(0, 2fr) minmax(0, 3fr);
     padding-block: clamp(1rem, 3dvh, 2rem);
-  }
-
-  .work-deck .work-title {
-    font-size: min(11.5cqw, 6dvh);
   }
 
   .work-details {
@@ -605,30 +609,9 @@ html:has(.work-deck),
   }
 }
 
-@media (max-width: 360px), (max-height: 600px) {
-  .work-deck .work-title {
-    font-size: min(5.5cqw, 8dvh);
-  }
-
+@media (max-width: 800px) and (max-height: 600px) {
   .work-deck .work-details {
-    display: block;
-    overflow-y: auto;
-  }
-
-  .work-deck .work-image-flex,
-  .work-deck .work-image {
-    height: auto;
-    max-height: none;
-  }
-
-  .work-deck .work-image {
-    flex: none;
-  }
-}
-
-@media (max-width: 360px), (max-width: 800px) and (max-height: 600px) {
-  .work-deck .work-title {
-    font-size: min(11.5cqw, 5dvh);
+    font-size: min(1rem, 3dvh);
   }
 }
 

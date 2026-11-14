@@ -13,17 +13,30 @@ const renderContent = (content: WorkContent): string => {
 
 const renderWorkEntry = (entry: WorkEntry): HTMLString => {
   const leadingText =
-    `${entry.organization.toUpperCase()} <b><em>${entry.name.toUpperCase()}</em></b>`
+    `${entry.organization.toUpperCase()} <br><b><em>${entry.name.toUpperCase()}</em></b>`
       .split(" ")
       .join("<br>");
   return html`
-    <article class="work-entry-grid" id="${entry.id}" aria-labelledby="${entry.id}-title">
-      <h2 class="work-title" id="${entry.id}-title" tabindex="-1">${leadingText}</h2>
-      <div class="work-details" tabindex="0" role="region" aria-label="${entry.organization} project details">
+    <article
+      class="work-entry-grid"
+      id="${entry.id}"
+      aria-labelledby="${entry.id}-title"
+    >
+      <h2 class="work-title" id="${entry.id}-title" tabindex="-1">
+        <span class="work-title-text">${leadingText}</span>
+      </h2>
+      <div
+        class="work-details"
+        tabindex="0"
+        role="region"
+        aria-label="${entry.organization} project details"
+      >
         <p>${entry.paragraph}</p>
-        ${entry.content.length ? html`<div class="work-image-flex">
-          ${entry.content.map(renderContent).join("")}
-        </div>` : ""}
+        ${entry.content.length
+          ? html`<div class="work-image-flex">
+              ${entry.content.map(renderContent).join("")}
+            </div>`
+          : ""}
       </div>
     </article>
   `;
@@ -46,7 +59,16 @@ export const WorkPage = (): Renderable => {
           </nav>
           <div class="work-list" style="--work-count: ${entries.length}">
             <div class="work-track">
-              ${entries.map((_, index) => html`<div class="work-stop" aria-hidden="true" style="top: ${index / entries.length * 100}%"></div>`).join("")}
+              ${entries
+                .map(
+                  (_, index) =>
+                    html`<div
+                      class="work-stop"
+                      aria-hidden="true"
+                      style="top: ${(index / entries.length) * 100}%"
+                    ></div>`,
+                )
+                .join("")}
               <div class="work-stage">
                 ${entries.map(renderWorkEntry).join("")}
               </div>
@@ -54,7 +76,17 @@ export const WorkPage = (): Renderable => {
           </div>
           <nav class="work-pagination" aria-label="Work projects">
             <ol>
-              ${entries.map((entry) => html`<li><a href="#${entry.id}" aria-label="${entry.organization}: ${entry.name}"></a></li>`).join("")}
+              ${entries
+                .map(
+                  (entry) =>
+                    html`<li>
+                      <a
+                        href="#${entry.id}"
+                        aria-label="${entry.organization}: ${entry.name}"
+                      ></a>
+                    </li>`,
+                )
+                .join("")}
             </ol>
           </nav>
         `,

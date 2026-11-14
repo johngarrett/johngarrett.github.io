@@ -8,6 +8,19 @@ const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const initial = Math.max(0, links.findIndex(link => link.hash === location.hash));
 let current = -1;
 
+const fitTitles = () => {
+  for (const article of articles) {
+    const title = article.querySelector<HTMLElement>(".work-title")!;
+    const text = title.querySelector<HTMLElement>(".work-title-text")!;
+    title.style.fontSize = "100px";
+    const available = title.getBoundingClientRect();
+    const measured = text.getBoundingClientRect();
+    // Cap titles at 118px so short titles don't grow too large on wide screens.
+    const size = Math.min(118, 100 * Math.min(available.width / measured.width, available.height / measured.height));
+    title.style.fontSize = `${Math.floor(size * 100) / 100}px`;
+  }
+};
+
 const render = () => {
   const progress = scroller.scrollTop / scroller.clientHeight;
   const next = Math.max(0, Math.min(articles.length - 1, Math.round(progress)));
@@ -38,11 +51,14 @@ const navigate = (index: number) => {
 };
 
 document.body.classList.add("work-deck");
+fitTitles();
+document.fonts.ready.then(fitTitles);
 scroller.scrollTop = initial * scroller.clientHeight;
 window.scrollTo(0, 0);
 render();
 scroller.addEventListener("scroll", render, { passive: true });
 new ResizeObserver(() => {
+  fitTitles();
   scroller.scrollTo({ top: current * scroller.clientHeight, behavior: "instant" });
   render();
 }).observe(scroller);

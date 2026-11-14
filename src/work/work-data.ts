@@ -19,7 +19,7 @@ export const workData = (): WorkEntry[] => {
         //{ kind: "image", path: "content/work/yvml-working.webp" },
       ],
       organization: "Yucca Valley Material Lab",
-      name: "Guide",
+      name: "Interactive Guide",
       paragraph: html`An interactive map built for in person tours at Yucca
       Valley Material Lab. Running as a static site on Github pages. Custom map
       tiles from drone imagery. Audio assets, bounding boxes, path finding. `,
@@ -34,7 +34,7 @@ export const workData = (): WorkEntry[] => {
     {
       id: "apple",
       content: [],
-      organization: "Apple",
+      organization: "Apple Media Services",
       name: "Senior Software Engineer",
       paragraph: html`Senior Software Engineer at Apple working on the Apple TV
       and Apple Music app for Smart TVs. My work focused on networking,
