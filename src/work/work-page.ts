@@ -12,22 +12,17 @@ const renderContent = (content: WorkContent): string => {
 };
 
 const renderWorkEntry = (entry: WorkEntry): HTMLString => {
-  return html` <div class="work-entry-grid">
-    <!-- TOOD .map -->
-    <div class="work-blurb">
+  return html`
+    <article class="work-entry-grid">
       <h2>${entry.title}</h2>
-      <p>${entry.paragraph}</p>
-    </div>
-    <div class="work-image-flex">
-      ${entry.content.map(renderContent).join("")}
-    </div>
-  </div>`;
-};
-
-const workList = (entries: WorkEntry[]): HTMLString => {
-  return html`<div class="work-list">
-    ${entries.map(renderWorkEntry).join("")}
-  </div>`;
+      <div class="work-details">
+        <p>${entry.paragraph}</p>
+        <div class="work-image-flex">
+          ${entry.content.map(renderContent).join("")}
+        </div>
+      </div>
+    </article>
+  `;
 };
 
 export const WorkPage = (): Renderable => {
@@ -38,17 +33,13 @@ export const WorkPage = (): Renderable => {
         params: {
           head: { title: "garrepi work" },
         },
-        bodyClass: "ocean-body",
         content: html`
-          <div class="home-container">
-            ${workList(workData())}
-            <!-- TODO: component -->
-            <div class="nav-links">
-              <a href="/index.html">Home</a>
-              <a href="/work.html">Work</a>
-              <a href="/about.html">About</a>
-            </div>
-          </div>
+          <header>
+            <h1>Work</h1>
+          </header>
+          <main class="work-list">
+            ${workData().map(renderWorkEntry).join("")}
+          </main>
         `,
       }),
   };
