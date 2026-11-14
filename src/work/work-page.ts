@@ -33,10 +33,10 @@ const renderWorkEntry = (entry: WorkEntry): HTMLString => {
       >
         <p>${entry.paragraph}</p>
         ${entry.content.length
-          ? html`<div class="work-image-flex">
+      ? html`<div class="work-image-flex">
               ${entry.content.map(renderContent).join("")}
             </div>`
-          : ""}
+      : ""}
       </div>
     </article>
   `;
@@ -57,18 +57,21 @@ export const WorkPage = (): Renderable => {
           <nav class="work-header" aria-label="Main navigation">
             <h1><a href="/work.html" aria-current="page">Work</a></h1>
           </nav>
-          <div class="work-list" style="--work-count: ${entries.length}">
+          <div
+            class="work-list"
+            style="--work-count: ${entries.length}; width: 100%; max-width: 1600px; margin-inline: auto;"
+          >
             <div class="work-track">
               ${entries
-                .map(
-                  (_, index) =>
-                    html`<div
+            .map(
+              (_, index) =>
+                html`<div
                       class="work-stop"
                       aria-hidden="true"
                       style="top: ${(index / entries.length) * 100}%"
                     ></div>`,
-                )
-                .join("")}
+            )
+            .join("")}
               <div class="work-stage">
                 ${entries.map(renderWorkEntry).join("")}
               </div>
@@ -77,16 +80,16 @@ export const WorkPage = (): Renderable => {
           <nav class="work-pagination" aria-label="Work projects">
             <ol>
               ${entries
-                .map(
-                  (entry) =>
-                    html`<li>
+            .map(
+              (entry) =>
+                html`<li>
                       <a
                         href="#${entry.id}"
                         aria-label="${entry.organization}: ${entry.name}"
                       ></a>
                     </li>`,
-                )
-                .join("")}
+            )
+            .join("")}
             </ol>
           </nav>
         `,
