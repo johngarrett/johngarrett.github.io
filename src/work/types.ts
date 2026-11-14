@@ -2,7 +2,8 @@ import type { HTMLString } from "../utils";
 
 export type WorkEntry = {
   content: Array<WorkContent>;
-  title: string;
+  organization: string; // Other Desert Radio
+  name: string; // Archive
   paragraph: HTMLString;
 };
 

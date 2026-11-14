@@ -12,9 +12,13 @@ const renderContent = (content: WorkContent): string => {
 };
 
 const renderWorkEntry = (entry: WorkEntry): HTMLString => {
+  const leadingText =
+    `${entry.organization.toUpperCase()} <b><em>${entry.name.toUpperCase()}</em></b>`
+      .split(" ")
+      .join("<br>");
   return html`
     <article class="work-entry-grid">
-      <h2>${entry.title}</h2>
+      <h2 class="work-title">${leadingText}</h2>
       <div class="work-details">
         <p>${entry.paragraph}</p>
         <div class="work-image-flex">
@@ -33,6 +37,7 @@ export const WorkPage = (): Renderable => {
         params: {
           head: { title: "garrepi work" },
         },
+        bodyClass: "work-body",
         content: html`
           <header>
             <h1>Work</h1>

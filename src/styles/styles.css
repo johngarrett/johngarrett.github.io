@@ -142,6 +142,7 @@ h1 {
 }
 
 
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #0f1115;
@@ -329,6 +330,17 @@ nav a:active {
 
 
 /** work */
+
+.work-body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.work-title {
+  font-weight: normal;
+  font-size: 8cqw;
+  line-height: 0.9;
+}
+
 .work-list {
   display: flex;
   flex-direction: column;
@@ -338,7 +350,7 @@ nav a:active {
 
 .work-entry-grid {
   display: grid;
-  grid-template-columns: minmax(12rem, 22rem) minmax(0, 42rem);
+  grid-template-columns: 0.8fr 0.8fr;
   gap: clamp(2rem, 6vw, 6rem);
   justify-content: center;
   place-items: center;
