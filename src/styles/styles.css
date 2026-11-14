@@ -331,47 +331,67 @@ nav a:active {
 
 /** work */
 
+html:has(.work-body) {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
 .work-body {
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: block;
+  background: white;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.work-header {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
+
+.work-header h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: normal;
+  letter-spacing: normal;
+  text-transform: uppercase;
 }
 
 .work-title {
+  min-width: 0;
+  margin: 0;
   font-weight: normal;
-  font-size: 8cqw;
+  font-size: 6cqw;
   line-height: 0.9;
 }
 
 .work-list {
-  display: flex;
-  flex-direction: column;
-  padding: 6rem 0;
-  gap: 6rem;
+  margin: 0;
 }
 
 .work-entry-grid {
+  container-type: inline-size;
+  position: relative;
+  scroll-snap-align: start;
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding: 6rem 6.5% 5rem 4.5%;
   display: grid;
-  grid-template-columns: 0.8fr 0.8fr;
-  gap: clamp(2rem, 6vw, 6rem);
-  justify-content: center;
-  place-items: center;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 5vw;
+  align-content: start;
+  align-items: start;
 }
 
-.work-blurb {
-  width: fit-content;
-  background-color: white;
-  border: solid 1px black;
-  color: black;
-  padding: 1rem;
-  text-align: center;
-
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+.work-details {
+  min-width: 0;
+  padding-top: 0.75rem;
+  font-size: clamp(1rem, 1.1vw, 1.25rem);
+  line-height: 1.05;
 }
 
-.work-blurb:hover {
-  box-shadow: 0.75rem 0.75rem black;
-
-  transform: translate(-10px, -10px);
+.work-details p {
+  margin: 0 0 1.5rem;
 }
 
 .work-image-flex {
@@ -379,7 +399,8 @@ nav a:active {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
-  width: min(42rem, 100%);
+  width: 100%;
+  align-items: start;
 }
 
 .work-image {
@@ -390,12 +411,116 @@ nav a:active {
   object-fit: contain;
 }
 
-.work-image:hover {
-  border: 1px solid black;
+.work-pagination {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0.25rem;
+  z-index: 10;
+}
+
+.work-pagination ol {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.work-pagination a {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.work-pagination a::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: black;
+  transition: height 250ms ease;
+}
+
+.work-pagination a[aria-current="location"]::before {
+  height: 36px;
+}
+
+.work-pagination a:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.work-motion .work-title,
+.work-motion .work-details {
+  transition: opacity 250ms ease, transform 250ms ease;
+}
+
+.work-motion .work-entry-grid:not(.is-active):not(:focus-within) .work-title,
+.work-motion .work-entry-grid:not(.is-active):not(:focus-within) .work-details {
+  opacity: 0;
+  transform: translateY(12px);
 }
 
 @media (max-width: 800px) {
+  .work-header {
+    display: none;
+  }
+
   .work-entry-grid {
     grid-template-columns: minmax(0, 1fr);
+    padding: 2rem max(13%, 3.5rem) 4rem 6%;
+    row-gap: 1.5rem;
+  }
+
+  .work-title {
+    font-size: 13cqw;
+    line-height: 1;
+  }
+
+  .work-details {
+    width: 90%;
+    padding-top: 0;
+    font-size: 1rem;
+  }
+
+  .work-image-flex {
+    flex-direction: column;
+  }
+
+  .work-image {
+    flex: none;
+    width: 100%;
+  }
+
+  .work-pagination {
+    top: 1.75rem;
+    transform: none;
+  }
+
+  .work-pagination a::before {
+    width: 12px;
+    height: 12px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.work-body) {
+    scroll-behavior: auto;
+  }
+
+  .work-motion .work-title,
+  .work-motion .work-details,
+  .work-pagination a,
+  .work-pagination a::before {
+    transition: none;
+  }
+
+  .work-motion .work-entry-grid:not(.is-active) .work-title,
+  .work-motion .work-entry-grid:not(.is-active) .work-details {
+    opacity: 1;
+    transform: none;
   }
 }

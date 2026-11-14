@@ -13,7 +13,10 @@ const outputDir = process.env.BUILD_OUTPUT_DIR ?? "html-output";
 await rm(outputDir, { recursive: true, force: true });
 
 const scriptBuild = await Bun.build({
-  entrypoints: ["./src/content/injected-scripts/gpx-views.ts"],
+  entrypoints: [
+    "./src/content/injected-scripts/gpx-views.ts",
+    "./src/work/work-navigation.ts",
+  ],
   outdir: `${outputDir}/js`,
   format: "esm",
   target: "browser",

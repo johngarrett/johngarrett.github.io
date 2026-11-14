@@ -4,6 +4,7 @@ import type { WorkEntry } from "./types";
 export const workData = (): WorkEntry[] => {
   return [
     {
+      id: "other-desert-radio",
       content: [{ kind: "image", path: "content/work/odr.webp" }],
       organization: "Other Desert Radio",
       name: "Archive",
@@ -12,6 +13,7 @@ export const workData = (): WorkEntry[] => {
       website, web design, etc.`,
     },
     {
+      id: "yucca-valley-material-lab",
       content: [
         { kind: "video", path: "content/work/yvml-demo.web.mp4" },
         //{ kind: "image", path: "content/work/yvml-working.webp" },
@@ -23,12 +25,14 @@ export const workData = (): WorkEntry[] => {
       tiles from drone imagery. Audio assets, bounding boxes, path finding. `,
     },
     {
+      id: "dream-rock-collective",
       content: [{ kind: "image", path: "content/work/drc-page.webp" }],
       organization: "Dream Rock Collective",
       name: "Registration Site",
       paragraph: `A subscription based mail drop`,
     },
     {
+      id: "apple",
       content: [],
       organization: "Apple",
       name: "Senior Software Engineer",
