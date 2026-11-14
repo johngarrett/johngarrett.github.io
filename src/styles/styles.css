@@ -172,20 +172,48 @@ h1 {
 }
 
 .powerlines-body {
-  background: url("content/backgrounds/powerlines.webp") center / cover no-repeat fixed;
+  --page-background: url("content/backgrounds/powerlines.webp");
 }
 
 .ocean-body {
-  background: url("content/backgrounds/ocean.webp") center / cover no-repeat fixed;
+  --page-background: url("content/backgrounds/ocean.webp");
+}
+
+.powerlines-body,
+.ocean-body {
+  isolation: isolate;
+}
+
+/* A fixed layer stays behind scrolling content on iOS, where fixed
+   background attachment is unreliable. The large viewport avoids resizing
+   the image as Safari's toolbars expand and collapse. */
+.powerlines-body::before,
+.ocean-body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  height: 100lvh;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--page-background) center / cover no-repeat;
+}
+
+.powerlines-body .home-container,
+.ocean-body .home-container {
+  padding-top: calc(2rem + env(safe-area-inset-top, 0px));
+  padding-right: calc(2rem + env(safe-area-inset-right, 0px));
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+  padding-left: calc(2rem + env(safe-area-inset-left, 0px));
 }
 
 @media (max-width: 600px) {
   .powerlines-body {
-    background-image: url("content/backgrounds/vertical-overpass.webp");
+    --page-background: url("content/backgrounds/vertical-overpass.webp");
   }
 
   .ocean-body {
-    background-image: url("content/backgrounds/vertical-cliffs.webp");
+    --page-background: url("content/backgrounds/vertical-cliffs.webp");
   }
 }
 

@@ -13,7 +13,7 @@ export const HomePage = () => {
     render: () =>
       htmlPage({
         params: {
-          head: { title: "garrepi home" },
+          head: { title: "garrepi home", viewportFitCover: true },
         },
         bodyClass: "powerlines-body",
         content: html`

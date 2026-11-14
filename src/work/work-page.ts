@@ -80,7 +80,7 @@ export const WorkPage = (): Renderable => {
     render: () =>
       htmlPage({
         params: {
-          head: { title: "garrepi work" },
+          head: { title: "garrepi work", viewportFitCover: true },
         },
         bodyClass: "ocean-body",
         content: html`
