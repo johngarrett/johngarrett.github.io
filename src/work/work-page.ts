@@ -55,12 +55,11 @@ export const WorkPage = (): Renderable => {
         scripts: ["/js/work-navigation.js"],
         content: html`
           <nav class="work-header" aria-label="Main navigation">
+            <h1><a href="/index.html" aria-current="page">HOME</a></h1>
             <h1><a href="/work.html" aria-current="page">Work</a></h1>
+            <h1><a href="/about.html" aria-current="page">ABOUT</a></h1>
           </nav>
-          <div
-            class="work-list"
-            style="--work-count: ${entries.length}; width: 100%; max-width: 1600px; margin-inline: auto;"
-          >
+          <div class="work-list" style="--work-count: ${entries.length}">
             <div class="work-track">
               ${entries
             .map(
@@ -68,7 +67,7 @@ export const WorkPage = (): Renderable => {
                 html`<div
                       class="work-stop"
                       aria-hidden="true"
-                      style="top: ${(index / entries.length) * 100}%"
+                      style="top: ${(index / (entries.length + 1)) * 100}%"
                     ></div>`,
             )
             .join("")}

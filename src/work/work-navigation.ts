@@ -7,6 +7,7 @@ const links = [...document.querySelectorAll<HTMLAnchorElement>(".work-pagination
 const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
 const initial = Math.max(0, links.findIndex(link => link.hash === location.hash));
 let current = -1;
+const scrollStep = () => scroller.clientHeight / 2;
 
 const fitTitles = () => {
   const indicator = document.querySelector<HTMLElement>(".work-pagination")!.getBoundingClientRect();
@@ -29,7 +30,7 @@ const fitTitles = () => {
 };
 
 const render = () => {
-  const progress = scroller.scrollTop / scroller.clientHeight;
+  const progress = scroller.scrollTop / scrollStep();
   const next = Math.max(0, Math.min(articles.length - 1, Math.round(progress)));
   const moveFocus = current !== next && articles[current]?.contains(document.activeElement);
   articles.forEach((article, index) => {
@@ -54,19 +55,19 @@ const render = () => {
 
 const navigate = (index: number) => {
   const target = Math.max(0, Math.min(articles.length - 1, index));
-  scroller.scrollTo({ top: target * scroller.clientHeight, behavior: reducedMotion.matches ? "instant" : "smooth" });
+  scroller.scrollTo({ top: target * scrollStep(), behavior: reducedMotion.matches ? "instant" : "smooth" });
 };
 
 document.body.classList.add("work-deck");
 fitTitles();
 document.fonts.ready.then(fitTitles);
-scroller.scrollTop = initial * scroller.clientHeight;
+scroller.scrollTop = initial * scrollStep();
 window.scrollTo(0, 0);
 render();
 scroller.addEventListener("scroll", render, { passive: true });
 new ResizeObserver(() => {
   fitTitles();
-  scroller.scrollTo({ top: current * scroller.clientHeight, behavior: "instant" });
+  scroller.scrollTo({ top: current * scrollStep(), behavior: "instant" });
   render();
 }).observe(scroller);
 
