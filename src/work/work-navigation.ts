@@ -11,16 +11,23 @@ const scrollStep = () => scroller.clientHeight / 2;
 
 const fitTitles = () => {
   const indicator = document.querySelector<HTMLElement>(".work-pagination")!.getBoundingClientRect();
+  const mobile = matchMedia("(max-width: 800px)").matches;
   for (const article of articles) {
     const title = article.querySelector<HTMLElement>(".work-title")!;
     const text = title.querySelector<HTMLElement>(".work-title-text")!;
+    title.style.height = mobile ? "auto" : "100%";
     title.style.fontSize = "100px";
     const available = title.getBoundingClientRect();
     const measured = text.getBoundingClientRect();
-    const maxHeight = parseFloat(getComputedStyle(title).maxHeight) || available.height;
+    const layout = getComputedStyle(article);
+    const maxHeight = mobile
+      ? (article.clientHeight - parseFloat(layout.paddingTop) - parseFloat(layout.paddingBottom) - parseFloat(layout.rowGap)) * 0.4
+      : available.height;
     // Cap titles at 118px so short titles don't grow too large on wide screens.
     const size = Math.min(118, 100 * Math.min(available.width / measured.width, maxHeight / measured.height));
     title.style.fontSize = `${Math.floor(size * 100) / 100}px`;
+    // Reserve the fitted text's height explicitly so Safari doesn't collapse the auto grid row.
+    if (mobile) title.style.height = `${text.getBoundingClientRect().height}px`;
     const details = article.querySelector<HTMLElement>(".work-details")!;
     const offset = parseFloat(article.style.getPropertyValue("--work-offset")) || 0;
     const overlap = Math.max(0, indicator.bottom - (details.getBoundingClientRect().top - offset));

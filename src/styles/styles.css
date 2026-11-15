@@ -511,7 +511,6 @@ html:has(.work-deck),
 }
 
 .work-deck .work-entry-grid {
-  container-type: size;
   grid-area: 1 / 1;
   height: 100%;
   min-height: 0;
@@ -553,13 +552,15 @@ html:has(.work-deck),
   height: 100%;
   min-height: 0;
   flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .work-deck .work-image {
-  flex: 1 1 0;
+  flex: 0 1 auto;
   min-height: 0;
   width: 100%;
-  height: 100%;
+  height: auto;
   max-height: 100%;
   object-position: top left;
 }
@@ -585,7 +586,6 @@ html:has(.work-deck),
   .work-deck .work-title {
     width: calc(100% - 2rem);
     height: auto;
-    max-height: 40cqh;
   }
 
   .work-details {
