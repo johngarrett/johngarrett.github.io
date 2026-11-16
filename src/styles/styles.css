@@ -336,7 +336,7 @@ nav a:active {
   display: block;
   background: white;
   color: black;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 .work-header {

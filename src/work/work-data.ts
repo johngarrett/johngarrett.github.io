@@ -19,7 +19,7 @@ export const workData = (): WorkEntry[] => {
         //{ kind: "image", path: "content/work/yvml-working.webp" },
       ],
       organization: "Yucca Valley Material Lab",
-      name: "Guide",
+      name: "Tour Map",
       paragraph: html`An interactive map built for in person tours at Yucca
       Valley Material Lab. Running as a static site on Github pages. Custom map
       tiles from drone imagery. Audio assets, bounding boxes, path finding. `,
@@ -28,7 +28,7 @@ export const workData = (): WorkEntry[] => {
       id: "dream-rock-collective",
       content: [{ kind: "image", path: "content/work/drc-page.webp" }],
       organization: "Dream Rock Collective",
-      name: "Registration Site",
+      name: "Signup & Management",
       paragraph: `A subscription based mail drop`,
     },
     {
